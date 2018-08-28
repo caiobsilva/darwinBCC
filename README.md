@@ -1,3 +1,3 @@
 # darwinBCC
 
-Project made in Allegro/C.  Caio gay, teste.
+Project made in Allegro/C.
