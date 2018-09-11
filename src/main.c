@@ -7,7 +7,6 @@
 #define JANELA_Y 720
 
 int main(){
-
     int sair = 0;
 
     al_init();
@@ -16,9 +15,10 @@ int main(){
 
     ALLEGRO_DISPLAY *janela = al_create_display(JANELA_X, JANELA_Y);
     ALLEGRO_EVENT_QUEUE *fila;
+    ALLEGRO_EVENT evento;
+
     fila = al_create_event_queue();
     al_register_event_source(fila, al_get_keyboard_event_source());
-    ALLEGRO_EVENT evento;
 
     menu(fila, evento);
 
