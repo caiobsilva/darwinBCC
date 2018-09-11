@@ -21,6 +21,10 @@ int desenhar(int n){
         break;
     }
 
+    al_destroy_bitmap(background);
+    al_destroy_bitmap(background1);
+    al_destroy_bitmap(background2);
+
     return (n += 1);
 }
 
