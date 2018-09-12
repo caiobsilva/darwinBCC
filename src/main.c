@@ -26,6 +26,8 @@ int main(){
 
     menu(fila, evento);
 
+    //al_rest(4.0);
+
     al_destroy_display(janela);
     al_destroy_bitmap(cursorSprite);
     al_destroy_mouse_cursor(cursor);
