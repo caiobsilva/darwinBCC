@@ -7,7 +7,6 @@
 #define JANELA_Y 720
 
 int main(){
-
     al_init();
     al_init_image_addon();
     al_install_keyboard();
@@ -17,14 +16,14 @@ int main(){
     ALLEGRO_DISPLAY *janela = al_create_display(JANELA_X, JANELA_Y);
     ALLEGRO_EVENT_QUEUE *fila;
     ALLEGRO_EVENT evento;
-    ALLEGRO_MOUSE_CURSOR *cursor = al_create_mouse_cursor(cursorSprite, 20, 20);
 
     fila = al_create_event_queue();
     al_register_event_source(fila, al_get_keyboard_event_source());
 
+    ALLEGRO_MOUSE_CURSOR *cursor = al_create_mouse_cursor(cursorSprite, 20, 20);
     al_set_mouse_cursor(janela, cursor);
 
-    selectMenu(fila, evento);
+    menu(fila, evento);
 
     //al_rest(4.0);
 
