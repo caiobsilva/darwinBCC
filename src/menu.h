@@ -3,7 +3,6 @@
 #include <allegro5/allegro_image.h>
 
 int introMenu(int n){
-
     ALLEGRO_BITMAP *intro[4];
 
     intro[0] = al_load_bitmap("../res/images/introMenu1.png");
@@ -21,21 +20,19 @@ int introMenu(int n){
         al_draw_scaled_bitmap(intro[3], 0, 0, 896, 504, 0, 0, 1280, 720, 0);
     }
     
-    al_destroy_bitmap(intro[0]);
-    al_destroy_bitmap(intro[1]);
-    al_destroy_bitmap(intro[2]);
-    al_destroy_bitmap(intro[3]);
+    for (int i = 0; i < 4; i++){
+        al_destroy_bitmap(intro[i]);
+    }
 
     return (n += 1);
 }
 
-int menu(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
+int selectMenu(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
     int sair = 0, n = 1;
 
     ALLEGRO_COLOR branco = al_map_rgb(255, 255, 255);
 
     while (!sair){
-        
         al_wait_for_event_timed(fila, &evento, 0.05);
         
         if(evento.type == ALLEGRO_EVENT_KEY_DOWN){
@@ -49,7 +46,6 @@ int menu(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
         if(n > 24){
             n = 1;
         }
-
     }
     
     return 0;
