@@ -38,7 +38,9 @@ int menu(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
         
         al_wait_for_event_timed(fila, &evento, 0.05);
         
-        if(evento.type == ALLEGRO_EVENT_KEY_DOWN){
+        if(evento.type == ALLEGRO_EVENT_DISPLAY_CLOSE){
+            return 0;
+        }else if(evento.type == ALLEGRO_EVENT_KEY_DOWN){
             sair = 1;
         }
 
@@ -52,6 +54,53 @@ int menu(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
 
     }
     
-    return 0;
+    return 2;
 }
 
+
+int menuSelect(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
+    
+    int sair = 0;
+
+    ALLEGRO_COLOR branco = al_map_rgb(255, 255, 255);
+
+
+    ALLEGRO_BITMAP *select[4];
+    
+    select[0] = al_load_bitmap("../res/images/selectMenu1.png");
+    select[1]  = al_load_bitmap("../res/images/selectMenu2.png");
+    select[2]  = al_load_bitmap("../res/images/selectMenuNJ.png");
+    select[3]  = al_load_bitmap("../res/images/selectMenuOP.png");   
+
+    al_clear_to_color(branco);
+    al_draw_scaled_bitmap(select[1], 0, 0, 896, 504, 0, 0, 1280, 720, 0);
+    al_flip_display();
+
+    while(!sair){
+        
+        al_wait_for_event_timed(fila,&evento,0.05);
+
+        if(evento.type == ALLEGRO_EVENT_DISPLAY_CLOSE){
+            
+            return 0;
+
+        }
+        if(evento.type == ALLEGRO_EVENT_KEY_DOWN){
+            if(evento.keyboard.keycode == ALLEGRO_KEY_UP){
+                al_clear_to_color(branco);
+                al_draw_scaled_bitmap(select[2], 0, 0, 896, 504, 0, 0, 1280, 720, 0);
+            }else if(evento.keyboard.keycode == ALLEGRO_KEY_DOWN){
+                al_clear_to_color(branco);
+                al_draw_scaled_bitmap(select[3], 0, 0, 896, 504, 0, 0, 1280, 720, 0);
+            }
+            al_flip_display();
+        }
+    }    
+
+    al_destroy_bitmap(select[0]);
+    al_destroy_bitmap(select[1]);
+    al_destroy_bitmap(select[2]);
+    al_destroy_bitmap(select[3]);
+    
+    return 3;
+}

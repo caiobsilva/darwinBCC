@@ -8,6 +8,8 @@
 
 int main(){
 
+    int selecaoTela = 1;
+
     al_init();
     al_init_image_addon();
     al_install_keyboard();
@@ -20,13 +22,21 @@ int main(){
 
     fila = al_create_event_queue();
     al_register_event_source(fila, al_get_keyboard_event_source());
+    al_register_event_source(fila,al_get_display_event_source(janela));
 
     ALLEGRO_MOUSE_CURSOR *cursor = al_create_mouse_cursor(cursorSprite, 20, 20);
     al_set_mouse_cursor(janela, cursor);
 
-    menu(fila, evento);
-
-    //al_rest(4.0);
+    while(selecaoTela != 0){
+        switch(selecaoTela){
+            case 1:
+            selecaoTela = menu(fila, evento);
+            break;
+            case 2:
+            selecaoTela = menuSelect(fila, evento);
+            break;
+        }
+    }
 
     al_destroy_display(janela);
     al_destroy_bitmap(cursorSprite);
