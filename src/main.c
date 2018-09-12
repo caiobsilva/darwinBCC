@@ -35,6 +35,14 @@ int main(){
             case 2:
             selecaoTela = menuSelect(fila, evento);
             break;
+            case 3:
+            printf("Foi pra novo jogo\n");
+            selecaoTela = 0;
+            break;
+            case 4:
+            printf("Foi pra opções\n");
+            selecaoTela = 0;
+            break;
         }
     }
 

@@ -21,10 +21,9 @@ int introMenu(int n){
         al_draw_scaled_bitmap(intro[3], 0, 0, 896, 504, 0, 0, 1280, 720, 0);
     }
     
-    al_destroy_bitmap(intro[0]);
-    al_destroy_bitmap(intro[1]);
-    al_destroy_bitmap(intro[2]);
-    al_destroy_bitmap(intro[3]);
+    for (int i = 0; i < 4; i++){
+        al_destroy_bitmap(intro[i]);
+    }
 
     return (n += 1);
 }
@@ -60,7 +59,7 @@ int menu(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
 
 int menuSelect(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
     
-    int sair = 0;
+    int sair = 0, n = 0;
 
     ALLEGRO_COLOR branco = al_map_rgb(255, 255, 255);
 
@@ -89,18 +88,23 @@ int menuSelect(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
             if(evento.keyboard.keycode == ALLEGRO_KEY_UP){
                 al_clear_to_color(branco);
                 al_draw_scaled_bitmap(select[2], 0, 0, 896, 504, 0, 0, 1280, 720, 0);
+                n = 3;
             }else if(evento.keyboard.keycode == ALLEGRO_KEY_DOWN){
                 al_clear_to_color(branco);
                 al_draw_scaled_bitmap(select[3], 0, 0, 896, 504, 0, 0, 1280, 720, 0);
+                n = 4;
+            }else if(evento.keyboard.keycode == ALLEGRO_KEY_ENTER){
+                if(n != 0){
+                    sair = 1;
+                }
             }
             al_flip_display();
         }
     }    
 
-    al_destroy_bitmap(select[0]);
-    al_destroy_bitmap(select[1]);
-    al_destroy_bitmap(select[2]);
-    al_destroy_bitmap(select[3]);
+    for (int i = 0; i < 4; i++){
+        al_destroy_bitmap(select[i]);
+    }
     
-    return 3;
+    return n;
 }
