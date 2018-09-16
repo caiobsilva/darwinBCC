@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_image.h>
+#include <allegro5/allegro_acodec.h>
 #include "menu.h"
-
 #define JANELA_X 1280
 #define JANELA_Y 720
 
@@ -14,11 +14,14 @@ int main(){
     al_init_image_addon();
     al_install_keyboard();
     al_install_mouse();
+    al_install_audio();
+    al_init_acodec_addon();
 
     ALLEGRO_BITMAP *cursorSprite = al_load_bitmap("../res/images/cursor.png");
     ALLEGRO_DISPLAY *janela = al_create_display(JANELA_X, JANELA_Y);
     ALLEGRO_EVENT_QUEUE *fila;
     ALLEGRO_EVENT evento;
+    
 
     fila = al_create_event_queue();
     al_register_event_source(fila, al_get_keyboard_event_source());
@@ -45,7 +48,7 @@ int main(){
             break;
         }
     }
-
+    
     al_destroy_display(janela);
     al_destroy_bitmap(cursorSprite);
     al_destroy_mouse_cursor(cursor);
