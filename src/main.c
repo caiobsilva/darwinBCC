@@ -39,16 +39,16 @@ int main(){
             selecaoTela = menuSelect(fila, evento);
             break;
             case 3:
-            printf("Foi pra novo jogo\n");
+            printf("Foi pra opções\n");
             selecaoTela = 0;
             break;
             case 4:
-            printf("Foi pra opções\n");
+            printf("Foi pra novo jogo\n");
             selecaoTela = 0;
             break;
         }
     }
-    
+
     al_destroy_display(janela);
     al_destroy_bitmap(cursorSprite);
     al_destroy_mouse_cursor(cursor);

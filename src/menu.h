@@ -89,11 +89,11 @@ int menuSelect(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
             if(evento.keyboard.keycode == ALLEGRO_KEY_UP){
                 al_clear_to_color(branco);
                 al_draw_scaled_bitmap(select[2], 0, 0, 896, 504, 0, 0, 1280, 720, 0);
-                n = 3;
+                n = 4;
             }else if(evento.keyboard.keycode == ALLEGRO_KEY_DOWN){
                 al_clear_to_color(branco);
                 al_draw_scaled_bitmap(select[3], 0, 0, 896, 504, 0, 0, 1280, 720, 0);
-                n = 4;
+                n = 3;
             }else if(evento.keyboard.keycode == ALLEGRO_KEY_ENTER){
                 if(n != 0){
                     al_play_sample(efeitoSelecionar, 1.0, 0.0,1.0,ALLEGRO_PLAYMODE_ONCE,NULL);
