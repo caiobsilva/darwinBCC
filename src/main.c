@@ -3,6 +3,7 @@
 #include <allegro5/allegro_image.h>
 #include <allegro5/allegro_acodec.h>
 #include "menu.h"
+#include "ambienteUm.h"
 #define JANELA_X 1280
 #define JANELA_Y 720
 
@@ -43,8 +44,7 @@ int main(){
             selecaoTela = 0;
             break;
             case 4:
-            printf("Foi pra novo jogo\n");
-            selecaoTela = 0;
+            selecaoTela = ambienteInicial(fila, evento);
             break;
         }
     }
