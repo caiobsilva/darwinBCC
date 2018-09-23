@@ -63,7 +63,7 @@ int menuSelect(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
     ALLEGRO_COLOR branco = al_map_rgb(255, 255, 255);   
     al_reserve_samples(1);
     ALLEGRO_SAMPLE *efeitoSelecionar = al_load_sample("../res/audio/pressEffect.flac");
-
+    ALLEGRO_SAMPLE *efeitoTrocar = al_load_sample("../res/audio/alternEffect.flac");
 
     ALLEGRO_BITMAP *select[4];
     
@@ -89,10 +89,12 @@ int menuSelect(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
             if(evento.keyboard.keycode == ALLEGRO_KEY_UP){
                 al_clear_to_color(branco);
                 al_draw_scaled_bitmap(select[2], 0, 0, 896, 504, 0, 0, 1280, 720, 0);
+                al_play_sample(efeitoTrocar, 1.0, 0.0,1.0,ALLEGRO_PLAYMODE_ONCE,NULL);
                 n = 4;
             }else if(evento.keyboard.keycode == ALLEGRO_KEY_DOWN){
                 al_clear_to_color(branco);
                 al_draw_scaled_bitmap(select[3], 0, 0, 896, 504, 0, 0, 1280, 720, 0);
+                al_play_sample(efeitoTrocar, 1.0, 0.0,1.0,ALLEGRO_PLAYMODE_ONCE,NULL);
                 n = 3;
             }else if(evento.keyboard.keycode == ALLEGRO_KEY_ENTER){
                 if(n != 0){
