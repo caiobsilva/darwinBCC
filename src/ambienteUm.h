@@ -32,7 +32,8 @@ int ambienteInicial(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
 
         al_clear_to_color(branco);
         movimentacao(fila,evento,p,q);
-        al_draw_scaled_bitmap(lizard[n],0,0,23,38,x,y,115,190,0);
+        //al_draw_bitmap(lizard[n],x,y,0);
+        al_draw_scaled_bitmap(lizard[n],0,0,23,38,x,y,69,114,0);
         al_flip_display();
 
     }
