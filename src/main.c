@@ -2,14 +2,13 @@
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_image.h>
 #include <allegro5/allegro_acodec.h>
-#include "menu.h"
-#include "ambienteUm.h"
+#include "header.h"
+
 #define JANELA_X 1280
 #define JANELA_Y 720
 
 int main(){
-
-    int selecaoTela = 1;
+    enum statesGame selecaoTela = Menu;
 
     al_init();
     al_init_image_addon();
@@ -22,7 +21,6 @@ int main(){
     ALLEGRO_DISPLAY *janela = al_create_display(JANELA_X, JANELA_Y);
     ALLEGRO_EVENT_QUEUE *fila;
     ALLEGRO_EVENT evento;
-    
 
     fila = al_create_event_queue();
     al_register_event_source(fila, al_get_keyboard_event_source());
@@ -31,21 +29,21 @@ int main(){
     ALLEGRO_MOUSE_CURSOR *cursor = al_create_mouse_cursor(cursorSprite, 20, 20);
     al_set_mouse_cursor(janela, cursor);
 
-    while(selecaoTela != 0){
+    while(selecaoTela != Exit){
         switch(selecaoTela){
-            case 1:
-            selecaoTela = menu(fila, evento);
-            break;
-            case 2:
-            selecaoTela = menuSelect(fila, evento);
-            break;
-            case 3:
-            printf("Foi pra opções\n");
-            selecaoTela = 0;
-            break;
-            case 4:
-            selecaoTela = ambienteInicial(fila, evento);
-            break;
+            case Menu:
+              selecaoTela = menu(fila, evento);
+              break;
+            case Select:
+              selecaoTela = menuSelect(fila, evento);
+              break;
+            case Options:
+              printf("Foi pra opções\n");
+              selecaoTela = Exit;
+              break;
+            case AmbienteUm:
+              selecaoTela = ambienteUm(fila, evento);
+              break;
         }
     }
 
