@@ -53,5 +53,6 @@ int main(){
     al_destroy_event_queue(fila);
     al_uninstall_keyboard();
 
+
     return 0;
 }
