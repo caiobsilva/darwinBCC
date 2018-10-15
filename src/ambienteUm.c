@@ -59,6 +59,54 @@ int falasiniciais(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
     return (0);
 }
 
+int falasinimigos(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
+
+    int n = 0;
+
+    al_init_font_addon();
+    al_init_ttf_addon();
+
+    ALLEGRO_BITMAP *sprite = al_load_bitmap("../res/images/sprite01/baixo01.png");
+    ALLEGRO_BITMAP *falasDarwin = al_load_bitmap("../res/images/falas-temp.png");
+    ALLEGRO_FONT *yoster = al_load_ttf_font("../res/font/yoster.ttf",25,0);
+    ALLEGRO_COLOR branco = al_map_rgb(255,255,255);
+    ALLEGRO_COLOR preto = al_map_rgb(0,0,0);
+    char *falasInicio[4];
+    falasInicio[0] = "Cuidado!";
+    falasInicio[1] = "Essa espécie me parece estranha";
+    falasInicio[2] = "Olha a cor dela, tenho certeza de que isso é um caso de coloração de advertência";
+    falasInicio[3] = "A cor característica do animal serve como um alerta, eu recomendaria ficar longe.";
+
+    while(n < 4){
+        al_clear_to_color(branco);
+        al_draw_scaled_bitmap(falasDarwin,0,0,1299,463,10,380,1200,340,0);
+        al_draw_scaled_bitmap(sprite, 0, 0, 16, 22, 610, 294, 48, 66, 0);
+        al_draw_multiline_text(yoster,preto,70,500,650,25,0,falasInicio[n]);
+        al_flip_display();
+
+        al_wait_for_event_timed(fila, &evento, 0.05);
+        if(evento.type == ALLEGRO_EVENT_DISPLAY_CLOSE){
+            
+            al_destroy_bitmap(sprite);
+            al_destroy_bitmap(falasDarwin);
+            al_destroy_font(yoster);
+
+            return (1);
+        }else if(evento.type == ALLEGRO_EVENT_KEY_DOWN){
+            if(evento.keyboard.keycode == ALLEGRO_KEY_E){
+                n++;
+            }
+        }
+        
+    }
+
+    al_destroy_bitmap(sprite);
+    al_destroy_bitmap(falasDarwin);
+    al_destroy_font(yoster);
+
+    return (0);
+}
+
 
 enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
     int n = 0, sair = 0, x = 610, y = 294, *p = &x, *q = &x;
