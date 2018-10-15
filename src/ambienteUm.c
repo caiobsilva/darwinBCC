@@ -8,7 +8,7 @@
 
 int falasiniciais(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
 
-    int n = 0;
+    int n = 0, i = 0;
 
     al_init_font_addon();
     al_init_ttf_addon();
@@ -18,6 +18,9 @@ int falasiniciais(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
     ALLEGRO_FONT *yoster = al_load_ttf_font("../res/font/yoster.ttf",25,0);
     ALLEGRO_COLOR branco = al_map_rgb(255,255,255);
     ALLEGRO_COLOR preto = al_map_rgb(0,0,0);
+    ALLEGRO_BITMAP *parte[2];
+    parte[0] = al_load_bitmap("../res/images/fase1Parte1.png");
+    parte[1] = al_load_bitmap("../res/images/fase1Parte2.png");
     char *falasInicio[12];
     falasInicio[0] = "Bem vindo! Meu nome é Charles Darwin.";
     falasInicio[1] = "Há anos venho estudando as interações dos animais entre eles mesmos e os ambientes.";
@@ -36,6 +39,7 @@ int falasiniciais(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
 
     while(n < 12){
         al_clear_to_color(branco);
+        al_draw_bitmap(parte[i], 0,0,0);
         al_draw_scaled_bitmap(falasDarwin,0,0,1299,463,10,380,1200,340,0);
         al_draw_scaled_bitmap(sprite, 0, 0, 16, 22, 610, 294, 48, 66, 0);
         al_draw_multiline_text(yoster,preto,70,500,650,25,0,falasInicio[n]);
@@ -61,12 +65,11 @@ int falasiniciais(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
 
 int falasinimigos(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
 
-    int n = 0;
+    int n = 0, i = 1;
 
     al_init_font_addon();
     al_init_ttf_addon();
 
-    ALLEGRO_BITMAP *sprite = al_load_bitmap("../res/images/sprite01/baixo01.png");
     ALLEGRO_BITMAP *falasDarwin = al_load_bitmap("../res/images/falas-temp.png");
     ALLEGRO_FONT *yoster = al_load_ttf_font("../res/font/yoster.ttf",25,0);
     ALLEGRO_COLOR branco = al_map_rgb(255,255,255);
@@ -76,18 +79,22 @@ int falasinimigos(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
     falasInicio[1] = "Essa espécie me parece estranha";
     falasInicio[2] = "Olha a cor dela, tenho certeza de que isso é um caso de coloração de advertência";
     falasInicio[3] = "A cor característica do animal serve como um alerta, eu recomendaria ficar longe.";
+    ALLEGRO_BITMAP *parte[2];
+    parte[0] = al_load_bitmap("../res/images/fase1Parte1.png");
+    parte[1] = al_load_bitmap("../res/images/fase1Parte2.png");
+    ALLEGRO_BITMAP *inimigo = al_load_bitmap("../res/images/inimigos1.png"); 
 
     while(n < 4){
         al_clear_to_color(branco);
+        al_draw_bitmap(parte[i], 0,0,0);
+        al_draw_scaled_bitmap(inimigo,0,0,238,294,610,380,48,66,0);
         al_draw_scaled_bitmap(falasDarwin,0,0,1299,463,10,380,1200,340,0);
-        al_draw_scaled_bitmap(sprite, 0, 0, 16, 22, 610, 294, 48, 66, 0);
         al_draw_multiline_text(yoster,preto,70,500,650,25,0,falasInicio[n]);
         al_flip_display();
 
         al_wait_for_event_timed(fila, &evento, 0.05);
         if(evento.type == ALLEGRO_EVENT_DISPLAY_CLOSE){
             
-            al_destroy_bitmap(sprite);
             al_destroy_bitmap(falasDarwin);
             al_destroy_font(yoster);
 
@@ -100,16 +107,38 @@ int falasinimigos(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
         
     }
 
-    al_destroy_bitmap(sprite);
     al_destroy_bitmap(falasDarwin);
     al_destroy_font(yoster);
 
     return (0);
 }
 
+void localizacao(int *x, int *y, int i){
+    if( i == 0 ){
+        if(*x < 0){
+        *x = 0;
+        }
+        if(*x > 1230){
+            *x = 1230;
+        }
+        if(*y > 650 ){
+            *y = 650;
+        }
+    }else if(i == 1){
+        if(*x < 0){
+            *x = 0;
+        }
+        if(*x > 1230){
+            *x = 1230;
+        }
+        if(*y < 0 ){
+            *y = 0;
+        }
+    }
+}
 
 enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
-    int n = 0, sair = 0, x = 610, y = 294, *p = &x, *q = &x;
+    int n = 0, sair = 0, x = 610, y = 294, *p = &x, *q = &x, i = 0, flag = 0;
     p = &x;
     q = &y;
 
@@ -117,25 +146,53 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
         return Exit;
     }
 
+
+    ALLEGRO_BITMAP *inimigo = al_load_bitmap("../res/images/inimigos1.png"); 
     ALLEGRO_COLOR branco = al_map_rgb(255,255,255);
+    ALLEGRO_COLOR preto = al_map_rgb(0,0,0);
     ALLEGRO_BITMAP *player[3];
 
     player[0] = al_load_bitmap("../res/images/sprite01/baixo01.png");
     player[1] = al_load_bitmap("../res/images/sprite01/baixo02.png");
     player[2] = al_load_bitmap("../res/images/sprite01/baixo03.png");
 
+    ALLEGRO_BITMAP *parte[2];
+
+    parte[0] = al_load_bitmap("../res/images/fase1Parte1.png");
+    parte[1] = al_load_bitmap("../res/images/fase1Parte2.png");
+
     while (!sair){
         al_wait_for_event_timed(fila, &evento, 0.05);
 
         if(evento.type == ALLEGRO_EVENT_DISPLAY_CLOSE){
-            return Exit;
             for(int i = 0; i < 3; i++){
                 al_destroy_bitmap(player[i]);
             }
+            return Exit;
+        }
+        if( i == 0 && y < 0 ){
+            if(flag == 0){
+                falasinimigos(fila,evento);
+                flag = 1;
+            }
+            al_clear_to_color(preto);
+            al_rest(0.5);
+            i = 1;
+            y = 650; 
+        }else if( i == 1 && y > 650 ){
+            al_clear_to_color(preto);
+            al_rest(0.5);
+            i = 0;
+            y = 0; 
         }
 
         al_clear_to_color(branco);
+        al_draw_bitmap(parte[i], 0,0,0);
+        if(i == 1){
+            al_draw_scaled_bitmap(inimigo,0,0,238,294,610,380,48,66,0);
+        }
         movimentacao(fila, evento, p, q);
+        localizacao(p,q,i);
         al_draw_scaled_bitmap(player[n], 0, 0, 16, 22, x, y, 48, 66, 0);
         al_flip_display();
 
