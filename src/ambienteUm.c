@@ -138,7 +138,8 @@ void localizacao(int *x, int *y, int i){
 }
 
 enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
-    int n = 0, sair = 0, x = 610, y = 294, *p = &x, *q = &x, i = 0, flag = 0;
+    int n = 0, sair = 0, x = 610, y = 294, *p = &x, *q = &x, i = 0;
+    int flagInimigos = 0, flagOpcoes = 0;
     p = &x;
     q = &y;
 
@@ -158,40 +159,64 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
 
     ALLEGRO_BITMAP *parte[2];
 
-    parte[0] = al_load_bitmap("../res/images/fase1Parte1.png");
+    parte[0] = al_load_bitmap("../res/images/ambiente1fase1.jpg");
     parte[1] = al_load_bitmap("../res/images/fase1Parte2.png");
 
     while (!sair){
-        al_wait_for_event_timed(fila, &evento, 0.05);
 
-        if(evento.type == ALLEGRO_EVENT_DISPLAY_CLOSE){
-            for(int i = 0; i < 3; i++){
-                al_destroy_bitmap(player[i]);
+        while(!(al_is_event_queue_empty(fila))){
+
+            al_wait_for_event(fila, &evento);
+            
+            if(evento.type == ALLEGRO_EVENT_DISPLAY_CLOSE){
+                printf("fechou!\n");            
+                for(int i = 0; i < 3; i++){
+                    al_destroy_bitmap(player[i]);
+                }
+                for(int j = 0; j < 2; j++){
+                    al_destroy_bitmap(parte[j]);
+                }
+                al_destroy_bitmap(inimigo);
+                return Exit;
             }
-            return Exit;
+            else if(evento.type == ALLEGRO_EVENT_KEY_DOWN){
+                movimentacao(evento, p, q);
+                if(evento.keyboard.keycode == ALLEGRO_KEY_ESCAPE){
+                    printf("ESC\n");
+                     
+                    flagOpcoes = pausa(parte[i],player[n],x,y,fila,evento);
+
+                    if(flagOpcoes){
+
+                        for(int i = 0; i < 3; i++){
+                            al_destroy_bitmap(player[i]);
+                        }
+                        for(int j = 0; j < 2; j++){
+                            al_destroy_bitmap(parte[j]);
+                        }
+                        al_destroy_bitmap(inimigo);
+                        return Exit;
+                    }
+                }
+            }
         }
+        
         if( i == 0 && y < 0 ){
-            if(flag == 0){
+            if(flagInimigos == 0){
                 falasinimigos(fila,evento);
-                flag = 1;
+                flagInimigos = 1;
             }
-            al_clear_to_color(preto);
-            al_rest(0.5);
             i = 1;
             y = 650; 
         }else if( i == 1 && y > 650 ){
-            al_clear_to_color(preto);
-            al_rest(0.5);
             i = 0;
             y = 0; 
         }
-
         al_clear_to_color(branco);
         al_draw_bitmap(parte[i], 0,0,0);
         if(i == 1){
             al_draw_scaled_bitmap(inimigo,0,0,238,294,610,380,48,66,0);
         }
-        movimentacao(fila, evento, p, q);
         localizacao(p,q,i);
         al_draw_scaled_bitmap(player[n], 0, 0, 16, 22, x, y, 48, 66, 0);
         al_flip_display();
@@ -201,6 +226,10 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
     for(int i = 0; i < 3; i++){
         al_destroy_bitmap(player[i]);
     }
+    for(int j = 0; j < 2; j++){
+        al_destroy_bitmap(parte[j]);
+    }
+    al_destroy_bitmap(inimigo);
 
     return Exit;
 }
