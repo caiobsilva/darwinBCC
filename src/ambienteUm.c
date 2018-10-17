@@ -138,10 +138,11 @@ void localizacao(int *x, int *y, int i){
 }
 
 enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
-    int n = 0, sair = 0, x = 610, y = 294, *p = &x, *q = &x, i = 0;
-    int flagInimigos = 0, flagOpcoes = 0;
+    int n = 0, sair = 0, x = 610, y = 294, *p, *q, *s, i = 0;
+    int flagInimigos = 0, flagOpcoes = 0, flagSom = 1;
     p = &x;
     q = &y;
+    s = &flagSom;
 
     if(falasiniciais(fila,evento)){
         return Exit;
@@ -180,11 +181,10 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
                 return Exit;
             }
             else if(evento.type == ALLEGRO_EVENT_KEY_DOWN){
-                movimentacao(evento, p, q);
                 if(evento.keyboard.keycode == ALLEGRO_KEY_ESCAPE){
                     printf("ESC\n");
                      
-                    flagOpcoes = pausa(parte[i],player[n],x,y,fila,evento);
+                    flagOpcoes = pausa(x,y,s,fila,evento);
 
                     if(flagOpcoes){
 
@@ -217,6 +217,7 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
         if(i == 1){
             al_draw_scaled_bitmap(inimigo,0,0,238,294,610,380,48,66,0);
         }
+        movimentacao(evento, p, q);
         localizacao(p,q,i);
         al_draw_scaled_bitmap(player[n], 0, 0, 16, 22, x, y, 48, 66, 0);
         al_flip_display();

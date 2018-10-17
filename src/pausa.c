@@ -3,9 +3,24 @@
 #include <allegro5/allegro_image.h>
 #include "header.h"
 
-int pausa(ALLEGRO_BITMAP *cenario, ALLEGRO_BITMAP *sprite, int x, int y, ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
-    int sair = 0;
-    ALLEGRO_BITMAP *fundo = al_load_bitmap("../res/images/menu_1.png");
+int pausa(int x, int y, int *flagSom, ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
+    int sair = 0, i;
+
+    if(*flagSom == 1){
+        i = 0;
+    }else{
+        i = 1;
+    }
+
+    ALLEGRO_BITMAP *fundo[7];
+    fundo[0] = al_load_bitmap("../res/images/pausaPOn.png");
+    fundo[1] = al_load_bitmap("../res/images/pausaPOff.png");
+    fundo[2] = al_load_bitmap("../res/images/pausaSairOn.png");
+    fundo[3] = al_load_bitmap("../res/images/pausaSairOff.png");
+    fundo[4] = al_load_bitmap("../res/images/pausaPisca.png");
+    fundo[5] = al_load_bitmap("../res/images/pausaSOn.png");
+    fundo[6] = al_load_bitmap("../res/images/pausaSOff.png");
+    
     ALLEGRO_COLOR branco = al_map_rgb(255,255,255);
     while(!sair){
         while(!(al_is_event_queue_empty(fila))){
@@ -17,18 +32,50 @@ int pausa(ALLEGRO_BITMAP *cenario, ALLEGRO_BITMAP *sprite, int x, int y, ALLEGRO
             }else if(evento.type == ALLEGRO_EVENT_KEY_DOWN){
                 if(evento.keyboard.keycode == ALLEGRO_KEY_ESCAPE){
                     sair  = 1;
+                }else if(evento.keyboard.keycode == ALLEGRO_KEY_UP){
+                    if(*flagSom == 1){
+                        i = 5;
+                    }else{
+                        i = 6;
+                    }
+                }else if(evento.keyboard.keycode == ALLEGRO_KEY_DOWN){
+                    if(*flagSom == 1){
+                        i = 2;
+                    }else{
+                        i = 3;
+                    }
+                }else if(evento.keyboard.keycode == ALLEGRO_KEY_LEFT && (i == 5 || i == 6)){
+                    i = 5;
+                    *flagSom = 1;
+                }else if(evento.keyboard.keycode == ALLEGRO_KEY_RIGHT && (i == 5 || i == 6)){
+                    i = 6;
+                    *flagSom = 0;
+                }else if(evento.keyboard.keycode == ALLEGRO_KEY_ENTER){
+                    switch(i){
+                        case 2:
+                            return 1;
+                            break;
+                        case 3:
+                            return 1;
+                            break;
+                        case 5:
+                            i = 0;
+                            break;
+                        case 6:
+                            i = 1;
+                            break;
+                    }
                 }    
             }
-        
         }
+        printf("somFlag = %d\n", *flagSom);
         al_clear_to_color(branco);
-        al_draw_bitmap(cenario, 0,0,0);
-        al_draw_scaled_bitmap(sprite, 0, 0, 16, 22, x, y, 48, 66, 0);
-        al_draw_bitmap(fundo,0,0,0);
+        al_draw_bitmap(fundo[i],0,0,0);
         al_flip_display();
     }
-    
-    al_destroy_bitmap(fundo);
+    for(int i = 0; i < 6; i++){
+        al_destroy_bitmap(fundo[i]);
+    }
 
     return 0;
 }
