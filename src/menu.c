@@ -105,6 +105,7 @@ enum statesGame menuSelect(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
             }
             al_flip_display();
         }
+        
     }
 
     al_destroy_sample(efeitoSelecionar);

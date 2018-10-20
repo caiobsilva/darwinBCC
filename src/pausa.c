@@ -21,7 +21,7 @@ int pausa(int x, int y, int *flagSom, ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT e
     fundo[5] = al_load_bitmap("../res/images/pausaSOn.png");
     fundo[6] = al_load_bitmap("../res/images/pausaSOff.png");
     
-    ALLEGRO_COLOR branco = al_map_rgb(255,255,255);
+    ALLEGRO_COLOR preto = al_map_rgb(0,0,0);
     while(!sair){
         while(!(al_is_event_queue_empty(fila))){
             
@@ -69,7 +69,7 @@ int pausa(int x, int y, int *flagSom, ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT e
             }
         }
         
-        al_clear_to_color(branco);
+        //al_clear_to_color(preto);
         al_draw_bitmap(fundo[i],0,0,0);
         al_flip_display();
     }

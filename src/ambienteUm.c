@@ -19,8 +19,7 @@ int falasiniciais(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
     ALLEGRO_COLOR branco = al_map_rgb(255,255,255);
     ALLEGRO_COLOR preto = al_map_rgb(0,0,0);
     ALLEGRO_BITMAP *parte[2];
-    parte[0] = al_load_bitmap("../res/images/fase1Parte1.png");
-    parte[1] = al_load_bitmap("../res/images/fase1Parte2.png");
+    parte[0] = al_load_bitmap("../res/images/ambiente1fase1.jpg");
     char *falasInicio[12];
     falasInicio[0] = "Bem vindo! Meu nome é Charles Darwin.";
     falasInicio[1] = "Há anos venho estudando as interações dos animais entre eles mesmos e os ambientes.";
