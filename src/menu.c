@@ -113,4 +113,5 @@ enum statesGame menuSelect(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
     }
 
     return estado;
+    
 }
