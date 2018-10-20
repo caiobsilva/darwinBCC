@@ -68,7 +68,7 @@ int pausa(int x, int y, int *flagSom, ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT e
                 }    
             }
         }
-        printf("somFlag = %d\n", *flagSom);
+        
         al_clear_to_color(branco);
         al_draw_bitmap(fundo[i],0,0,0);
         al_flip_display();
