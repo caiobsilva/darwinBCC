@@ -136,6 +136,13 @@ void localizacao(int *x, int *y, int i){
         }
     }
 }
+/*
+
+TODO: SEPARAR AS FUNÇÕES DE PARTES DO AMBIENTE 1;
+TODO: ARRUMAR A FUNÇÃO DE LOCALIZAÇÃO PARA OS HITBOX;
+
+*/
+
 
 enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
     int n = 0, sair = 0, x = 610, y = 294, *p, *q, *s, i = 0;
@@ -164,6 +171,8 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
     parte[1] = al_load_bitmap("../res/images/fase1Parte2.png");
 
     while (!sair){
+
+        printf("somFlag = %d\n", flagSom);
 
         while(!(al_is_event_queue_empty(fila))){
 

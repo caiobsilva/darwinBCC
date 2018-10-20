@@ -37,10 +37,6 @@ int main(){
             case Select:
               selecaoTela = menuSelect(fila, evento);
               break;
-            case Options:
-              printf("Foi pra opções\n");
-              selecaoTela = Exit;
-              break;
             case AmbienteUm:
               selecaoTela = ambienteUm(fila, evento);
               break;

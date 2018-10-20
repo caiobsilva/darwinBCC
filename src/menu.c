@@ -95,7 +95,7 @@ enum statesGame menuSelect(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
                 al_clear_to_color(branco);
                 al_draw_scaled_bitmap(arraySelecionar[2], 0, 0, 896, 504, 0, 0, 1280, 720, 0);
                 al_play_sample(efeitoTrocar, 1.0, 0.0,1.0,ALLEGRO_PLAYMODE_ONCE,NULL);
-                estado = Options;
+                estado = Exit;
             }else if(evento.keyboard.keycode == ALLEGRO_KEY_ENTER){
                 if(estado != Menu){
                     al_play_sample(efeitoSelecionar, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
@@ -113,4 +113,5 @@ enum statesGame menuSelect(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
     }
 
     return estado;
+    
 }
