@@ -86,17 +86,17 @@ enum statesGame menuSelect(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
             return Exit;
         }
         if(evento.type == ALLEGRO_EVENT_KEY_DOWN){
-            if(evento.keyboard.keycode == ALLEGRO_KEY_UP){
+            if(evento.keyboard.keycode == ALLEGRO_KEY_UP || evento.keyboard.keycode == ALLEGRO_KEY_W){
                 al_clear_to_color(branco);
                 al_draw_scaled_bitmap(arraySelecionar[1], 0, 0, 896, 504, 0, 0, 1280, 720, 0);
                 al_play_sample(efeitoTrocar, 1.0, 0.0,1.0,ALLEGRO_PLAYMODE_ONCE,NULL);
                 estado = AmbienteUm;
-            }if(evento.keyboard.keycode == ALLEGRO_KEY_DOWN){
+            }if(evento.keyboard.keycode == ALLEGRO_KEY_DOWN || evento.keyboard.keycode == ALLEGRO_KEY_S){
                 al_clear_to_color(branco);
                 al_draw_scaled_bitmap(arraySelecionar[2], 0, 0, 896, 504, 0, 0, 1280, 720, 0);
                 al_play_sample(efeitoTrocar, 1.0, 0.0,1.0,ALLEGRO_PLAYMODE_ONCE,NULL);
                 estado = Exit;
-            }else if(evento.keyboard.keycode == ALLEGRO_KEY_ENTER){
+            }else if(evento.keyboard.keycode == ALLEGRO_KEY_ENTER || evento.keyboard.keycode == ALLEGRO_KEY_SPACE){
                 if(estado != Menu){
                     al_play_sample(efeitoSelecionar, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
                     al_rest(0.8);

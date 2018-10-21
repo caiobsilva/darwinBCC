@@ -48,7 +48,7 @@ int falasiniciais(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
         if(evento.type == ALLEGRO_EVENT_DISPLAY_CLOSE){
             return (1);
         }else if(evento.type == ALLEGRO_EVENT_KEY_DOWN){
-            if(evento.keyboard.keycode == ALLEGRO_KEY_E){
+            if(evento.keyboard.keycode == ALLEGRO_KEY_E || evento.keyboard.keycode == ALLEGRO_KEY_SPACE){
                 n++;
             }
         }
@@ -99,7 +99,7 @@ int falasinimigos(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
 
             return (1);
         }else if(evento.type == ALLEGRO_EVENT_KEY_DOWN){
-            if(evento.keyboard.keycode == ALLEGRO_KEY_E){
+            if(evento.keyboard.keycode == ALLEGRO_KEY_E || evento.keyboard.keycode == ALLEGRO_KEY_SPACE){
                 n++;
             }
         }
