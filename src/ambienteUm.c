@@ -15,20 +15,21 @@ int falasiniciais(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
 
     ALLEGRO_BITMAP *sprite = al_load_bitmap("../res/images/sprite01/baixo01.png");
     ALLEGRO_BITMAP *falasDarwin = al_load_bitmap("../res/images/falas-temp.png");
-    ALLEGRO_FONT *yoster = al_load_ttf_font("../res/font/yoster.ttf",25,0);
+    ALLEGRO_FONT *yoster = al_load_ttf_font("../res/font/prstart.ttf",17,0);
     ALLEGRO_COLOR branco = al_map_rgb(255,255,255);
     ALLEGRO_COLOR preto = al_map_rgb(0,0,0);
     ALLEGRO_BITMAP *parte[2];
     parte[0] = al_load_bitmap("../res/images/ambiente1fase1.jpg");
     char *falasInicio[12];
+
     falasInicio[0] = "Bem vindo! Meu nome é Charles Darwin.";
     falasInicio[1] = "Há anos venho estudando as interações dos animais entre eles mesmos e os ambientes.";
     falasInicio[2] = "Durante uma viagem que fiz pelo mundo eu encontrei diversas espécies diferentes que compartilhavam características.";
     falasInicio[3] = "Por meio da observação eu consegui entender";
-    falasInicio[4] = "Os animais tinham características que melhor se enquadravam no ambiente em que se encontravam";
-    falasInicio[5] = "Infelizmente isso não era o suficiente para produzir uma teoria, faltava uma peça";
-    falasInicio[6] = "Quando eu cheguei em casa tive tempo pra pensar e a resposta parcial surgiu";
-    falasInicio[7] = "Os cachorros eram selecionados pelos humanos baseando-se nas características que melhor se ajustam a tarefa a ser realizada, por consequência diversas raças com características diferentes apareceram";
+    falasInicio[4] = "Os animais tinham características que melhor se enquadravam no ambiente em que se encontravam.";
+    falasInicio[5] = "Infelizmente isso não era o suficiente para produzir uma teoria, faltava uma peça.";
+    falasInicio[6] = "Quando eu cheguei em casa tive tempo pra pensar e a resposta parcial surgiu.";
+    falasInicio[7] = "Os cachorros eram selecionados pelos humanos baseando-se nas características que melhor se ajustam a tarefa a ser realizada, por consequência diversas raças com características diferentes apareceram.";
     falasInicio[8] = "Para ser publicado, faltava somente encaixar a ideia no ambiente selvagem";
     falasInicio[9] = "Depois de algum tempo, um livro me deu a resposta: a competição imposta por um ambiente e recursos limitados selecionava os que melhor se adaptavam!";
     falasInicio[10] = "Agora é a sua vez de experimentar as mudanças e melhor se adaptar ao ambiente!";
@@ -70,13 +71,13 @@ int falasinimigos(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
     al_init_ttf_addon();
 
     ALLEGRO_BITMAP *falasDarwin = al_load_bitmap("../res/images/falas-temp.png");
-    ALLEGRO_FONT *yoster = al_load_ttf_font("../res/font/yoster.ttf",25,0);
+    ALLEGRO_FONT *yoster = al_load_ttf_font("../res/font/prstart.ttf",17,0);
     ALLEGRO_COLOR branco = al_map_rgb(255,255,255);
     ALLEGRO_COLOR preto = al_map_rgb(0,0,0);
     char *falasInicio[4];
     falasInicio[0] = "Cuidado!";
     falasInicio[1] = "Essa espécie me parece estranha";
-    falasInicio[2] = "Olha a cor dela, tenho certeza de que isso é um caso de coloração de advertência";
+    falasInicio[2] = "Olha a cor dela, tenho certeza de que isso é um caso de coloração de advertência.";
     falasInicio[3] = "A cor característica do animal serve como um alerta, eu recomendaria ficar longe.";
     ALLEGRO_BITMAP *parte[2];
     parte[0] = al_load_bitmap("../res/images/fase1Parte1.png");
@@ -103,7 +104,6 @@ int falasinimigos(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
                 n++;
             }
         }
-        
     }
 
     al_destroy_bitmap(falasDarwin);
