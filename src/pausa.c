@@ -13,6 +13,7 @@ int pausa(int x, int y, int *flagSom, ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT e
     }
 
     ALLEGRO_BITMAP *fundo[7];
+
     fundo[0] = al_load_bitmap("../res/images/pausaPOn.png");
     fundo[1] = al_load_bitmap("../res/images/pausaPOff.png");
     fundo[2] = al_load_bitmap("../res/images/pausaSairOn.png");
@@ -20,11 +21,11 @@ int pausa(int x, int y, int *flagSom, ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT e
     fundo[4] = al_load_bitmap("../res/images/pausaPisca.png");
     fundo[5] = al_load_bitmap("../res/images/pausaSOn.png");
     fundo[6] = al_load_bitmap("../res/images/pausaSOff.png");
-    
+
     ALLEGRO_COLOR preto = al_map_rgb(0,0,0);
+
     while(!sair){
         while(!(al_is_event_queue_empty(fila))){
-            
             al_wait_for_event(fila,&evento);
 
             if(evento.type == ALLEGRO_EVENT_DISPLAY_CLOSE){
@@ -65,12 +66,12 @@ int pausa(int x, int y, int *flagSom, ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT e
                             i = 1;
                             break;
                     }
-                }    
+                }
             }
         }
-        
+
         al_clear_to_color(preto);
-        al_draw_bitmap(fundo[i],0,0,0);
+        al_draw_scaled_bitmap(fundo[i],0, 0, 896, 504, 0, 0, 1280, 720, 0);
         al_flip_display();
     }
     for(int i = 0; i < 6; i++){
