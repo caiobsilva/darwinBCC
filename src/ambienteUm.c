@@ -178,7 +178,10 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
         return Exit;
     }
 
-
+    //**************
+    //**************
+    //**************
+    
     ALLEGRO_COLOR branco = al_map_rgb(255,255,255);
     ALLEGRO_COLOR preto = al_map_rgb(0,0,0);
     ALLEGRO_BITMAP *player[3];
@@ -186,6 +189,20 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
     player[0] = al_load_bitmap("../res/images/sprite01/baixo01.png");
     player[1] = al_load_bitmap("../res/images/sprite01/baixo02.png");
     player[2] = al_load_bitmap("../res/images/sprite01/baixo03.png");
+
+    if(n < 6){
+        al_draw_scaled_bitmap(player[0], 0, 0, 16, 22, 610, 294, 48, 66, 0);
+    }
+    else if(n < 12){
+        al_draw_scaled_bitmap(player[1], 0, 0, 16, 22, 610, 294, 48, 66, 0);
+    }
+    else if(n < 18){
+        al_draw_scaled_bitmap(player[2], 0, 0, 16, 22, 610, 294, 48, 66, 0);
+    }
+
+    for (int i = 0; i < 3; i++){
+        al_destroy_bitmap(player[i]);
+    }
 
     ALLEGRO_BITMAP *parte[2];
 
@@ -247,7 +264,6 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
         addPartes(i, &xInimigo, &yInimigo, &flagInimigo);
         al_draw_scaled_bitmap(player[n], 0, 0, 16, 22, x, y, 48, 66, 0);
         al_flip_display();
-        
     }
 
     for(int i = 0; i < 3; i++){
