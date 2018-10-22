@@ -206,35 +206,35 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
                     }
                 }else if(evento.keyboard.keycode == ALLEGRO_KEY_S)
                     if(t < 6){
-                        al_draw_scaled_bitmap(intro[0], 0, 0, 896, 504, 0, 0, 1280, 720, 0);
+                        al_draw_scaled_bitmap(player[0], 0, 0, 16, 22, 610, 294, 48, 66, 0);
                     }else if(t < 12){
-                        al_draw_scaled_bitmap(intro[1], 0, 0, 896, 504, 0, 0, 1280, 720, 0);
+                        al_draw_scaled_bitmap(player[1], 0, 0, 16, 22, 610, 294, 48, 66, 0);
                     }else if(t < 18){
-                        al_draw_scaled_bitmap(intro[2], 0, 0, 896, 504, 0, 0, 1280, 720, 0);
+                        al_draw_scaled_bitmap(player[2], 0, 0, 16, 22, 610, 294, 48, 66, 0);
                     }
                 }else if(evento.keyboard.keycode == ALLEGRO_KEY_W)
                     if(t < 6){
-                        al_draw_scaled_bitmap(intro[3], 0, 0, 896, 504, 0, 0, 1280, 720, 0);
+                        al_draw_scaled_bitmap(player[3], 0, 0, 16, 22, 610, 294, 48, 66, 0);
                     }else if(t < 12){
-                        al_draw_scaled_bitmap(intro[4], 0, 0, 896, 504, 0, 0, 1280, 720, 0);
+                        al_draw_scaled_bitmap(player[4], 0, 0, 16, 22, 610, 294, 48, 66, 0);
                     }else if(t < 18){
-                        al_draw_scaled_bitmap(intro[5], 0, 0, 896, 504, 0, 0, 1280, 720, 0);
+                        al_draw_scaled_bitmap(player[5], 0, 0, 16, 22, 610, 294, 48, 66, 0);
                     }
                 }else if(evento.keyboard.keycode == ALLEGRO_KEY_A)
                     if(t < 6){
-                        al_draw_scaled_bitmap(intro[6], 0, 0, 896, 504, 0, 0, 1280, 720, 0);
+                        al_draw_scaled_bitmap(player[6], 0, 0, 16, 22, 610, 294, 48, 66, 0);
                     }else if(t < 12){
-                        al_draw_scaled_bitmap(intro[7], 0, 0, 896, 504, 0, 0, 1280, 720, 0);
+                        al_draw_scaled_bitmap(player[7], 0, 0, 16, 22, 610, 294, 48, 66, 0);
                     }else if(t < 18){
-                        al_draw_scaled_bitmap(intro[8], 0, 0, 896, 504, 0, 0, 1280, 720, 0);
+                        al_draw_scaled_bitmap(player[8], 0, 0, 16, 22, 610, 294, 48, 66, 0);
                     }
                 }else if(evento.keyboard.keycode == ALLEGRO_KEY_D)
                     if(t < 6){
-                        al_draw_scaled_bitmap(intro[9], 0, 0, 896, 504, 0, 0, 1280, 720, 0);
+                        al_draw_scaled_bitmap(player[9], 0, 0, 16, 22, 610, 294, 48, 66, 0);
                     }else if(t < 12){
-                        al_draw_scaled_bitmap(intro[10], 0, 0, 896, 504, 0, 0, 1280, 720, 0);
+                        al_draw_scaled_bitmap(player[10], 0, 0, 16, 22, 610, 294, 48, 66, 0);
                     }else if(t < 18){
-                        al_draw_scaled_bitmap(intro[11], 0, 0, 896, 504, 0, 0, 1280, 720, 0);
+                        al_draw_scaled_bitmap(player[11], 0, 0, 16, 22, 610, 294, 48, 66, 0);
                     }
                 }
             }
