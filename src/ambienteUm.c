@@ -199,7 +199,6 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
             al_wait_for_event(fila, &evento);
             
             if(evento.type == ALLEGRO_EVENT_DISPLAY_CLOSE){
-                printf("fechou!\n");            
                 for(int i = 0; i < 3; i++){
                     al_destroy_bitmap(player[i]);
                 }
@@ -210,8 +209,6 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
             }
             else if(evento.type == ALLEGRO_EVENT_KEY_DOWN){
                 if(evento.keyboard.keycode == ALLEGRO_KEY_ESCAPE){
-                    printf("ESC\n");
-                     
                     flagOpcoes = pausa(x,y,&flagSom,fila,evento);
 
                     if(flagOpcoes){
