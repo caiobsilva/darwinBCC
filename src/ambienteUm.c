@@ -8,7 +8,7 @@
 
 int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int s){
 
-    int n = 0, i = 0, d;
+    int n = 0, i = 0, d;return 
 
     al_init_font_addon();
     al_init_ttf_addon();
@@ -155,6 +155,7 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
 
     ALLEGRO_COLOR branco = al_map_rgb(255,255,255);
     ALLEGRO_COLOR preto = al_map_rgb(0,0,0);
+    ALLEGRO_KEYBOARD_STATE tecla;
     ALLEGRO_BITMAP *player[12];
     player[0] = al_load_bitmap("../res/images/sprite01/baixo01.png");
     player[1] = al_load_bitmap("../res/images/sprite01/baixo02.png");
@@ -174,6 +175,9 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
     parte[0] = al_load_bitmap("../res/images/ambienteUm-parteUm.png");
     parte[1] = al_load_bitmap("../res/images/ambienteUm-parteDois.png");
 
+
+    al_get_keyboard_state(&tecla);
+
     while (!sair){
 
         while(!(al_is_event_queue_empty(fila))){
@@ -182,7 +186,7 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
             
             if(evento.type == ALLEGRO_EVENT_DISPLAY_CLOSE){
                 printf("fechou!\n");            
-                for(int i = 0; i < 3; i++){
+                for(int i = 0; i < 12; i++){
                     al_destroy_bitmap(player[i]);
                 }
                 for(int j = 0; j < 2; j++){
@@ -204,40 +208,40 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
                         }
                         return Exit;
                     }
-                }else if(evento.keyboard.keycode == ALLEGRO_KEY_S){
+                }else if(al_key_down(&tecla,ALLEGRO_KEY_S)){
                     if(t < 6){
-                        al_draw_scaled_bitmap(player[0], 0, 0, 16, 22, 610, 294, 48, 66, 0);
+                        al_draw_scaled_bitmap(player[0], 0, 0, 16, 22, x, y, 48, 66, 0);
                     }else if(t < 12){
-                        al_draw_scaled_bitmap(player[1], 0, 0, 16, 22, 610, 294, 48, 66, 0);
+                        al_draw_scaled_bitmap(player[1], 0, 0, 16, 22, x, y, 48, 66, 0);
                     }else if(t < 18){
-                        al_draw_scaled_bitmap(player[2], 0, 0, 16, 22, 610, 294, 48, 66, 0);
+                        al_draw_scaled_bitmap(player[2], 0, 0, 16, 22, x, y, 48, 66, 0);
                     }
-                }else if(evento.keyboard.keycode == ALLEGRO_KEY_W){
+                }else if(al_key_down(&tecla,ALLEGRO_KEY_W)){
                     if(t < 6){
-                        al_draw_scaled_bitmap(player[3], 0, 0, 16, 22, 610, 294, 48, 66, 0);
+                        al_draw_scaled_bitmap(player[3], 0, 0, 16, 22, x, y, 48, 66, 0);
                     }else if(t < 12){
-                        al_draw_scaled_bitmap(player[4], 0, 0, 16, 22, 610, 294, 48, 66, 0);
+                        al_draw_scaled_bitmap(player[4], 0, 0, 16, 22, x, y, 48, 66, 0);
                     }else if(t < 18){
-                        al_draw_scaled_bitmap(player[5], 0, 0, 16, 22, 610, 294, 48, 66, 0);
+                        al_draw_scaled_bitmap(player[5], 0, 0, 16, 22, x, y, 48, 66, 0);
                     }
-                }else if(evento.keyboard.keycode == ALLEGRO_KEY_A){
+                }else if(al_key_down(&tecla,ALLEGRO_KEY_A)){
                     if(t < 6){
-                        al_draw_scaled_bitmap(player[6], 0, 0, 16, 22, 610, 294, 48, 66, 0);
+                        al_draw_scaled_bitmap(player[6], 0, 0, 16, 22, x, y, 48, 66, 0);
                     }else if(t < 12){
-                        al_draw_scaled_bitmap(player[7], 0, 0, 16, 22, 610, 294, 48, 66, 0);
+                        al_draw_scaled_bitmap(player[7], 0, 0, 16, 22, x, y, 48, 66, 0);
                     }else if(t < 18){
-                        al_draw_scaled_bitmap(player[8], 0, 0, 16, 22, 610, 294, 48, 66, 0);
+                        al_draw_scaled_bitmap(player[8], 0, 0, 16, 22, x, y, 48, 66, 0);
                     }
-                }else if(evento.keyboard.keycode == ALLEGRO_KEY_D){
+                }else if(al_key_down(&tecla,ALLEGRO_KEY_D)){
                     if(t < 6){
-                        al_draw_scaled_bitmap(player[9], 0, 0, 16, 22, 610, 294, 48, 66, 0);
+                        al_draw_scaled_bitmap(player[9], 0, 0, 16, 22, x, y, 48, 66, 0);
                     }else if(t < 12){
-                        al_draw_scaled_bitmap(player[10], 0, 0, 16, 22, 610, 294, 48, 66, 0);
+                        al_draw_scaled_bitmap(player[10], 0, 0, 16, 22, x, y, 48, 66, 0);
                     }else if(t < 18){
-                        al_draw_scaled_bitmap(player[11], 0, 0, 16, 22, 610, 294, 48, 66, 0);
+                        al_draw_scaled_bitmap(player[11], 0, 0, 16, 22, x, y, 48, 66, 0);
                     }
                 }
-                return t++;
+                t++;
             }
         }
 
@@ -268,7 +272,6 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
         localizacao(&x,&y,i);
         al_draw_bitmap(parte[i], 0,0,0);
         addPartes(i, &xInimigo, &yInimigo, &flagInimigo);
-        al_draw_scaled_bitmap(player[n], 0, 0, 16, 22, x, y, 48, 66, 0);
         al_flip_display();
         
     }
