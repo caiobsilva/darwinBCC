@@ -146,7 +146,7 @@ void addPartes(int i, int *xInimigo, int *yInimigo,int *flagInimigo){
 
 enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
     int flagInimigos = 0, flagOpcoes = 0, flagSom = 1, flagInimigo = 0;
-    int n = 0, sair = 0, i = 0, x = 610, y = 294, xInimigo = 610, yInimigo = 380 t = 0;
+    int n = 0, sair = 0, i = 0, x = 610, y = 294, xInimigo = 610, yInimigo = 380, t = 0;
 
     if(falas(fila,evento,0)){
         return Exit;
@@ -204,7 +204,7 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
                         }
                         return Exit;
                     }
-                }else if(evento.keyboard.keycode == ALLEGRO_KEY_S)
+                }else if(evento.keyboard.keycode == ALLEGRO_KEY_S){
                     if(t < 6){
                         al_draw_scaled_bitmap(player[0], 0, 0, 16, 22, 610, 294, 48, 66, 0);
                     }else if(t < 12){
@@ -212,7 +212,7 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
                     }else if(t < 18){
                         al_draw_scaled_bitmap(player[2], 0, 0, 16, 22, 610, 294, 48, 66, 0);
                     }
-                }else if(evento.keyboard.keycode == ALLEGRO_KEY_W)
+                }else if(evento.keyboard.keycode == ALLEGRO_KEY_W){
                     if(t < 6){
                         al_draw_scaled_bitmap(player[3], 0, 0, 16, 22, 610, 294, 48, 66, 0);
                     }else if(t < 12){
@@ -220,7 +220,7 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
                     }else if(t < 18){
                         al_draw_scaled_bitmap(player[5], 0, 0, 16, 22, 610, 294, 48, 66, 0);
                     }
-                }else if(evento.keyboard.keycode == ALLEGRO_KEY_A)
+                }else if(evento.keyboard.keycode == ALLEGRO_KEY_A){
                     if(t < 6){
                         al_draw_scaled_bitmap(player[6], 0, 0, 16, 22, 610, 294, 48, 66, 0);
                     }else if(t < 12){
@@ -228,7 +228,7 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
                     }else if(t < 18){
                         al_draw_scaled_bitmap(player[8], 0, 0, 16, 22, 610, 294, 48, 66, 0);
                     }
-                }else if(evento.keyboard.keycode == ALLEGRO_KEY_D)
+                }else if(evento.keyboard.keycode == ALLEGRO_KEY_D){
                     if(t < 6){
                         al_draw_scaled_bitmap(player[9], 0, 0, 16, 22, 610, 294, 48, 66, 0);
                     }else if(t < 12){
