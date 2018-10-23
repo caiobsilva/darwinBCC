@@ -249,7 +249,7 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
             if(flagInimigos == 0){
                 if(falas(fila,evento,1)){
                     
-                    for(int i = 0; i < 3; i++){
+                    for(int i = 0; i < 12; i++){
                         al_destroy_bitmap(player[i]);
                     }
                     for(int j = 0; j < 2; j++){
@@ -276,7 +276,7 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
         
     }
 
-    for(int i = 0; i < 3; i++){
+    for(int i = 0; i < 12; i++){
         al_destroy_bitmap(player[i]);
     }
     for(int j = 0; j < 2; j++){
