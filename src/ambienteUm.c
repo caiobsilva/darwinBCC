@@ -237,6 +237,7 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
                         al_draw_scaled_bitmap(player[11], 0, 0, 16, 22, 610, 294, 48, 66, 0);
                     }
                 }
+                return t++;
             }
         }
 
