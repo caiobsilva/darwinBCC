@@ -8,7 +8,7 @@
 
 int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int s){
 
-    int n = 0, i = 0, d;return 
+    int n = 0, i = 0, d;
 
     al_init_font_addon();
     al_init_ttf_addon();
@@ -175,9 +175,6 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
     parte[0] = al_load_bitmap("../res/images/ambienteUm-parteUm.png");
     parte[1] = al_load_bitmap("../res/images/ambienteUm-parteDois.png");
 
-
-    al_get_keyboard_state(&tecla);
-
     while (!sair){
 
         while(!(al_is_event_queue_empty(fila))){
@@ -249,7 +246,7 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
             if(flagInimigos == 0){
                 if(falas(fila,evento,1)){
                     
-                    for(int i = 0; i < 12; i++){
+                    for(int i = 0; i < 3; i++){
                         al_destroy_bitmap(player[i]);
                     }
                     for(int j = 0; j < 2; j++){
