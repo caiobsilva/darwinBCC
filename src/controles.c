@@ -43,21 +43,21 @@ void movimentacao(ALLEGRO_EVENT evento, int *x, int *y, int *t){
     }else if(al_key_down(&tecla,ALLEGRO_KEY_D) || al_key_down(&tecla,ALLEGRO_KEY_RIGHT)){
         *x += 5;
         if(*t < 6){
-            al_draw_scaled_bitmap(player[9], 0, 0, 16, 22, *x, *y, 48, 66, 0);
+            al_draw_scaled_bitmap(player[9], 0, 0, 22, 16, *x, *y, 66, 48, 0);
         }else if(*t < 12){
-            al_draw_scaled_bitmap(player[10], 0, 0, 16, 22, *x, *y, 48, 66, 0);
+            al_draw_scaled_bitmap(player[10], 0, 0, 22, 16, *x, *y, 66, 48, 0);
         }else if(*t < 18){
-            al_draw_scaled_bitmap(player[11], 0, 0, 16, 22, *x, *y, 48, 66, 0);
+            al_draw_scaled_bitmap(player[11], 0, 0, 22, 16, *x, *y, 66, 48, 0);
         }
         *t++;
     }else if(al_key_down(&tecla,ALLEGRO_KEY_A) || al_key_down(&tecla,ALLEGRO_KEY_LEFT)){
         *x -= 5;
         if(*t < 6){
-            al_draw_scaled_bitmap(player[6], 0, 0, 16, 22, *x, *y, 48, 66, 0);
+            al_draw_scaled_bitmap(player[6], 0, 0, 22, 16, *x, *y, 66, 48, 0);
         }else if(*t < 12){
-            al_draw_scaled_bitmap(player[7], 0, 0, 16, 22, *x, *y, 48, 66, 0);
+            al_draw_scaled_bitmap(player[7], 0, 0, 22, 16, *x, *y, 66, 48, 0);
         }else if(*t < 18){
-            al_draw_scaled_bitmap(player[8], 0, 0, 16, 22, *x, *y, 48, 66, 0);
+            al_draw_scaled_bitmap(player[8], 0, 0, 22, 16, *x, *y, 66, 48, 0);
         }
         *t++;
     }else{
