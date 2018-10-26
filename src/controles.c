@@ -4,7 +4,7 @@
 void movimentacao(ALLEGRO_EVENT evento, int *x, int *y, int *t){
     ALLEGRO_KEYBOARD_STATE tecla;
     al_get_keyboard_state(&tecla);
-
+    static int i;
     ALLEGRO_BITMAP *player[12];
     player[0] = al_load_bitmap("../res/images/sprite01/baixo01.png");
     player[1] = al_load_bitmap("../res/images/sprite01/baixo02.png");
@@ -29,6 +29,7 @@ void movimentacao(ALLEGRO_EVENT evento, int *x, int *y, int *t){
         }else if(*t <= 18){
             al_draw_scaled_bitmap(player[5], 0, 0, 16, 22, *x, *y, 48, 66, 0);
         }
+        i = 3;
         *t+= 1;
     }else if(al_key_down(&tecla,ALLEGRO_KEY_S) || al_key_down(&tecla,ALLEGRO_KEY_DOWN)){
         *y += 5;
@@ -39,6 +40,7 @@ void movimentacao(ALLEGRO_EVENT evento, int *x, int *y, int *t){
         }else if(*t <= 18){
             al_draw_scaled_bitmap(player[2], 0, 0, 16, 22, *x, *y, 48, 66, 0);
         }
+        i = 0;
         *t+= 1;
     }else if(al_key_down(&tecla,ALLEGRO_KEY_D) || al_key_down(&tecla,ALLEGRO_KEY_RIGHT)){
         *x += 5;
@@ -49,6 +51,7 @@ void movimentacao(ALLEGRO_EVENT evento, int *x, int *y, int *t){
         }else if(*t <= 18){
             al_draw_scaled_bitmap(player[11], 0, 0, 22, 16, *x, *y, 66, 48, 0);
         }
+        i = 9;
         *t+= 1;
     }else if(al_key_down(&tecla,ALLEGRO_KEY_A) || al_key_down(&tecla,ALLEGRO_KEY_LEFT)){
         *x -= 5;
@@ -59,9 +62,14 @@ void movimentacao(ALLEGRO_EVENT evento, int *x, int *y, int *t){
         }else if(*t <= 18){
             al_draw_scaled_bitmap(player[8], 0, 0, 22, 16, *x, *y, 66, 48, 0);
         }
+        i = 6;
         *t+= 1;
     }else{
-        al_draw_scaled_bitmap(player[0], 0, 0, 16, 22, *x, *y, 48, 66, 0);
+        if(i == 3 || i == 0){
+            al_draw_scaled_bitmap(player[i], 0, 0, 16, 22, *x, *y, 48, 66, 0);
+        }else{
+            al_draw_scaled_bitmap(player[i], 0, 0, 22, 16, *x, *y, 66, 48, 0);
+        }
     
     }
     if(*t > 18){
