@@ -22,44 +22,44 @@ void movimentacao(ALLEGRO_EVENT evento, int *x, int *y, int *t){
 
     if(al_key_down(&tecla,ALLEGRO_KEY_W) || al_key_down(&tecla,ALLEGRO_KEY_UP)){
         *y -= 5;
-        if(*t < 6){
+        if(*t <= 6){
             al_draw_scaled_bitmap(player[3], 0, 0, 16, 22, *x, *y, 48, 66, 0);
-        }else if(*t < 12){
+        }else if(*t <= 12){
             al_draw_scaled_bitmap(player[4], 0, 0, 16, 22, *x, *y, 48, 66, 0);
-        }else if(*t < 18){
+        }else if(*t <= 18){
             al_draw_scaled_bitmap(player[5], 0, 0, 16, 22, *x, *y, 48, 66, 0);
         }
-        *t++;
+        *t+= 1;
     }else if(al_key_down(&tecla,ALLEGRO_KEY_S) || al_key_down(&tecla,ALLEGRO_KEY_DOWN)){
         *y += 5;
-        if(*t < 6){
+        if(*t <= 6){
             al_draw_scaled_bitmap(player[0], 0, 0, 16, 22, *x, *y, 48, 66, 0);
-        }else if(*t < 12){
+        }else if(*t <= 12){
             al_draw_scaled_bitmap(player[1], 0, 0, 16, 22, *x, *y, 48, 66, 0);
-        }else if(*t < 18){
+        }else if(*t <= 18){
             al_draw_scaled_bitmap(player[2], 0, 0, 16, 22, *x, *y, 48, 66, 0);
         }
-        *t++;
+        *t+= 1;
     }else if(al_key_down(&tecla,ALLEGRO_KEY_D) || al_key_down(&tecla,ALLEGRO_KEY_RIGHT)){
         *x += 5;
-        if(*t < 6){
+        if(*t <= 6){
             al_draw_scaled_bitmap(player[9], 0, 0, 22, 16, *x, *y, 66, 48, 0);
-        }else if(*t < 12){
+        }else if(*t <= 12){
             al_draw_scaled_bitmap(player[10], 0, 0, 22, 16, *x, *y, 66, 48, 0);
-        }else if(*t < 18){
+        }else if(*t <= 18){
             al_draw_scaled_bitmap(player[11], 0, 0, 22, 16, *x, *y, 66, 48, 0);
         }
-        *t++;
+        *t+= 1;
     }else if(al_key_down(&tecla,ALLEGRO_KEY_A) || al_key_down(&tecla,ALLEGRO_KEY_LEFT)){
         *x -= 5;
-        if(*t < 6){
+        if(*t <= 6){
             al_draw_scaled_bitmap(player[6], 0, 0, 22, 16, *x, *y, 66, 48, 0);
-        }else if(*t < 12){
+        }else if(*t <= 12){
             al_draw_scaled_bitmap(player[7], 0, 0, 22, 16, *x, *y, 66, 48, 0);
-        }else if(*t < 18){
+        }else if(*t <= 18){
             al_draw_scaled_bitmap(player[8], 0, 0, 22, 16, *x, *y, 66, 48, 0);
         }
-        *t++;
+        *t+= 1;
     }else{
         al_draw_scaled_bitmap(player[0], 0, 0, 16, 22, *x, *y, 48, 66, 0);
     
