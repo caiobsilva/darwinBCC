@@ -68,6 +68,7 @@ enum statesGame menuSelect(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
     al_reserve_samples(1);
     ALLEGRO_SAMPLE *efeitoSelecionar = al_load_sample("../res/audio/pressEffect.flac");
     ALLEGRO_SAMPLE *efeitoTrocar = al_load_sample("../res/audio/alternEffect.flac");
+    ALLEGRO_SAMPLE *musicaMenu = al_load_sample("../res/audio/menuTheme.flac");
 
     ALLEGRO_BITMAP *arraySelecionar[3];
 
@@ -81,6 +82,8 @@ enum statesGame menuSelect(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
 
     while(!sair){
         al_wait_for_event_timed(fila,&evento,0.05);
+
+        al_play_sample(musicaMenu, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_LOOP, NULL);
 
         if(evento.type == ALLEGRO_EVENT_DISPLAY_CLOSE){
             return Exit;
