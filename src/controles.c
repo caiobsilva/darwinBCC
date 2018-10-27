@@ -20,7 +20,7 @@ void movimentacao(ALLEGRO_EVENT evento, int *x, int *y, int *t){
     player[11] = al_load_bitmap("../res/images/sprite01/direita03.png");
 
 
-    if(al_key_down(&tecla,ALLEGRO_KEY_W) || al_key_down(&tecla,ALLEGRO_KEY_UP)){
+    if(al_key_down(&tecla, ALLEGRO_KEY_W) || al_key_down(&tecla, ALLEGRO_KEY_UP)){
         *y -= 5;
         if(*t <= 6){
             al_draw_scaled_bitmap(player[3], 0, 0, 16, 22, *x, *y, 48, 66, 0);
@@ -31,7 +31,7 @@ void movimentacao(ALLEGRO_EVENT evento, int *x, int *y, int *t){
         }
         i = 3;
         *t+= 1;
-    }else if(al_key_down(&tecla,ALLEGRO_KEY_S) || al_key_down(&tecla,ALLEGRO_KEY_DOWN)){
+    }else if(al_key_down(&tecla, ALLEGRO_KEY_S) || al_key_down(&tecla, ALLEGRO_KEY_DOWN)){
         *y += 5;
         if(*t <= 6){
             al_draw_scaled_bitmap(player[0], 0, 0, 16, 22, *x, *y, 48, 66, 0);
@@ -42,7 +42,7 @@ void movimentacao(ALLEGRO_EVENT evento, int *x, int *y, int *t){
         }
         i = 0;
         *t+= 1;
-    }else if(al_key_down(&tecla,ALLEGRO_KEY_D) || al_key_down(&tecla,ALLEGRO_KEY_RIGHT)){
+    }else if(al_key_down(&tecla, ALLEGRO_KEY_D) || al_key_down(&tecla, ALLEGRO_KEY_RIGHT)){
         *x += 5;
         if(*t <= 6){
             al_draw_scaled_bitmap(player[9], 0, 0, 22, 16, *x, *y, 66, 48, 0);
@@ -53,7 +53,7 @@ void movimentacao(ALLEGRO_EVENT evento, int *x, int *y, int *t){
         }
         i = 9;
         *t+= 1;
-    }else if(al_key_down(&tecla,ALLEGRO_KEY_A) || al_key_down(&tecla,ALLEGRO_KEY_LEFT)){
+    }else if(al_key_down(&tecla, ALLEGRO_KEY_A) || al_key_down(&tecla, ALLEGRO_KEY_LEFT)){
         *x -= 5;
         if(*t <= 6){
             al_draw_scaled_bitmap(player[6], 0, 0, 22, 16, *x, *y, 66, 48, 0);

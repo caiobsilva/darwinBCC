@@ -82,6 +82,7 @@ enum statesGame menuSelect(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
 
     while(!sair){
         al_wait_for_event_timed(fila,&evento,0.05);
+        al_play_sample(musicaMenu, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_LOOP, NULL);
 
         al_play_sample(musicaMenu, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_LOOP, NULL);
 
@@ -92,12 +93,12 @@ enum statesGame menuSelect(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
             if(evento.keyboard.keycode == ALLEGRO_KEY_UP || evento.keyboard.keycode == ALLEGRO_KEY_W){
                 al_clear_to_color(branco);
                 al_draw_scaled_bitmap(arraySelecionar[1], 0, 0, 896, 504, 0, 0, 1280, 720, 0);
-                al_play_sample(efeitoTrocar, 1.0, 0.0,1.0,ALLEGRO_PLAYMODE_ONCE,NULL);
+                al_play_sample(efeitoTrocar, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
                 estado = AmbienteUm;
             }if(evento.keyboard.keycode == ALLEGRO_KEY_DOWN || evento.keyboard.keycode == ALLEGRO_KEY_S){
                 al_clear_to_color(branco);
                 al_draw_scaled_bitmap(arraySelecionar[2], 0, 0, 896, 504, 0, 0, 1280, 720, 0);
-                al_play_sample(efeitoTrocar, 1.0, 0.0,1.0,ALLEGRO_PLAYMODE_ONCE,NULL);
+                al_play_sample(efeitoTrocar, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
                 estado = Exit;
             }else if(evento.keyboard.keycode == ALLEGRO_KEY_ENTER || evento.keyboard.keycode == ALLEGRO_KEY_SPACE){
                 if(estado != Menu){
@@ -108,13 +109,13 @@ enum statesGame menuSelect(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
             }
             al_flip_display();
         }
-        
     }
 
     al_destroy_sample(efeitoSelecionar);
     for (int i = 0; i < 3; i++){
         al_destroy_bitmap(arraySelecionar[i]);
     }
+    al_destroy_sample(musicaMenu);
 
     return estado;
     
