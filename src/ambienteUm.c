@@ -113,31 +113,33 @@ void localizacao(int *x, int *y, int i){
     }
 }
 
-void movimentacaoInimigos(int i,int *xInimigo,int *yInimigo,  int *flagInimigo){
+void movimentacaoInimigos(int i,int *xInimigo,int *yInimigo, int *x, int *y){
     //AMBIENTE 1 PARTE 2
     if(i == 1){
-
-        if(*xInimigo < 800 && *flagInimigo == 0){
-            *xInimigo += 5;
-        }else{
-            *flagInimigo = 1;
+        
+        if(*xInimigo / *x < *yInimigo / *y){
+            if(*xInimigo < x){
+                *xInimigo += 4;
+            }else{
+                *xInimigo -= 4;
+            }
         }
-
-        if(*xInimigo > 300 && *flagInimigo == 1){
-            *xInimigo -= 5;
-        }else{
-            *flagInimigo = 0;
+        if(*yInimigo / *y < *xInimigo / *x){
+            if(*yInimigo < *y){
+                *yInimigo += 4;
+            }else{
+                *yInimigo -= 4;
+            }
         }
-
     }
 }
 
-void addPartes(int i, int *xInimigo, int *yInimigo,int *flagInimigo){
+void addPartes(int i, int *xInimigo, int *yInimigo, int *x, int *y){
     ALLEGRO_BITMAP *inimigo = al_load_bitmap("../res/images/inimigos1.png"); 
     if(i == 0){
 
     }else if(i == 1){
-        movimentacaoInimigos(i,xInimigo,yInimigo,flagInimigo);
+        movimentacaoInimigos(i,xInimigo,yInimigo,x,y);
         al_draw_scaled_bitmap(inimigo,0,0,238,294,*xInimigo,*yInimigo,48,66,0);
     }
     al_destroy_bitmap(inimigo);
@@ -145,7 +147,7 @@ void addPartes(int i, int *xInimigo, int *yInimigo,int *flagInimigo){
 }
 
 enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
-    int flagInimigos = 0, flagOpcoes = 0, flagSom = 1, flagInimigo = 0;
+    int flagInimigos = 0, flagOpcoes = 0, flagSom = 1;
     int n = 0, sair = 0, i = 0, x = 610, y = 294, xInimigo = 610, yInimigo = 380, t = 0;
 
     if(falas(fila,evento,0)){
