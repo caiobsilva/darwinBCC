@@ -39,8 +39,8 @@ int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int s){
     falasInimigos[2] = "Olha a cor dela, tenho certeza de que isso é um caso de coloração de advertência.";
     falasInimigos[3] = "A cor característica do animal serve como um alerta, eu recomendaria ficar longe.";
     ALLEGRO_BITMAP *parte[2];
-    parte[0] = al_load_bitmap("../res/images/ambienteUm-parteUm.png");
-    parte[1] = al_load_bitmap("../res/images/ambienteUm-parteDois.png");
+    parte[0] = al_load_bitmap("../res/images/Tile-B4.png");
+    parte[1] = al_load_bitmap("../res/images/Tile-A4.png");
     ALLEGRO_BITMAP *inimigo = al_load_bitmap("../res/images/inimigos1.png"); 
         
     switch(s){
@@ -155,8 +155,8 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
 
     ALLEGRO_BITMAP *parte[2];
 
-    parte[0] = al_load_bitmap("../res/images/ambienteUm-parteUm.png");
-    parte[1] = al_load_bitmap("../res/images/ambienteUm-parteDois.png");
+    parte[0] = al_load_bitmap("../res/images/Tile-B4.png");
+    parte[1] = al_load_bitmap("../res/images/Tile-A4.png");
 
     while (!sair){
 
