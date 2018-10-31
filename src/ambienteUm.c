@@ -116,19 +116,14 @@ void localizacao(int *x, int *y, int i){
 void movimentacaoInimigos(int i,int *xInimigo,int *yInimigo, int *x, int *y){
     //AMBIENTE 1 PARTE 2
     if(i == 1){
-        
-        if(*xInimigo / *x < *yInimigo / *y){
-            if(*xInimigo < *x){
-                *xInimigo += 4;
-            }else{
-                *xInimigo -= 4;
-            }
-        }else{
-            if(*yInimigo < *y){
-                *yInimigo += 4;
-            }else{
-                *yInimigo -= 4;
-            }
+        if(*xInimigo < *x){
+            *xInimigo += 3;
+        }else if(*xInimigo > *x){
+            *xInimigo -= 3;
+        }else if(*yInimigo < *y){
+            *yInimigo += 3;
+        }else if (*yInimigo > *y){
+            *yInimigo -= 3;
         }
     }
 }
