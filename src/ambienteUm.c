@@ -116,20 +116,14 @@ void localizacao(int *x, int *y, int i){
 void movimentacaoInimigos(int i,int *xInimigo,int *yInimigo, int *x, int *y){
     //AMBIENTE 1 PARTE 2
     if(i == 1){
-        
-        if(*xInimigo / *x < *yInimigo / *y){
-            if(*xInimigo < x){
-                *xInimigo += 4;
-            }else{
-                *xInimigo -= 4;
-            }
-        }
-        if(*yInimigo / *y < *xInimigo / *x){
-            if(*yInimigo < *y){
-                *yInimigo += 4;
-            }else{
-                *yInimigo -= 4;
-            }
+        if(*xInimigo < *x){
+            *xInimigo += 3;
+        }else if(*xInimigo > *x){
+            *xInimigo -= 3;
+        }else if(*yInimigo < *y){
+            *yInimigo += 3;
+        }else if (*yInimigo > *y){
+            *yInimigo -= 3;
         }
     }
 }
@@ -211,7 +205,7 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
         
         al_clear_to_color(branco);
         al_draw_bitmap(parte[i], 0,0,0);
-        addPartes(i, &xInimigo, &yInimigo, &flagInimigo);
+        addPartes(i, &xInimigo, &yInimigo, &x, &y);
         localizacao(&x,&y,i);
         movimentacao(evento, &x, &y,&t);
         al_flip_display();
