@@ -2,8 +2,6 @@
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_image.h>
 #include <allegro5/allegro_audio.h>
-#include <allegro5/allegro_font.h>
-#include <allegro5/allegro_ttf.h>
 #include "header.h"
 
 #define A1 0
@@ -25,84 +23,36 @@
 #define D4 16
 #define D5 17
 
-int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int s){
 
-    int n = 0, i = 0, d;
+void iniciarTiles(tile *tileAtual){ 
+    tile *tileA1,*tileA2,*tileA3,*tileA4,*tileA5;
+    tile *tileB1,*tileB2,*tileB3,*tileB4;
+    tile *tileC1,*tileC2,*tileC3,*tileC4;
+    tile *tileD1,*tileD2,*tileD3,*tileD4,*tileD5;
+    tileA1 = malloc(sizeof(tile));
+    tileA2 = malloc(sizeof(tile));
+    tileA3 = malloc(sizeof(tile));
+    tileA4 = malloc(sizeof(tile));
+    tileA5 = malloc(sizeof(tile));
+    tileB1 = malloc(sizeof(tile));
+    tileB2 = malloc(sizeof(tile));
+    tileB3 = malloc(sizeof(tile));
+    tileB4 = malloc(sizeof(tile));
+    tileC1 = malloc(sizeof(tile));
+    tileC2 = malloc(sizeof(tile));
+    tileC3 = malloc(sizeof(tile));
+    tileC4 = malloc(sizeof(tile));
+    tileD1 = malloc(sizeof(tile));
+    tileD2 = malloc(sizeof(tile));
+    tileD3 = malloc(sizeof(tile));
+    tileD4 = malloc(sizeof(tile));
+    tileD5 = malloc(sizeof(tile));
 
-    al_init_font_addon();
-    al_init_ttf_addon();
+    // === A1 === 
+    tileA1->esquerda = NULL;
 
-    ALLEGRO_BITMAP *sprite = al_load_bitmap("../res/images/sprite01/baixo01.png");
-    ALLEGRO_BITMAP *falasDarwin = al_load_bitmap("../res/images/barraTexto.png");
-    ALLEGRO_FONT *yoster = al_load_ttf_font("../res/font/prstart.ttf",17,0);
-    ALLEGRO_COLOR branco = al_map_rgb(255,255,255);
-    ALLEGRO_COLOR preto = al_map_rgb(0,0,0);
-    
-    char *falasInicio[12];
-    falasInicio[0] = "Bem vindo! Meu nome é Charles Darwin.";
-    falasInicio[1] = "Há anos venho estudando as interações dos animais entre eles mesmos e os ambientes.";
-    falasInicio[2] = "Durante uma viagem que fiz pelo mundo eu encontrei diversas espécies diferentes que compartilhavam características.";
-    falasInicio[3] = "Por meio da observação eu consegui entender";
-    falasInicio[4] = "Os animais tinham características que melhor se enquadravam no ambiente em que se encontravam.";
-    falasInicio[5] = "Infelizmente isso não era o suficiente para produzir uma teoria, faltava uma peça.";
-    falasInicio[6] = "Quando eu cheguei em casa tive tempo pra pensar e a resposta parcial surgiu.";
-    falasInicio[7] = "Os cachorros eram selecionados pelos humanos baseando-se nas características que melhor se ajustam a tarefa a ser realizada, por consequência diversas raças com características diferentes apareceram.";
-    falasInicio[8] = "Para ser publicado, faltava somente encaixar a ideia no ambiente selvagem";
-    falasInicio[9] = "Depois de algum tempo, um livro me deu a resposta: a competição imposta por um ambiente e recursos limitados selecionava os que melhor se adaptavam!";
-    falasInicio[10] = "Agora é a sua vez de experimentar as mudanças e melhor se adaptar ao ambiente!";
-    falasInicio[11] = "Boa sorte na sua aventura, nova espécie!";
 
-    char *falasInimigos[4];
-    falasInimigos[0] = "Cuidado!";
-    falasInimigos[1] = "Essa espécie me parece estranha";
-    falasInimigos[2] = "Olha a cor dela, tenho certeza de que isso é um caso de coloração de advertência.";
-    falasInimigos[3] = "A cor característica do animal serve como um alerta, eu recomendaria ficar longe.";
-    ALLEGRO_BITMAP *parte[2];
-    parte[0] = al_load_bitmap("../res/images/tiles/Tile-B4.png");
-    parte[1] = al_load_bitmap("../res/images/tiles/Tile-A4.png");
-    ALLEGRO_BITMAP *inimigo = al_load_bitmap("../res/images/inimigos1.png"); 
-        
-    switch(s){
-        case 0:
-            d = 12;
-            break;
-        case 1:
-            d = 4;
-            break;
-    }
 
-    while(n < d){
-        al_clear_to_color(branco);
-        al_draw_bitmap(parte[s], 0,0,0);
-        al_draw_scaled_bitmap(falasDarwin,0,0,1440,290,10,460,1152,232,0);
-        switch(s){
-            case 0:
-                al_draw_scaled_bitmap(sprite, 0, 0, 16, 22, 610, 294, 48, 66, 0);
-                al_draw_multiline_text(yoster,preto,70,500,650,25,0,falasInicio[n]);
-                break;
-            case 1:
-                al_draw_scaled_bitmap(inimigo,0,0,238,294,610,380,48,66,0);
-                al_draw_multiline_text(yoster,preto,70,500,650,25,0,falasInimigos[n]);
-                break;
-        }
-        al_flip_display();
-
-        al_wait_for_event_timed(fila, &evento, 0.05);
-        if(evento.type == ALLEGRO_EVENT_DISPLAY_CLOSE){
-            return (1);
-        }else if(evento.type == ALLEGRO_EVENT_KEY_DOWN){
-            if(evento.keyboard.keycode == ALLEGRO_KEY_E || evento.keyboard.keycode == ALLEGRO_KEY_SPACE){
-                n++;
-            }
-        }
-        
-    }
-
-    al_destroy_bitmap(sprite);
-    al_destroy_bitmap(falasDarwin);
-    al_destroy_font(yoster);
-
-    return (0);
 }
 
 
@@ -137,35 +87,13 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
     int flagInimigos = 1, flagOpcoes = 0, flagPartes = B4, flagSom = 1;
     int n = 0, sair = 0,  x = 610, y = 294, xInimigo = 610, yInimigo = 380, t = 0;
 
-    if(falas(fila,evento,0)){
-        return Exit;
-    }
+    tile tileAtual;
 
 
     ALLEGRO_COLOR branco = al_map_rgb(255,255,255);
     ALLEGRO_COLOR preto = al_map_rgb(0,0,0);
     ALLEGRO_KEYBOARD_STATE tecla;
 
-    ALLEGRO_BITMAP *parte[18];
-
-    parte[0] = al_load_bitmap("../res/images/tiles/Tile-A1.png");
-    parte[1] = al_load_bitmap("../res/images/tiles/Tile-A2.png");
-    parte[2] = al_load_bitmap("../res/images/tiles/Tile-A3.png");
-    parte[3] = al_load_bitmap("../res/images/tiles/Tile-A4.png");
-    parte[4] = al_load_bitmap("../res/images/tiles/Tile-A5.png");
-    parte[5] = al_load_bitmap("../res/images/tiles/Tile-B1.png");
-    parte[6] = al_load_bitmap("../res/images/tiles/Tile-B2.png");
-    parte[7] = al_load_bitmap("../res/images/tiles/Tile-B3.png");
-    parte[8] = al_load_bitmap("../res/images/tiles/Tile-B4.png");
-    parte[9] = al_load_bitmap("../res/images/tiles/Tile-C1.png");
-    parte[10] = al_load_bitmap("../res/images/tiles/Tile-C2.png");
-    parte[11] = al_load_bitmap("../res/images/tiles/Tile-C3.png");
-    parte[12] = al_load_bitmap("../res/images/tiles/Tile-C4.png");
-    parte[13] = al_load_bitmap("../res/images/tiles/Tile-D1.png");
-    parte[14] = al_load_bitmap("../res/images/tiles/Tile-D2.png");
-    parte[15] = al_load_bitmap("../res/images/tiles/Tile-D3.png");
-    parte[16] = al_load_bitmap("../res/images/tiles/Tile-D4.png");
-    parte[17] = al_load_bitmap("../res/images/tiles/Tile-D5.png");
     
     while (!sair){
 
@@ -175,38 +103,26 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
             
             if(evento.type == ALLEGRO_EVENT_DISPLAY_CLOSE){
                 printf("fechou!\n");
-                for(int j = 0; j < 18; j++){
-                    al_destroy_bitmap(parte[j]);
-                }
                 return Exit;
             }
             else if(evento.type == ALLEGRO_EVENT_KEY_DOWN){
                 if(evento.keyboard.keycode == ALLEGRO_KEY_ESCAPE){
                     flagOpcoes = pausa(x,y,&flagSom,fila,evento);
 
-                    if(flagOpcoes){
-                        for(int j = 0; j < 2; j++){
-                            al_destroy_bitmap(parte[j]);
-                        }
+                    if(flagOpcoes){ 
                         return Exit;
                     }
                 }
             }
         }
 
-        //seleção para tile *PODE SER MOVIDO PARA FUNÇÃO DE LOCALIZAÇÃO*
-        
-        
         al_clear_to_color(branco);
-        localizacao(&x,&y,&flagPartes,&flagInimigos,fila,evento);
-        al_draw_bitmap(parte[flagPartes], 0,0,0);
+        localizacao(&x,&y,&flagPartes,&tileAtual);
+        al_draw_bitmap(tileAtual.imagem, 0,0,0);
         addPartes(flagPartes, &xInimigo, &yInimigo, &x, &y);
         movimentacao(evento, &x, &y,&t);
         al_flip_display();
         
-    }
-    for(int j = 0; j < 18; j++){
-        al_destroy_bitmap(parte[j]);
     }
 
     return Exit;
