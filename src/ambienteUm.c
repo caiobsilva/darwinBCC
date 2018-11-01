@@ -6,6 +6,25 @@
 #include <allegro5/allegro_ttf.h>
 #include "header.h"
 
+#define A1 0
+#define A2 1
+#define A3 2
+#define A4 3
+#define A5 4
+#define B1 5
+#define B2 6
+#define B3 7
+#define B4 8
+#define C1 9
+#define C2 10
+#define C3 11
+#define C4 12
+#define D1 13
+#define D2 14
+#define D3 15
+#define D4 16
+#define D5 17
+
 int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int s){
 
     int n = 0, i = 0, d;
@@ -39,8 +58,8 @@ int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int s){
     falasInimigos[2] = "Olha a cor dela, tenho certeza de que isso é um caso de coloração de advertência.";
     falasInimigos[3] = "A cor característica do animal serve como um alerta, eu recomendaria ficar longe.";
     ALLEGRO_BITMAP *parte[2];
-    parte[0] = al_load_bitmap("../res/images/Tile-B4.png");
-    parte[1] = al_load_bitmap("../res/images/Tile-A4.png");
+    parte[0] = al_load_bitmap("../res/images/tiles/Tile-B4.png");
+    parte[1] = al_load_bitmap("../res/images/tiles/Tile-A4.png");
     ALLEGRO_BITMAP *inimigo = al_load_bitmap("../res/images/inimigos1.png"); 
         
     switch(s){
@@ -86,36 +105,10 @@ int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int s){
     return (0);
 }
 
-void localizacao(int *x, int *y, int i){
-    // AMBIENTE 1 PARTE 1
-    if( i == 0 ){
-        if(*x < 0){
-        *x = 0;
-        }
-        if(*x > 1230){
-            *x = 1230;
-        }
-        if(*y > 650 ){
-            *y = 650;
-        }
-    }
-    // AMBIENTE 1 PARTE 2
-    else if(i == 1){
-        if(*x < 0){
-            *x = 0;
-        }
-        if(*x > 1230){
-            *x = 1230;
-        }
-        if(*y < 0 ){
-            *y = 0;
-        }
-    }
-}
 
 void movimentacaoInimigos(int i,int *xInimigo,int *yInimigo, int *x, int *y){
     //AMBIENTE 1 PARTE 2
-    if(i == 1){
+    if(i == A4){
         if(*xInimigo < *x){
             *xInimigo += 3;
         }else if(*xInimigo > *x){
@@ -130,9 +123,9 @@ void movimentacaoInimigos(int i,int *xInimigo,int *yInimigo, int *x, int *y){
 
 void addPartes(int i, int *xInimigo, int *yInimigo, int *x, int *y){
     ALLEGRO_BITMAP *inimigo = al_load_bitmap("../res/images/inimigos1.png"); 
-    if(i == 0){
+    if(i == B4){
 
-    }else if(i == 1){
+    }else if(i == A4){
         movimentacaoInimigos(i,xInimigo,yInimigo,x,y);
         al_draw_scaled_bitmap(inimigo,0,0,238,294,*xInimigo,*yInimigo,48,66,0);
     }
@@ -141,8 +134,8 @@ void addPartes(int i, int *xInimigo, int *yInimigo, int *x, int *y){
 }
 
 enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
-    int flagInimigos = 0, flagOpcoes = 0, flagSom = 1;
-    int n = 0, sair = 0, i = 0, x = 610, y = 294, xInimigo = 610, yInimigo = 380, t = 0;
+    int flagInimigos = 1, flagOpcoes = 0, flagPartes = B4, flagSom = 1;
+    int n = 0, sair = 0,  x = 610, y = 294, xInimigo = 610, yInimigo = 380, t = 0;
 
     if(falas(fila,evento,0)){
         return Exit;
@@ -153,11 +146,27 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
     ALLEGRO_COLOR preto = al_map_rgb(0,0,0);
     ALLEGRO_KEYBOARD_STATE tecla;
 
-    ALLEGRO_BITMAP *parte[2];
+    ALLEGRO_BITMAP *parte[18];
 
-    parte[0] = al_load_bitmap("../res/images/Tile-B4.png");
-    parte[1] = al_load_bitmap("../res/images/Tile-A4.png");
-
+    parte[0] = al_load_bitmap("../res/images/tiles/Tile-A1.png");
+    parte[1] = al_load_bitmap("../res/images/tiles/Tile-A2.png");
+    parte[2] = al_load_bitmap("../res/images/tiles/Tile-A3.png");
+    parte[3] = al_load_bitmap("../res/images/tiles/Tile-A4.png");
+    parte[4] = al_load_bitmap("../res/images/tiles/Tile-A5.png");
+    parte[5] = al_load_bitmap("../res/images/tiles/Tile-B1.png");
+    parte[6] = al_load_bitmap("../res/images/tiles/Tile-B2.png");
+    parte[7] = al_load_bitmap("../res/images/tiles/Tile-B3.png");
+    parte[8] = al_load_bitmap("../res/images/tiles/Tile-B4.png");
+    parte[9] = al_load_bitmap("../res/images/tiles/Tile-C1.png");
+    parte[10] = al_load_bitmap("../res/images/tiles/Tile-C2.png");
+    parte[11] = al_load_bitmap("../res/images/tiles/Tile-C3.png");
+    parte[12] = al_load_bitmap("../res/images/tiles/Tile-C4.png");
+    parte[13] = al_load_bitmap("../res/images/tiles/Tile-D1.png");
+    parte[14] = al_load_bitmap("../res/images/tiles/Tile-D2.png");
+    parte[15] = al_load_bitmap("../res/images/tiles/Tile-D3.png");
+    parte[16] = al_load_bitmap("../res/images/tiles/Tile-D4.png");
+    parte[17] = al_load_bitmap("../res/images/tiles/Tile-D5.png");
+    
     while (!sair){
 
         while(!(al_is_event_queue_empty(fila))){
@@ -166,7 +175,7 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
             
             if(evento.type == ALLEGRO_EVENT_DISPLAY_CLOSE){
                 printf("fechou!\n");
-                for(int j = 0; j < 2; j++){
+                for(int j = 0; j < 18; j++){
                     al_destroy_bitmap(parte[j]);
                 }
                 return Exit;
@@ -185,33 +194,18 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
             }
         }
 
-        if( i == 0 && y < 0 ){
-            if(flagInimigos == 0){
-                if(falas(fila,evento,1)){
-                    for(int j = 0; j < 2; j++){
-                        al_destroy_bitmap(parte[j]);
-                    }
-
-                    return Exit;                    
-                }
-                flagInimigos = 1;
-            }
-            i = 1;
-            y = 650; 
-        }else if( i == 1 && y > 650 ){
-            i = 0;
-            y = 0; 
-        }
+        //seleção para tile *PODE SER MOVIDO PARA FUNÇÃO DE LOCALIZAÇÃO*
+        
         
         al_clear_to_color(branco);
-        al_draw_bitmap(parte[i], 0,0,0);
-        addPartes(i, &xInimigo, &yInimigo, &x, &y);
-        localizacao(&x,&y,i);
+        localizacao(&x,&y,&flagPartes,&flagInimigos,fila,evento);
+        al_draw_bitmap(parte[flagPartes], 0,0,0);
+        addPartes(flagPartes, &xInimigo, &yInimigo, &x, &y);
         movimentacao(evento, &x, &y,&t);
         al_flip_display();
         
     }
-    for(int j = 0; j < 2; j++){
+    for(int j = 0; j < 18; j++){
         al_destroy_bitmap(parte[j]);
     }
 
