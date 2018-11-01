@@ -27,8 +27,8 @@ void localizacao(int *x, int *y, int *i, int *flagEvento, ALLEGRO_EVENT_QUEUE *f
         
         if(*y < 125 ){
             *y = 125;
-        }if(*x < 0){
-            *x = 0;
+        }if(*x < 125){
+            *x = 125;
         }
         if(*x > 1230){
             *i = A2; 
@@ -100,8 +100,8 @@ void localizacao(int *x, int *y, int *i, int *flagEvento, ALLEGRO_EVENT_QUEUE *f
             *x = 1230;
             *i = A4;
         }
-        if(*x > 1030){
-            *x = 1030;
+        if(*x > 1080){
+            *x = 1080;
         }else if( *y > 650 ){
             *y = 650; 
         }
