@@ -50,14 +50,18 @@ void iniciarTiles(tile *tileAtual){
 
     // === A1 === 
     tileA1->esquerda = NULL;
+    tileA1->direita = tileA2;
+    tileA1->cima = NULL;
+    tileA1-> baixo = tileB1;
+    tileA1->imagem = al_load_bitmap("../res/images/tiles/Tile-A1.png");
 
+    tileAtual = tileA1;
 
 
 }
 
 
 void movimentacaoInimigos(int i,int *xInimigo,int *yInimigo, int *x, int *y){
-    //AMBIENTE 1 PARTE 2
     if(i == A4){
         if(*xInimigo < *x){
             *xInimigo += 3;
