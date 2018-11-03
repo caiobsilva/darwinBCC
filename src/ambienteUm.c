@@ -45,9 +45,6 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
         localizacao(&x,&y,&tileAtual);
         al_draw_bitmap(tileAtual.imagem, 0,0,0);
         addPartes(tileAtual.ID, &xInimigo, &yInimigo, &x, &y);
-        if(tileAtual.ID == 8){
-            al_draw_bitmap(teste,tileAtual.lista->primeiro->x0,tileAtual.lista->primeiro->y0,0);
-        }
         movimentacao(evento,&tileAtual, &x, &y,&t);
         al_flip_display();
         

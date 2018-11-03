@@ -29,8 +29,6 @@ void inserirPedra(listaCol *lista, int x, int y){
         lista->ultimo = no;
     }
     lista->tamanho += 1;
-    printf("%d\n",lista->tamanho);
-
 }
 
 void inserirArvore(listaCol *lista, int x, int y){
@@ -351,7 +349,7 @@ void iniciarTiles(tile *tileAtual){
     tileD5-> baixo = NULL;
     tileD5->imagem = al_load_bitmap("../res/images/tiles/Tile-D5.png");
     tileD5->lista = colD5;
-    iniciarLista(colD1);
+    iniciarLista(colD5);
 
     *tileAtual = *tileB4;
 }
