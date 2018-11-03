@@ -294,8 +294,9 @@ void iniciarTiles(tile *tileAtual){
     tileB4->imagem = al_load_bitmap("../res/images/tiles/Tile-B4.png");
     tileB4->lista = colB4;
     iniciarLista(colB4);
-    inserirPedra(colB4,45,565);
-    inserirPedra(colB4,45,100);
+    inserirPedra(colB4,290,475);
+    inserirPedra(colB4,70,130);
+    inserirPedra(colB4,105,105);
 
     // === C1 === 
 

@@ -8,10 +8,23 @@
 
 int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int s){
 
-    int n = 0, i = 0, d;
+    int n = 0, i = 0, d, p;
+    static int flagInimigos = 1, flagInicio = 1;
 
     al_init_font_addon();
     al_init_ttf_addon();
+
+    if(s == 8 && flagInicio == 1){
+        d = 12;
+        p = 0;
+        flagInicio = 0;
+    }else if(s == 3 && flagInimigos == 1){
+        d = 4;
+        p = 1;
+        flagInimigos = 0;
+    }else{
+        return 0;
+    }
 
     ALLEGRO_BITMAP *sprite = al_load_bitmap("../res/images/sprite01/baixo01.png");
     ALLEGRO_BITMAP *falasDarwin = al_load_bitmap("../res/images/barraTexto.png");
@@ -43,25 +56,18 @@ int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int s){
     parte[1] = al_load_bitmap("../res/images/tiles/Tile-A4.png");
     ALLEGRO_BITMAP *inimigo = al_load_bitmap("../res/images/inimigos1.png"); 
         
-    switch(s){
-        case 0:
-            d = 12;
-            break;
-        case 1:
-            d = 4;
-            break;
-    }
+
 
     while(n < d){
         al_clear_to_color(branco);
-        al_draw_bitmap(parte[s], 0,0,0);
+        al_draw_bitmap(parte[p], 0,0,0);
         al_draw_scaled_bitmap(falasDarwin,0,0,1440,290,10,460,1152,232,0);
         switch(s){
-            case 0:
-                al_draw_scaled_bitmap(sprite, 0, 0, 16, 22, 610, 294, 48, 66, 0);
+            case 8:
+                al_draw_scaled_bitmap(sprite, 0, 0, 22, 22, 610, 294, 66, 66, 0);
                 al_draw_multiline_text(yoster,preto,70,500,650,25,0,falasInicio[n]);
                 break;
-            case 1:
+            case 3:
                 al_draw_scaled_bitmap(inimigo,0,0,238,294,610,380,48,66,0);
                 al_draw_multiline_text(yoster,preto,70,500,650,25,0,falasInimigos[n]);
                 break;

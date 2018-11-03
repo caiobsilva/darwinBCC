@@ -32,7 +32,7 @@ void colisao(tile *tileAtual, int *x, int *y, int ID){
     col *temp;
     temp = tileAtual->lista->primeiro;
 
-    while(temp != NULL){
+    while(temp != NULL){    
         
         //66 = largura, 66 = altura
         
