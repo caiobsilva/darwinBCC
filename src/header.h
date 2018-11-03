@@ -4,6 +4,19 @@
 
 enum statesGame {Menu, Select, Options, AmbienteUm, Exit};
 
+typedef struct L{
+    int x0;
+    int y0;
+    int x;
+    int y;
+    struct L *proximo;
+}col;
+
+typedef struct{
+    col *primeiro;
+    col *ultimo;
+    int tamanho;
+}listaCol;
 
 typedef struct T {
     int ID;
@@ -11,6 +24,7 @@ typedef struct T {
     struct T *direita;
     struct T *baixo;
     struct T *cima;
+    listaCol *lista;
     ALLEGRO_BITMAP *imagem;
 }tile;
 
@@ -36,11 +50,14 @@ typedef struct T {
 enum statesGame menu(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento);
 enum statesGame menuSelect(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento);
 enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento);
-void movimentacao(ALLEGRO_EVENT evento, int *x, int *y, int *t);
+void movimentacao(ALLEGRO_EVENT evento,tile *tileAtual, int *x, int *y, int *t);
 int pausa(int x, int y, int *flagSom, ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento);
 int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int s);
-void localizacao(int *x, int *y, int *flagParte, tile *temp);
+void localizacao(int *x, int *y, tile *temp);
 void iniciarTiles(tile *tileAtual);
+void movimentacaoInimigos(int i,int *xInimigo,int *yInimigo, int *x, int *y);
+void addPartes(int i, int *xInimigo, int *yInimigo, int *x, int *y);
+void colisao(tile *tileAtual, int *x, int *y, int ID);
 
 #endif
 
