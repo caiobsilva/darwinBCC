@@ -24,11 +24,11 @@ void movimentacao(ALLEGRO_EVENT evento,tile *tileAtual, int *x, int *y, int *t){
         *y -= 5;
         colisao(tileAtual,x,y,1);
         if(*t <= 6){
-            al_draw_scaled_bitmap(player[3], 0, 0, 16, 22, *x, *y, 48, 66, 0);
+            al_draw_scaled_bitmap(player[3], 0, 0, 22, 22, *x, *y, 66, 66, 0);
         }else if(*t <= 12){
-            al_draw_scaled_bitmap(player[4], 0, 0, 16, 22, *x, *y, 48, 66, 0);
+            al_draw_scaled_bitmap(player[4], 0, 0, 22, 22, *x, *y, 66, 66, 0);
         }else if(*t <= 18){
-            al_draw_scaled_bitmap(player[5], 0, 0, 16, 22, *x, *y, 48, 66, 0);
+            al_draw_scaled_bitmap(player[5], 0, 0, 22, 22, *x, *y, 66, 66, 0);
         }
         i = 3;
         *t+= 1;
@@ -36,11 +36,11 @@ void movimentacao(ALLEGRO_EVENT evento,tile *tileAtual, int *x, int *y, int *t){
         *y += 5;
         colisao(tileAtual,x,y,2);
         if(*t <= 6){
-            al_draw_scaled_bitmap(player[0], 0, 0, 16, 22, *x, *y, 48, 66, 0);
+            al_draw_scaled_bitmap(player[0], 0, 0, 22, 22, *x, *y, 66, 66, 0);
         }else if(*t <= 12){
-            al_draw_scaled_bitmap(player[1], 0, 0, 16, 22, *x, *y, 48, 66, 0);
+            al_draw_scaled_bitmap(player[1], 0, 0, 22, 22, *x, *y, 66, 66, 0);
         }else if(*t <= 18){
-            al_draw_scaled_bitmap(player[2], 0, 0, 16, 22, *x, *y, 48, 66, 0);
+            al_draw_scaled_bitmap(player[2], 0, 0, 22, 22, *x, *y, 66, 66, 0);
         }
         i = 0;
         *t+= 1;
@@ -48,11 +48,11 @@ void movimentacao(ALLEGRO_EVENT evento,tile *tileAtual, int *x, int *y, int *t){
         *x += 5;
         colisao(tileAtual,x,y,3);
         if(*t <= 6){
-            al_draw_scaled_bitmap(player[9], 0, 0, 22, 16, *x, *y, 66, 48, 0);
+            al_draw_scaled_bitmap(player[9], 0, 0, 22, 22, *x, *y, 66, 66, 0);
         }else if(*t <= 12){
-            al_draw_scaled_bitmap(player[10], 0, 0, 22, 16, *x, *y, 66, 48, 0);
+            al_draw_scaled_bitmap(player[10], 0, 0, 22, 22, *x, *y, 66, 66, 0);
         }else if(*t <= 18){
-            al_draw_scaled_bitmap(player[11], 0, 0, 22, 16, *x, *y, 66, 48, 0);
+            al_draw_scaled_bitmap(player[11], 0, 0, 22, 22, *x, *y, 66, 66, 0);
         }
         i = 9;
         *t+= 1;
@@ -61,19 +61,19 @@ void movimentacao(ALLEGRO_EVENT evento,tile *tileAtual, int *x, int *y, int *t){
         colisao(tileAtual,x,y,4);
         
         if(*t <= 6){
-            al_draw_scaled_bitmap(player[6], 0, 0, 22, 16, *x, *y, 66, 48, 0);
+            al_draw_scaled_bitmap(player[6], 0, 0, 22, 22, *x, *y, 66, 66, 0);
         }else if(*t <= 12){
-            al_draw_scaled_bitmap(player[7], 0, 0, 22, 16, *x, *y, 66, 48, 0);
+            al_draw_scaled_bitmap(player[7], 0, 0, 22, 22, *x, *y, 66, 66, 0);
         }else if(*t <= 18){
-            al_draw_scaled_bitmap(player[8], 0, 0, 22, 16, *x, *y, 66, 48, 0);
+            al_draw_scaled_bitmap(player[8], 0, 0, 22, 22, *x, *y, 66, 66, 0);
         }
         i = 6;
         *t+= 1;
     }else{
         if(i == 3 || i == 0){
-            al_draw_scaled_bitmap(player[i], 0, 0, 16, 22, *x, *y, 48, 66, 0);
+            al_draw_scaled_bitmap(player[i], 0, 0, 22, 22, *x, *y, 66, 66, 0);
         }else{
-            al_draw_scaled_bitmap(player[i], 0, 0, 22, 16, *x, *y, 66, 48, 0);
+            al_draw_scaled_bitmap(player[i], 0, 0, 22, 22, *x, *y, 66, 66, 0);
         }
     
     }

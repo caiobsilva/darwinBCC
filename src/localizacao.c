@@ -34,27 +34,26 @@ void colisao(tile *tileAtual, int *x, int *y, int ID){
 
     while(temp != NULL){
         
-        //48 = largura, 66 = altura -> y
-        //66 = largura, 48 = altura -> x
+        //66 = largura, 66 = altura
         
         switch(ID){
             case 1:
-                if((*x+25 < temp->x && *x+25 > temp->x0) && (*y < temp->y && *y > temp->y0)){
+                if((*x+33 < temp->x && *x+33 > temp->x0) && (*y < temp->y && *y > temp->y0)){
                     *y += 5;
                 }
             break;
             case 2:
-                if((*x+25 < temp->x && *x+25 > temp->x0) && (*y+65 < temp->y && *y+65 > temp->y0)){
+                if((*x+33 < temp->x && *x+33 > temp->x0) && (*y+65 < temp->y && *y+65 > temp->y0)){
                     *y -= 5;
                 }
             break;
             case 3:
-                if((*x+65 < temp->x && *x+65 > temp->x0) && (*y+25 < temp->y && *y+25 > temp->y0)){
+                if((*x+65 < temp->x && *x+65 > temp->x0) && (*y+33 < temp->y && *y+33 > temp->y0)){
                     *x -= 5;    
                 }
             break;
             case 4:
-                if((*x < temp->x && *x > temp->x0) && (*y+25 < temp->y && *y+25 > temp->y0)){
+                if((*x < temp->x && *x > temp->x0) && (*y+33 < temp->y && *y+33 > temp->y0)){
                     *x += 5;
                 }
             break;
