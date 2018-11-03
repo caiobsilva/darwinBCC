@@ -57,15 +57,19 @@ void iniciarTiles(tile *tileAtual){
 
 
 void movimentacaoInimigos(int i,int *xInimigo,int *yInimigo, int *x, int *y){
-    //AMBIENTE 1 PARTE 2
-    if(i == A4){
-        if(*xInimigo < *x){
+    if(i == A4)
+    {
+        if(*xInimigo < *x)
+        {
             *xInimigo += 3;
-        }else if(*xInimigo > *x){
+        }else if(*xInimigo > *x)
+        {
             *xInimigo -= 3;
-        }else if(*yInimigo < *y){
+        }else if(*yInimigo < *y)
+        {
             *yInimigo += 3;
-        }else if (*yInimigo > *y){
+        }else if (*yInimigo > *y)
+        {
             *yInimigo -= 3;
         }
     }
