@@ -16,9 +16,9 @@ void inserirPedra(listaCol *lista, int x, int y){
     no = malloc(sizeof(col));
 
     no->x0 = x;
-    no->x = x + 50;
+    no->x = x + 65;
     no->y0 = y;
-    no->y = y + 50;
+    no->y = y + 45;
     no->proximo = NULL;
     
     if(vazia(lista)){
@@ -37,9 +37,9 @@ void inserirArvore(listaCol *lista, int x, int y){
     no = malloc(sizeof(col));
 
     no->x0 = x;
-    no->x = x + 20;
+    no->x = x + 250;
     no->y0 = y;
-    no->y = y + 20;
+    no->y = y + 240;
     no->proximo = NULL;
     
     if(vazia(lista)){
@@ -53,15 +53,37 @@ void inserirArvore(listaCol *lista, int x, int y){
 
 }
 
-void inserirMar(listaCol *lista, int x, int y){
+void inserirMar_V(listaCol *lista, int x, int y){
     
     col *no;
     no = malloc(sizeof(col));
 
     no->x0 = x;
-    no->x = x + 20;
+    no->x = x + 200;
     no->y0 = y;
-    no->y = y + 20;
+    no->y = y + 720;
+    no->proximo = NULL;
+    
+    if(vazia(lista)){
+        lista->primeiro = no;
+        lista->ultimo = no;   
+    }else{
+        lista->ultimo->proximo = no;
+        lista->ultimo = no;
+    }
+    lista->tamanho += 1;
+
+}
+
+void inserirMar_H(listaCol *lista, int x, int y){
+    
+    col *no;
+    no = malloc(sizeof(col));
+
+    no->x0 = x;
+    no->x = x + 1280;
+    no->y0 = y;
+    no->y = y + 200;
     no->proximo = NULL;
     
     if(vazia(lista)){
@@ -81,9 +103,31 @@ void inserirRio(listaCol *lista, int x, int y){
     no = malloc(sizeof(col));
 
     no->x0 = x;
-    no->x = x + 20;
+    no->x = x + 1280;
     no->y0 = y;
-    no->y = y + 20;
+    no->y = y + 160;
+    no->proximo = NULL;
+    
+    if(vazia(lista)){
+        lista->primeiro = no;
+        lista->ultimo = no;   
+    }else{
+        lista->ultimo->proximo = no;
+        lista->ultimo = no;
+    }
+    lista->tamanho += 1;
+
+}
+
+void inserirNinho(listaCol *lista, int x, int y){
+    
+    col *no;
+    no = malloc(sizeof(col));
+
+    no->x0 = x;
+    no->x = x + 50;
+    no->y0 = y;
+    no->y = y + 35;
     no->proximo = NULL;
     
     if(vazia(lista)){
