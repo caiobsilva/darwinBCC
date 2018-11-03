@@ -107,23 +107,16 @@ int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int s){
 
 
 void movimentacaoInimigos(int i,int *xInimigo,int *yInimigo, int *x, int *y){
-    if(i == A4)
-    {
-        if(*xInimigo < *x)
-        {
+        if(*xInimigo < *x){
             *xInimigo += 3;
-        }else if(*xInimigo > *x)
-        {
+        }else if(*xInimigo > *x){
             *xInimigo -= 3;
-        }else if(*yInimigo < *y)
-        {
+        }else if(*yInimigo < *y){
             *yInimigo += 3;
-        }else if (*yInimigo > *y)
-        {
+        }else if (*yInimigo > *y){
             *yInimigo -= 3;
         }
     }
-}
 
 void addPartes(int i, int *xInimigo, int *yInimigo, int *x, int *y){
     ALLEGRO_BITMAP *inimigo = al_load_bitmap("../res/images/inimigos1.png"); 
