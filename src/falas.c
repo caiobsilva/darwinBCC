@@ -40,7 +40,7 @@ void animacaoC1(int x, int y){
 int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int s, int x, int y, int *pontuacao){
 
     int n = 0, d;
-    static int flagInimigos = 1, flagInicio = 1, flagInteracao = 1;
+    static int flagInimigos = 1, flagInicio = 1, flagInteracao = 1, flagNinho = 1;
     
     al_init_font_addon();
     al_init_ttf_addon();
@@ -60,6 +60,11 @@ int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int s, int x, int y, 
         d = 4;
         s = 2;
         flagInteracao = 0;
+    }else if(s == 17 && flagNinho == 1){
+        *pontuacao += 1;
+        s = 3;
+        d = 3;
+        flagNinho = 0;
     }else{
         return 0;
     }
@@ -96,11 +101,16 @@ int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int s, int x, int y, 
     falasInteracoes[2] = "Pobre criatura. Nossas duvidas foram confirmadas, aquela espécie está mesmo interagindo com a sua";
     falasInteracoes[3] = "O desenvolvimento pode ser atrasado ou adiantado com a intervenção de outro ser. Chamamos isso de 'Interações Ambientais'";
 
+    char *falasNinho[3];
+    falasNinho[0] = "Um ninho! Era disso que precisavamos!"; 
+    falasNinho[1] = "É importante para o desenvolvimento de uma espécie que ela tenha um lugar seguro para se reproduzir";
+    falasNinho[2] = "É durante a troca de geração que as novas característica podem ser  desenvolvidas, com sorte ganharemos uma que se encaixa bem no nosso ambiente";
     
-    ALLEGRO_BITMAP *parte[3];
+    ALLEGRO_BITMAP *parte[4];
     parte[0] = al_load_bitmap("../res/images/tiles/Tile-B4.png");
     parte[1] = al_load_bitmap("../res/images/tiles/Tile-A4.png");
-    parte[2] = al_load_bitmap("../res/images/tiles/Tile-C1.png");
+    parte[2] = al_load_bitmap("../res/images/tiles/Tile-C1.png");  
+    parte[3] = al_load_bitmap("../res/images/tiles/Tile-D5.png");
 
     ALLEGRO_BITMAP *inimigo = al_load_bitmap("../res/images/inimigos1.png"); 
 
@@ -122,7 +132,10 @@ int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int s, int x, int y, 
                 al_draw_scaled_bitmap(sprite, 0, 0, 22, 22, x, y, 66, 66, 0);
                 al_draw_scaled_bitmap(inimigo,0,0,238,294,640,294,48,66,0);
                 al_draw_multiline_text(yoster,preto,70,500,650,25,0,falasInteracoes[n]);
-                break;   
+                break;
+            case 3:
+                al_draw_scaled_bitmap(sprite, 0, 0, 22, 22, x, y, 66, 66, 0);
+                al_draw_multiline_text(yoster,preto,70,500,650,25,0,falasNinho[n]);
         }
         al_flip_display();
 

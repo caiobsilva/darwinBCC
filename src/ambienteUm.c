@@ -6,7 +6,7 @@
 
 
 enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
-    int flagOpcoes = 0, flagSom = 1, flagPontos = 0;
+    int flagOpcoes = 0, flagSom = 1, flagPontos = 0, flagVida = 3;
     int sair = 0,  x = 610, y = 294, xInimigo = 610, yInimigo = 380,xInimigo2 = 610,yInimigo2 = 380, t = 0;
     tile tileAtual;
 
