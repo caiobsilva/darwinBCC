@@ -18,14 +18,14 @@ void movimentacaoInimigos(int tile,int *xInimigo,int *yInimigo, int *x, int *y){
 
 void addPartes(int tile, int *xInimigo, int *yInimigo, int *x, int *y){
     ALLEGRO_BITMAP *inimigo = al_load_bitmap("../res/images/inimigos1.png"); 
-    if(tile == B4){
-
-    }else if(tile == A4){
+    if(tile == A4){
         movimentacaoInimigos(tile,xInimigo,yInimigo,x,y);
         al_draw_scaled_bitmap(inimigo,0,0,238,294,*xInimigo,*yInimigo,48,66,0);
+    }else if(tile == C1){
+        al_draw_scaled_bitmap(inimigo,0,0,238,294,*xInimigo,*yInimigo,48,66,0);
+        movimentacaoInimigos(tile,xInimigo,yInimigo,x,y);
     }
     al_destroy_bitmap(inimigo);
-
 }
 
 void colisao(tile *tileAtual, int *x, int *y, int ID){

@@ -5,23 +5,58 @@
 #include <allegro5/allegro_ttf.h>
 #include "header.h"
 
+void animacaoC1(int x, int y){
+    
+    int xInimigo = 610, n = 0;
 
-int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int s){
+    ALLEGRO_BITMAP *sprite2 = al_load_bitmap("../res/images/sprite01/esquerda01.png"); 
+    ALLEGRO_BITMAP *inimigo = al_load_bitmap("../res/images/inimigos1.png"); 
+    ALLEGRO_BITMAP *sprite = al_load_bitmap("../res/images/sprite01/baixo01.png");
+    ALLEGRO_BITMAP *tile  = al_load_bitmap("../res/images/tiles/Tile-C1.png");
+    
+    while( n < 4 ){
 
-    int n = 0, i = 0, d, p;
-    static int flagInimigos = 1, flagInicio = 1;
+        al_clear_to_color(al_map_rgb(255,255,255));
+        al_draw_bitmap(tile,0,0,0);
+        al_draw_scaled_bitmap(sprite, 0, 0, 22, 22, x, y, 66, 66, 0);
+        al_draw_scaled_bitmap(sprite2, 0, 0, 22, 22, 610, 294, 66, 66, 0);
+        al_draw_scaled_bitmap(inimigo,0,0,238,294,xInimigo,294,48,66,0);
+        al_flip_display();
 
+        if(xInimigo == 610)
+            xInimigo = 540;
+        else
+            xInimigo = 610;
+
+        al_rest(.5);
+
+        n++;
+
+    }
+}
+
+
+int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int s, int x, int y){
+
+    int n = 0, d;
+    static int flagInimigos = 1, flagInicio = 1, flagInteracao = 1;
+    
     al_init_font_addon();
     al_init_ttf_addon();
 
     if(s == 8 && flagInicio == 1){
         d = 12;
-        p = 0;
+        s = 0;
         flagInicio = 0;
     }else if(s == 3 && flagInimigos == 1){
         d = 4;
-        p = 1;
+        s = 1;
         flagInimigos = 0;
+    }else if(s == 9 && flagInteracao == 1){
+        animacaoC1(x,y);
+        d = 4;
+        s = 2;
+        flagInteracao = 0;
     }else{
         return 0;
     }
@@ -51,26 +86,40 @@ int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int s){
     falasInimigos[1] = "Essa espécie me parece estranha";
     falasInimigos[2] = "Olha a cor dela, tenho certeza de que isso é um caso de coloração de advertência.";
     falasInimigos[3] = "A cor característica do animal serve como um alerta, eu recomendaria ficar longe.";
-    ALLEGRO_BITMAP *parte[2];
+    
+    char *falasInteracoes[4];
+    falasInteracoes[0] = "!!!!!";
+    falasInteracoes[1] = "...";
+    falasInteracoes[2] = "Pobre criatura. Nossas duvidas foram confirmadas, aquela espécie está mesmo interagindo com a sua";
+    falasInteracoes[3] = "O desenvolvimento pode ser atrasado ou adiantado com a intervenção de outro ser. Chamamos isso de 'Interações Ambientais'";
+
+    
+    ALLEGRO_BITMAP *parte[3];
     parte[0] = al_load_bitmap("../res/images/tiles/Tile-B4.png");
     parte[1] = al_load_bitmap("../res/images/tiles/Tile-A4.png");
+    parte[2] = al_load_bitmap("../res/images/tiles/Tile-C1.png");
+
     ALLEGRO_BITMAP *inimigo = al_load_bitmap("../res/images/inimigos1.png"); 
-        
 
 
     while(n < d){
         al_clear_to_color(branco);
-        al_draw_bitmap(parte[p], 0,0,0);
+        al_draw_bitmap(parte[s], 0,0,0);
         al_draw_scaled_bitmap(falasDarwin,0,0,1440,290,10,460,1152,232,0);
         switch(s){
-            case 8:
+            case 0:
                 al_draw_scaled_bitmap(sprite, 0, 0, 22, 22, 610, 294, 66, 66, 0);
                 al_draw_multiline_text(yoster,preto,70,500,650,25,0,falasInicio[n]);
                 break;
-            case 3:
+            case 1:
                 al_draw_scaled_bitmap(inimigo,0,0,238,294,610,380,48,66,0);
                 al_draw_multiline_text(yoster,preto,70,500,650,25,0,falasInimigos[n]);
                 break;
+            case 2:
+                al_draw_scaled_bitmap(sprite, 0, 0, 22, 22, x, y, 66, 66, 0);
+                al_draw_scaled_bitmap(inimigo,0,0,238,294,640,294,48,66,0);
+                al_draw_multiline_text(yoster,preto,70,500,650,25,0,falasInteracoes[n]);
+                break;   
         }
         al_flip_display();
 
