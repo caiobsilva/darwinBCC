@@ -6,13 +6,17 @@
 
 
 enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
-    int flagOpcoes = 0, flagSom = 1;
+    int flagOpcoes = 0, flagSom = 1, flagPontos = 0;
     int sair = 0,  x = 610, y = 294, xInimigo = 610, yInimigo = 380,xInimigo2 = 610,yInimigo2 = 380, t = 0;
-
     tile tileAtual;
 
     iniciarTiles(&tileAtual);
 
+    ALLEGRO_BITMAP *pontos[4];
+    pontos[0] = al_load_bitmap("../res/images/pontos0.png");
+    pontos[1] = al_load_bitmap("../res/images/pontos1.png");
+    pontos[2] = al_load_bitmap("../res/images/pontos2.png");
+    pontos[3] = al_load_bitmap("../res/images/pontos3.png");
     ALLEGRO_COLOR branco = al_map_rgb(255,255,255);
     
     while (!sair){
@@ -35,8 +39,9 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
                 }
             }
         }
-    
-        if(falas(fila,evento,tileAtual.ID,x,y)){
+
+
+        if(falas(fila,evento,tileAtual.ID,x,y,&flagPontos)){
             return Exit;
         }
         al_clear_to_color(branco);
@@ -45,6 +50,7 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
         addPartes(tileAtual.ID, &xInimigo, &yInimigo, &x, &y);
         addPartes(tileAtual.ID, &xInimigo2, &yInimigo2, &x, &y);
         movimentacao(evento,&tileAtual, &x, &y,&t);
+        al_draw_bitmap(pontos[flagPontos],1100,0,0);
         al_flip_display();
         
     }

@@ -5,6 +5,7 @@
 #include <allegro5/allegro_ttf.h>
 #include "header.h"
 
+
 void animacaoC1(int x, int y){
     
     int xInimigo = 610, n = 0;
@@ -14,7 +15,7 @@ void animacaoC1(int x, int y){
     ALLEGRO_BITMAP *sprite = al_load_bitmap("../res/images/sprite01/baixo01.png");
     ALLEGRO_BITMAP *tile  = al_load_bitmap("../res/images/tiles/Tile-C1.png");
     
-    while( n < 4 ){
+    while( n < 6 ){
 
         al_clear_to_color(al_map_rgb(255,255,255));
         al_draw_bitmap(tile,0,0,0);
@@ -36,7 +37,7 @@ void animacaoC1(int x, int y){
 }
 
 
-int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int s, int x, int y){
+int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int s, int x, int y, int *pontuacao){
 
     int n = 0, d;
     static int flagInimigos = 1, flagInicio = 1, flagInteracao = 1;
@@ -49,10 +50,12 @@ int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int s, int x, int y){
         s = 0;
         flagInicio = 0;
     }else if(s == 3 && flagInimigos == 1){
+        *pontuacao += 1;
         d = 4;
         s = 1;
         flagInimigos = 0;
     }else if(s == 9 && flagInteracao == 1){
+        *pontuacao += 1;
         animacaoC1(x,y);
         d = 4;
         s = 2;
