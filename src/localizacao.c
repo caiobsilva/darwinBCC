@@ -5,9 +5,9 @@
 
 
 void movimentacaoInimigos(int tile,int *xInimigo,int *yInimigo, int *x, int *y){
-    if(*xInimigo < *x){
+    if(*xInimigo < *x - 3){
         *xInimigo += 3;
-    }else if(*xInimigo > *x){
+    }else if(*xInimigo > *x - 3){
         *xInimigo -= 3;
     }else if(*yInimigo < *y){
         *yInimigo += 3;
