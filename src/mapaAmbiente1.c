@@ -59,7 +59,7 @@ void inserirMar_V(listaCol *lista, int x, int y){
     no = malloc(sizeof(col));
 
     no->x0 = x;
-    no->x = x + 200;
+    no->x = x + 124;
     no->y0 = y;
     no->y = y + 720;
     no->proximo = NULL;
@@ -83,7 +83,7 @@ void inserirMar_H(listaCol *lista, int x, int y){
     no->x0 = x;
     no->x = x + 1280;
     no->y0 = y;
-    no->y = y + 200;
+    no->y = y + 124;
     no->proximo = NULL;
     
     if(vazia(lista)){
@@ -171,6 +171,8 @@ void iniciarTiles(tile *tileAtual){
     tileD4 = malloc(sizeof(tile));
     tileD5 = malloc(sizeof(tile));
 
+    /*
+
     listaCol *colA1,*colA2,*colA3,*colA4,*colA5;
     listaCol *colB1,*colB2,*colB3,*colB4;
     listaCol *colC1,*colC2,*colC3,*colC4;
@@ -194,6 +196,8 @@ void iniciarTiles(tile *tileAtual){
     colD4 = malloc(sizeof(listaCol));
     colD5 = malloc(sizeof(listaCol));
 
+    */
+
     // === A1 === 
 
     tileA1->ID = A1;
@@ -202,8 +206,12 @@ void iniciarTiles(tile *tileAtual){
     tileA1->cima = NULL;
     tileA1-> baixo = tileB1;
     tileA1->imagem = al_load_bitmap("../res/images/tiles/Tile-A1.png");
+    /*
     tileA1->lista = colA1;
     iniciarLista(colA1);
+    inserirMar_H(colA1,0,0);
+    inserirMar_V(colA1,0,0);
+    */
 
     // === A2 === 
  
@@ -213,8 +221,11 @@ void iniciarTiles(tile *tileAtual){
     tileA2->cima = NULL;
     tileA2-> baixo = tileB2;
     tileA2->imagem = al_load_bitmap("../res/images/tiles/Tile-A2.png");
+    /*
     tileA2->lista = colA2;
     iniciarLista(colA2);
+    inserirMar_H(colA2,0,0);
+    */
 
     // === A3 === 
  
@@ -224,8 +235,11 @@ void iniciarTiles(tile *tileAtual){
     tileA3->cima = NULL;
     tileA3-> baixo = tileB3;
     tileA3->imagem = al_load_bitmap("../res/images/tiles/Tile-A3.png");
+    /*
     tileA3->lista = colA3;
     iniciarLista(colA3);
+    inserirMar_H(colA3,0,0);
+    */
     
     // === A4 === 
 
@@ -235,9 +249,11 @@ void iniciarTiles(tile *tileAtual){
     tileA4->cima = NULL;
     tileA4-> baixo = tileB4;
     tileA4->imagem = al_load_bitmap("../res/images/tiles/Tile-A4.png");
+/*
     iniciarLista(colA4);
     tileA4->lista = colA4;
-    iniciarLista(colA4);
+    inserirMar_H(colA4,0,0);
+    */
 
     // === A5 === 
 
@@ -247,8 +263,12 @@ void iniciarTiles(tile *tileAtual){
     tileA5->cima = NULL;
     tileA5-> baixo = NULL;
     tileA5->imagem = al_load_bitmap("../res/images/tiles/Tile-A5.png");
+    /*
     tileA5->lista = colA5;
     iniciarLista(colA5);
+    inserirMar_H(colA5,0,0);
+    inserirMar_V(colA5,1153,0);
+    */
 
 
     // === B1 === 
@@ -259,9 +279,12 @@ void iniciarTiles(tile *tileAtual){
     tileB1->cima = tileA1;
     tileB1-> baixo = tileC1;
     tileB1->imagem = al_load_bitmap("../res/images/tiles/Tile-B1.png");
+    /*
     tileB1->lista = colB1;
     iniciarLista(colB1);
-
+    inserirMar_V(colB1,0,0);
+    */
+    
     // === B2 === 
  
     tileB2->ID = B2;
@@ -270,8 +293,10 @@ void iniciarTiles(tile *tileAtual){
     tileB2->cima = tileA2;
     tileB2-> baixo = tileC2;
     tileB2->imagem = al_load_bitmap("../res/images/tiles/Tile-B2.png");
+    /*
     tileB2->lista = colB2;
     iniciarLista(colB2);
+    */
 
     // === B3 === 
  
@@ -281,8 +306,8 @@ void iniciarTiles(tile *tileAtual){
     tileB3->cima = tileA3;
     tileB3-> baixo = tileC3;
     tileB3->imagem = al_load_bitmap("../res/images/tiles/Tile-B3.png");
-    tileB3->lista = colB3;
-    iniciarLista(colB3);
+    // tileB3->lista = colB3;
+    // iniciarLista(colB3);
 
     // === B4 === 
 
@@ -292,11 +317,12 @@ void iniciarTiles(tile *tileAtual){
     tileB4->cima = tileA4;
     tileB4-> baixo = tileC4;
     tileB4->imagem = al_load_bitmap("../res/images/tiles/Tile-B4.png");
-    tileB4->lista = colB4;
-    iniciarLista(colB4);
-    inserirPedra(colB4,290,475);
-    inserirPedra(colB4,70,130);
-    inserirPedra(colB4,105,105);
+    // tileB4->lista = colB4;
+    // // iniciarLista(colB4);
+    // inserirPedra(colB4,290,475);
+    // inserirPedra(colB4,70,130);
+    // inserirPedra(colB4,105,105);
+    // inserirPedra(colB4,980,590);
 
     // === C1 === 
 
@@ -306,8 +332,9 @@ void iniciarTiles(tile *tileAtual){
     tileC1->cima = tileB1;
     tileC1-> baixo = tileD1;
     tileC1->imagem = al_load_bitmap("../res/images/tiles/Tile-C1.png");
-    tileC1->lista = colC1;
-    iniciarLista(colC1);
+    // tileC1->lista = colC1;
+    // iniciarLista(colC1);
+    //inserirMar_V(colC1,0,0);
 
     // === C2 === 
  
@@ -317,8 +344,8 @@ void iniciarTiles(tile *tileAtual){
     tileC2->cima = tileB2;
     tileC2-> baixo = tileD2;
     tileC2->imagem = al_load_bitmap("../res/images/tiles/Tile-C2.png");
-    tileC2->lista = colC2;
-    iniciarLista(colC2);
+    // tileC2->lista = colC2;
+    // iniciarLista(colC2);
 
     // === C3 === 
  
@@ -328,8 +355,8 @@ void iniciarTiles(tile *tileAtual){
     tileC3->cima = tileB3;
     tileC3-> baixo = tileD3;
     tileC3->imagem = al_load_bitmap("../res/images/tiles/Tile-C3.png");
-    tileC3->lista = colC3;
-    iniciarLista(colC3);
+    // tileC3->lista = colC3;
+    // iniciarLista(colC3);
 
     // === C4 === 
 
@@ -339,8 +366,8 @@ void iniciarTiles(tile *tileAtual){
     tileC4->cima = tileB4;
     tileC4-> baixo = tileD4;
     tileC4->imagem = al_load_bitmap("../res/images/tiles/Tile-C4.png");
-    tileC4->lista = colC4;
-    iniciarLista(colC4);
+    // tileC4->lista = colC4;
+    // iniciarLista(colC4);
 
 
     // === D1 === 
@@ -351,8 +378,10 @@ void iniciarTiles(tile *tileAtual){
     tileD1->cima = tileC1;
     tileD1-> baixo = NULL;
     tileD1->imagem = al_load_bitmap("../res/images/tiles/Tile-D1.png");
-    tileD1->lista = colD1;
-    iniciarLista(colD1);
+    // tileD1->lista = colD1;
+    // iniciarLista(colD1);
+    //inserirMar_V(colD1,0,0);
+    //inserirMar_H(colD1,0,595);
 
     // === D2 === 
  
@@ -362,8 +391,9 @@ void iniciarTiles(tile *tileAtual){
     tileD2->cima = tileC2;
     tileD2-> baixo = NULL;
     tileD2->imagem = al_load_bitmap("../res/images/tiles/Tile-D2.png");
-    tileD2->lista = colD2;
-    iniciarLista(colD2);
+    // tileD2->lista = colD2;
+    // iniciarLista(colD2);
+    //inserirMar_H(colD2,0,595);
 
     // === D3 === 
  
@@ -373,8 +403,9 @@ void iniciarTiles(tile *tileAtual){
     tileD3->cima = tileC3;
     tileD3-> baixo = NULL;
     tileD3->imagem = al_load_bitmap("../res/images/tiles/Tile-D3.png");
-    tileD3->lista = colD3;
-    iniciarLista(colD3);
+    // tileD3->lista = colD3;
+    // iniciarLista(colD3);
+    //inserirMar_H(colD3,0,595);
     // === D4 === 
 
     tileD4->ID = D4;
@@ -383,8 +414,9 @@ void iniciarTiles(tile *tileAtual){
     tileD4->cima = tileC4;
     tileD4-> baixo = NULL;
     tileD4->imagem = al_load_bitmap("../res/images/tiles/Tile-D4.png");
-    tileD4->lista = colD4;
-    iniciarLista(colD4);
+    // tileD4->lista = colD4;
+    // iniciarLista(colD4);
+    //inserirMar_H(colD4,0,595);
     // === D5 === 
 
     tileD5->ID = D5;
@@ -393,8 +425,9 @@ void iniciarTiles(tile *tileAtual){
     tileD5->cima = NULL;
     tileD5-> baixo = NULL;
     tileD5->imagem = al_load_bitmap("../res/images/tiles/Tile-D5.png");
-    tileD5->lista = colD5;
-    iniciarLista(colD5);
+    // tileD5->lista = colD5;
+    // iniciarLista(colD5);
+    //inserirMar_H(colD5,0,595);
 
     *tileAtual = *tileB4;
 }

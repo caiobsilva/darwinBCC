@@ -3,19 +3,20 @@
 #include <allegro5/allegro_image.h>
 #include "header.h"
 
-
+// função para movimentação do inimigo
 void movimentacaoInimigos(int tile,int *xInimigo,int *yInimigo, int *x, int *y){
-    if(*xInimigo < *x){
+    if(*xInimigo < *x - 3){
         *xInimigo += 3;
-    }else if(*xInimigo > *x){
+    }else if(*xInimigo > *x + 3){
         *xInimigo -= 3;
-    }else if(*yInimigo < *y){
+    }else if(*yInimigo < *y - 3){
         *yInimigo += 3;
-    }else if (*yInimigo > *y){
+    }else if (*yInimigo > *y + 3){
         *yInimigo -= 3;
     }
 }
 
+// função para adicionar extras no ambiente (inimigos e algumas imagens)
 void addPartes(int tile, int *xInimigo, int *yInimigo, int *x, int *y){
     ALLEGRO_BITMAP *inimigo = al_load_bitmap("../res/images/inimigos1.png"); 
     if(tile == A4){
@@ -28,42 +29,45 @@ void addPartes(int tile, int *xInimigo, int *yInimigo, int *x, int *y){
     al_destroy_bitmap(inimigo);
 }
 
+
+// função que detecta qualquer tipo de colisão 
 void colisao(tile *tileAtual, int *x, int *y, int ID){
+    
     col *temp;
     temp = tileAtual->lista->primeiro;
 
     while(temp != NULL){    
         
-        //66 = largura, 66 = altura
-        
         switch(ID){
             case 1:
                 if((*x+33 < temp->x && *x+33 > temp->x0) && (*y < temp->y && *y > temp->y0)){
-                    *y += 5;
+                    *y += 6;
                 }
             break;
             case 2:
                 if((*x+33 < temp->x && *x+33 > temp->x0) && (*y+65 < temp->y && *y+65 > temp->y0)){
-                    *y -= 5;
+                    *y -= 6;
                 }
             break;
             case 3:
                 if((*x+65 < temp->x && *x+65 > temp->x0) && (*y+33 < temp->y && *y+33 > temp->y0)){
-                    *x -= 5;    
+                    *x -= 6;    
                 }
             break;
             case 4:
                 if((*x < temp->x && *x > temp->x0) && (*y+33 < temp->y && *y+33 > temp->y0)){
-                    *x += 5;
+                    *x += 6;
                 }
             break;
         }
     
         temp = temp->proximo;
-    }
+    }   
 
 }
 
+
+// função que detecta mudança de tile.
 void localizacao(int *x, int *y, tile *tileAtual){
 
     if(tileAtual->esquerda != NULL && *x < 0){

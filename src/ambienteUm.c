@@ -26,7 +26,6 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
             al_wait_for_event(fila, &evento);
             
             if(evento.type == ALLEGRO_EVENT_DISPLAY_CLOSE){
-                printf("fechou!\n");
                 return Exit;
             }
             else if(evento.type == ALLEGRO_EVENT_KEY_DOWN){
@@ -39,7 +38,7 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
                 }
             }
         }
-
+    
 
         if(falas(fila,evento,tileAtual.ID,x,y,&flagPontos)){
             return Exit;
