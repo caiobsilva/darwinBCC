@@ -31,6 +31,7 @@ void addPartes(int tile, int *xInimigo, int *yInimigo, int *x, int *y){
 
 
 // função que detecta qualquer tipo de colisão 
+/*
 void colisao(tile *tileAtual, int *x, int *y, int ID){
     
     col *temp;
@@ -65,7 +66,7 @@ void colisao(tile *tileAtual, int *x, int *y, int ID){
     }   
 
 }
-
+*/
 
 // função que detecta mudança de tile.
 void localizacao(int *x, int *y, tile *tileAtual){
