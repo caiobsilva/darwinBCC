@@ -4,6 +4,20 @@
 #include <allegro5/allegro_audio.h>
 #include "header.h"
 
+void fade(){
+    ALLEGRO_BITMAP *fade[10];
+
+    fade[0] = al_load_bitmap("../res/efeitos/fade1.png");
+    fade[1] = al_load_bitmap("../res/efeitos/fade2.png");
+    fade[2] = al_load_bitmap("../res/efeitos/fade3.png");
+    fade[3] = al_load_bitmap("../res/efeitos/fade4.png");
+    fade[4] = al_load_bitmap("../res/efeitos/fade5.png");
+    fade[5] = al_load_bitmap("../res/efeitos/fade6.png");
+    fade[6] = al_load_bitmap("../res/efeitos/fade7.png");
+    fade[7] = al_load_bitmap("../res/efeitos/fade8.png");
+    fade[8] = al_load_bitmap("../res/efeitos/fade9.png");
+    fade[9] = al_load_bitmap("../res/efeitos/fade10.png");
+}
 
 enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
     int flagOpcoes = 0, flagSom = 1, flagPontos = 0, flagVida = 3;
