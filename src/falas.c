@@ -78,15 +78,15 @@ int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int s, int x, int y, 
     char *falasInicio[12];
     falasInicio[0] = "Bem vindo! Meu nome é Charles Darwin.";
     falasInicio[1] = "Há anos venho estudando as interações dos animais entre eles mesmos e os ambientes.";
-    falasInicio[2] = "Durante uma viagem que fiz pelo mundo eu encontrei diversas espécies diferentes que compartilhavam características.";
-    falasInicio[3] = "Por meio da observação eu consegui entender";
+    falasInicio[2] = "Durante uma viagem que fiz pelo mundo, encontrei diversas espécies diferentes que compartilhavam características.";
+    falasInicio[3] = "Por meio da observação eu consegui entender:";
     falasInicio[4] = "Os animais tinham características que melhor se enquadravam no ambiente em que se encontravam.";
     falasInicio[5] = "Infelizmente isso não era o suficiente para produzir uma teoria, faltava uma peça.";
-    falasInicio[6] = "Quando eu cheguei em casa tive tempo pra pensar e a resposta parcial surgiu.";
-    falasInicio[7] = "Os cachorros eram selecionados pelos humanos baseando-se nas características que melhor se ajustam a tarefa a ser realizada, por consequência diversas raças com características diferentes apareceram.";
+    falasInicio[6] = "Quando eu cheguei em casa, tive tempo pra pensar e a resposta parcial surgiu:";
+    falasInicio[7] = "Os cachorros eram selecionados pelos humanos baseando-se nas características que melhor se ajustam a tarefa a ser realizada, por consequência, diversas raças com características diferentes apareceram.";
     falasInicio[8] = "Para ser publicado, faltava somente encaixar a ideia no ambiente selvagem";
     falasInicio[9] = "Depois de algum tempo, um livro me deu a resposta: a competição imposta por um ambiente e recursos limitados selecionava os que melhor se adaptavam!";
-    falasInicio[10] = "Agora é a sua vez de experimentar as mudanças e melhor se adaptar ao ambiente!";
+    falasInicio[10] = "Agora é a sua vez de experimentar as mudanças e melhor se adaptar ao ambiente. Seu habitat atual já não é mais seguro com a chegada de novas espécies. É hora de migrar!";
     falasInicio[11] = "Boa sorte na sua aventura, nova espécie!";
 
     char *falasInimigos[4];
