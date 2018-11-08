@@ -5,25 +5,53 @@
 #include "header.h"
 
 void fade(){
+    int n = 0;
+
     ALLEGRO_BITMAP *fade[10];
 
-    fade[0] = al_load_bitmap("../res/efeitos/fade1.png");
-    fade[1] = al_load_bitmap("../res/efeitos/fade2.png");
-    fade[2] = al_load_bitmap("../res/efeitos/fade3.png");
-    fade[3] = al_load_bitmap("../res/efeitos/fade4.png");
-    fade[4] = al_load_bitmap("../res/efeitos/fade5.png");
-    fade[5] = al_load_bitmap("../res/efeitos/fade6.png");
-    fade[6] = al_load_bitmap("../res/efeitos/fade7.png");
-    fade[7] = al_load_bitmap("../res/efeitos/fade8.png");
-    fade[8] = al_load_bitmap("../res/efeitos/fade9.png");
-    fade[9] = al_load_bitmap("../res/efeitos/fade10.png");
+    fade[0] = al_load_bitmap("../res/efeitos/fade/fade1.png");
+    fade[1] = al_load_bitmap("../res/efeitos/fade/fade2.png");
+    fade[2] = al_load_bitmap("../res/efeitos/fade/fade3.png");
+    fade[3] = al_load_bitmap("../res/efeitos/fade/fade4.png");
+    fade[4] = al_load_bitmap("../res/efeitos/fade/fade5.png");
+    fade[5] = al_load_bitmap("../res/efeitos/fade/fade6.png");
+    fade[6] = al_load_bitmap("../res/efeitos/fade/fade7.png");
+    fade[7] = al_load_bitmap("../res/efeitos/fade/fade8.png");
+    fade[8] = al_load_bitmap("../res/efeitos/fade/fade9.png");
+    fade[9] = al_load_bitmap("../res/efeitos/fade/fade10.png");
+
+    if(n < 2){
+        al_draw_scaled_bitmap(fade[0], 0, 0, 1280, 720, 0, 0, 1280, 720, 0);
+    }else if(n < 4){
+        al_draw_scaled_bitmap(fade[1], 0, 0, 1280, 720, 0, 0, 1280, 720, 0);
+    }else if(n < 6){
+        al_draw_scaled_bitmap(fade[2], 0, 0, 1280, 720, 0, 0, 1280, 720, 0);
+    }else if(n < 8){
+        al_draw_scaled_bitmap(fade[3], 0, 0, 1280, 720, 0, 0, 1280, 720, 0);
+    }else if(n < 10){
+        al_draw_scaled_bitmap(fade[4], 0, 0, 1280, 720, 0, 0, 1280, 720, 0);
+    }else if(n < 12){
+        al_draw_scaled_bitmap(fade[5], 0, 0, 1280, 720, 0, 0, 1280, 720, 0);
+    }else if(n < 14){
+        al_draw_scaled_bitmap(fade[6], 0, 0, 1280, 720, 0, 0, 1280, 720, 0);
+    }else if(n < 16){
+        al_draw_scaled_bitmap(fade[7], 0, 0, 1280, 720, 0, 0, 1280, 720, 0);
+    }else if(n < 18){
+        al_draw_scaled_bitmap(fade[8], 0, 0, 1280, 720, 0, 0, 1280, 720, 0);
+    }else if(n < 20){
+        al_draw_scaled_bitmap(fade[9], 0, 0, 1280, 720, 0, 0, 1280, 720, 0);
+    }
+
+    for (int i = 0; i < 10; i++){
+        al_destroy_bitmap(fade[i]);
+    }
+    n++;
 }
 
 enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
     int flagOpcoes = 0, flagSom = 1, flagPontos = 0, flagVida = 3;
-    int sair = 0,  x = 610, y = 294, xInimigo = 610, yInimigo = 380,xInimigo2 = 610,yInimigo2 = 380, t = 0;
+    int sair = 0, x = 610, y = 294, xInimigo = 610, yInimigo = 380,xInimigo2 = 610,yInimigo2 = 380, t = 0;
     tile tileAtual;
-
     iniciarTiles(&tileAtual);
 
     ALLEGRO_BITMAP *pontos[4];
@@ -32,9 +60,8 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
     pontos[2] = al_load_bitmap("../res/images/pontos2.png");
     pontos[3] = al_load_bitmap("../res/images/pontos3.png");
     ALLEGRO_COLOR branco = al_map_rgb(255,255,255);
-    
-    while (!sair){
 
+    while (!sair){
         while(!(al_is_event_queue_empty(fila))){
 
             al_wait_for_event(fila, &evento);
@@ -53,7 +80,6 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
             }
         }
     
-
         if(falas(fila,evento,tileAtual.ID,x,y,&flagPontos)){
             return Exit;
         }
