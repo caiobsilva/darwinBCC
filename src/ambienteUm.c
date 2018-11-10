@@ -4,9 +4,7 @@
 #include <allegro5/allegro_audio.h>
 #include "header.h"
 
-void fade(){
-    int n = 0;
-
+int fade(int n){
     ALLEGRO_BITMAP *fade[10];
 
     fade[0] = al_load_bitmap("../res/efeitos/fade/fade1.png");
@@ -20,32 +18,32 @@ void fade(){
     fade[8] = al_load_bitmap("../res/efeitos/fade/fade9.png");
     fade[9] = al_load_bitmap("../res/efeitos/fade/fade10.png");
 
-    if(n < 2){
-        al_draw_scaled_bitmap(fade[0], 0, 0, 1280, 720, 0, 0, 1280, 720, 0);
-    }else if(n < 4){
-        al_draw_scaled_bitmap(fade[1], 0, 0, 1280, 720, 0, 0, 1280, 720, 0);
-    }else if(n < 6){
-        al_draw_scaled_bitmap(fade[2], 0, 0, 1280, 720, 0, 0, 1280, 720, 0);
-    }else if(n < 8){
-        al_draw_scaled_bitmap(fade[3], 0, 0, 1280, 720, 0, 0, 1280, 720, 0);
-    }else if(n < 10){
-        al_draw_scaled_bitmap(fade[4], 0, 0, 1280, 720, 0, 0, 1280, 720, 0);
-    }else if(n < 12){
-        al_draw_scaled_bitmap(fade[5], 0, 0, 1280, 720, 0, 0, 1280, 720, 0);
-    }else if(n < 14){
-        al_draw_scaled_bitmap(fade[6], 0, 0, 1280, 720, 0, 0, 1280, 720, 0);
-    }else if(n < 16){
-        al_draw_scaled_bitmap(fade[7], 0, 0, 1280, 720, 0, 0, 1280, 720, 0);
-    }else if(n < 18){
-        al_draw_scaled_bitmap(fade[8], 0, 0, 1280, 720, 0, 0, 1280, 720, 0);
-    }else if(n < 20){
-        al_draw_scaled_bitmap(fade[9], 0, 0, 1280, 720, 0, 0, 1280, 720, 0);
-    }
+    while(n != 20){
 
-    for (int i = 0; i < 10; i++){
-        al_destroy_bitmap(fade[i]);
+        if(n < 2){
+            al_draw_scaled_bitmap(fade[0], 0, 0, 1280, 720, 0, 0, 1280, 720, 0);
+        }else if(n < 4){
+            al_draw_scaled_bitmap(fade[1], 0, 0, 1280, 720, 0, 0, 1280, 720, 0);
+        }else if(n < 6){
+            al_draw_scaled_bitmap(fade[2], 0, 0, 1280, 720, 0, 0, 1280, 720, 0);
+        }else if(n < 8){
+            al_draw_scaled_bitmap(fade[3], 0, 0, 1280, 720, 0, 0, 1280, 720, 0);
+        }else if(n < 10){
+            al_draw_scaled_bitmap(fade[4], 0, 0, 1280, 720, 0, 0, 1280, 720, 0);
+        }else if(n < 12){
+            al_draw_scaled_bitmap(fade[5], 0, 0, 1280, 720, 0, 0, 1280, 720, 0);
+        }else if(n < 14){
+            al_draw_scaled_bitmap(fade[6], 0, 0, 1280, 720, 0, 0, 1280, 720, 0);
+        }else if(n < 16){
+            al_draw_scaled_bitmap(fade[7], 0, 0, 1280, 720, 0, 0, 1280, 720, 0);
+        }else if(n < 18){
+            al_draw_scaled_bitmap(fade[8], 0, 0, 1280, 720, 0, 0, 1280, 720, 0);
+        }else if(n < 20){
+            al_draw_scaled_bitmap(fade[9], 0, 0, 1280, 720, 0, 0, 1280, 720, 0);
+        }
+
+        return n++;
     }
-    n++;
 }
 
 enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
@@ -83,6 +81,7 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
         if(falas(fila,evento,tileAtual.ID,x,y,&flagPontos)){
             return Exit;
         }
+
         al_clear_to_color(branco);
         localizacao(&x,&y,&tileAtual);
         al_draw_bitmap(tileAtual.imagem, 0,0,0);
