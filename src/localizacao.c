@@ -4,7 +4,7 @@
 #include "header.h"
 
 // função para movimentação do inimigo
-void movimentacaoInimigos(int tile,int *xInimigo,int *yInimigo, int *x, int *y){
+void movimentacaoInimigos(int tile, int *xInimigo,int *yInimigo, int *x, int *y){
     if(*xInimigo < *x - 3){
         *xInimigo += 3;
     }else if(*xInimigo > *x + 3){

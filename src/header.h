@@ -47,6 +47,26 @@ typedef struct T {
 #define D4 16
 #define D5 17
 
+#define C8 18
+#define C9 19
+#define D6 20
+#define D7 21
+#define D8 22
+#define D9 23
+#define D10 24
+#define D11 25
+#define E7 26
+#define E8 27
+#define E9 28
+#define E10 29
+#define E11 30
+#define F7 31
+#define F8 32
+#define F9 33
+#define F10 34
+#define G9 35
+#define G10 36
+
 enum statesGame menu(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento);
 enum statesGame menuSelect(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento);
 enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento);
