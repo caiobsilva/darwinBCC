@@ -492,7 +492,7 @@ void iniciarTiles(tile *tileAtual){
     tileD8->esquerda = tileD7;
     tileD8->direita = tileD9;
     tileD8->cima = tileC8;
-    tileD8->baixo = tileC9;
+    tileD8->baixo = tileE8;
     tileD8->imagem = al_load_bitmap("../res/images/tiles/Tile-D8.png");
 
     // === D9 ===
