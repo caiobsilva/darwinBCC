@@ -106,6 +106,26 @@ int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int s, int x, int y, 
     falasNinho[1] = "É importante para o desenvolvimento de uma espécie que ela tenha um lugar seguro para se reproduzir";
     falasNinho[2] = "É durante a troca de geração que as novas característica podem ser  desenvolvidas, com sorte ganharemos uma que se encaixa bem no nosso ambiente";
     
+    char  *falasIntroducao2[4];
+    falasIntroducao2[0] = "Uma nova geração, bem-vinda!";
+    falasIntroducao2[1] = "Parece que nos últimos anos algumas coisas aconteceram";
+    falasIntroducao2[2] = "Aparentemente a erupção do vulcão gerou uma ponte firme para uma das ilhas vizinhas!";
+    falasIntroducao2[3] = "Não há como saber o que esperar, um novo ambiente com formas de vida complexa e diferentes pressões ambientais! Vamos, rápido!";
+
+    char *falasIrradiacao[5];
+    falasIrradiacao[0] = "Olha só, parece que há tempos, de alguma forma, um ancestral seu conseguiu chegar nessa ilha.";
+    falasIrradiacao[1] = "Cada ilha tem um sistema diferente e a sua espécie se desevolveu de forma diferente nessa! Um caso claro de irradiação adaptativa!";
+    falasIrradiacao[2] = "...";
+    falasIrradiacao[3] = "VOCÊ VIU AQUILO?";
+    falasIrradiacao[4] = "Aquela espécie acabou de se camuflar! algumas espécies tem a habilidade de \"desaoarecer\" quando se sentem ameaçadas, fantástico!";
+    
+    char *falasInimigoAqua[5];
+    falasInimigoAqua[0] = "Uma nova descoberta! Uma espécie que vive na água";
+    falasInimigoAqua[1] = "No mar as coisas não são diferentes, existem pressões ambientais, interações e adaptações";
+    falasInimigoAqua[2] = "...";
+    falasInimigoAqua[3] = "WOW!";
+    falasInimigoAqua[4] = "Habilidades de lançamento, por essa eu não esperava! É melhor tomar cuidado, parece que machuca.";
+
     ALLEGRO_BITMAP *parte[4];
     parte[0] = al_load_bitmap("../res/images/tiles/Tile-B4.png");
     parte[1] = al_load_bitmap("../res/images/tiles/Tile-A4.png");
