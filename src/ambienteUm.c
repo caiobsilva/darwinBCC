@@ -59,6 +59,12 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
     pontos[3] = al_load_bitmap("../res/images/pontos3.png");
     ALLEGRO_COLOR branco = al_map_rgb(255,255,255);
 
+    ALLEGRO_BITMAP *vida[4];
+    vida[0] = al_load_bitmap("../res/images/coracao0.png");
+    vida[1] = al_load_bitmap("../res/images/coracao1.png");
+    vida[2] = al_load_bitmap("../res/images/coracao2.png");
+    vida[3] = al_load_bitmap("../res/images/coracao3.png");
+
     while (!sair){
         while(!(al_is_event_queue_empty(fila))){
 
@@ -85,10 +91,11 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
         al_clear_to_color(branco);
         localizacao(&x,&y,&tileAtual);
         al_draw_bitmap(tileAtual.imagem, 0,0,0);
-        addPartes(tileAtual.ID, &xInimigo, &yInimigo, &x, &y);
-        addPartes(tileAtual.ID, &xInimigo2, &yInimigo2, &x, &y);
+        addPartes(tileAtual.ID, &xInimigo, &yInimigo, &x, &y, &flagVida);
+        addPartes(tileAtual.ID, &xInimigo2, &yInimigo2, &x, &y, &flagVida);
         movimentacao(evento,&tileAtual, &x, &y,&t);
         al_draw_bitmap(pontos[flagPontos],1100,0,0);
+        al_draw_bitmap(vida[flagVida],50,0,0);
         al_flip_display();
         
     }
