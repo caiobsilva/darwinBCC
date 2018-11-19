@@ -36,35 +36,110 @@ void animacaoC1(int x, int y){
     }
 }
 
+void animacaoG10(int x,int y, ALLEGRO_EVENT evento, ALLEGRO_EVENT_QUEUE *fila){
+    
+    int n = 0, xCov = 750, yCov = 315, numeroVezes = 0, v = 0;  
+    ALLEGRO_BITMAP *parte = al_load_bitmap("../res/images/tiles/Tile-G10.png");
+    ALLEGRO_BITMAP *sprite = al_load_bitmap("../res/images/sprite01/direita01.png");
+    ALLEGRO_BITMAP *spriteCov[3];
+    spriteCov[0] = al_load_bitmap("../res/images/cov/direita01.png");
+    spriteCov[1] = al_load_bitmap("../res/images/cov/direita02.png");
+    spriteCov[2] = al_load_bitmap("../res/images/cov/direita03.png");
+    ALLEGRO_BITMAP *falasDarwin = al_load_bitmap("../res/images/barraTexto.png");
+    ALLEGRO_FONT *yoster = al_load_ttf_font("../res/font/prstart.ttf",17,0);
+    ALLEGRO_COLOR branco = al_map_rgb(255,255,255);
+    ALLEGRO_COLOR preto = al_map_rgb(0,0,0);
 
-int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int s, int x, int y, int *pontuacao){
+    char *falasIrradiacao[5];
+    falasIrradiacao[0] = "Olha só, parece que há tempos, de alguma forma, um ancestral seu conseguiu chegar nessa ilha.";
+    falasIrradiacao[1] = "Cada ilha tem um sistema próprio e a sua espécie se desevolveu de forma diferente nessa! Um caso claro de irradiação adaptativa!";
+    falasIrradiacao[2] = "...";
+    falasIrradiacao[3] = "VOCÊ VIU AQUILO?";
+    falasIrradiacao[4] = "Aquela espécie acabou de se camuflar! algumas espécies tem a habilidade de \"desaparecer\" quando se sentem ameaçadas, fantástico!";
 
-    int n = 0, d;
-    static int flagInimigos = 1, flagInicio = 1, flagInteracao = 1, flagNinho = 1;
+    while(n < 5){
+        if(n < 2){
+            al_clear_to_color(branco);
+            al_draw_bitmap(parte,0,0,0);
+            al_draw_scaled_bitmap(sprite, 0, 0, 22, 22, x, y, 66, 66, 0);
+            al_draw_scaled_bitmap(spriteCov[0], 0, 0, 22, 22, xCov, yCov, 66, 66, 0);
+            al_draw_scaled_bitmap(falasDarwin,0,0,1440,290,10,460,1152,232,0);
+            al_draw_multiline_text(yoster,preto,70,500,650,25,0,falasIrradiacao[n]);
+            al_flip_display();
+        }
+        else if(n == 2){
+            while(numeroVezes < 20){
+                al_clear_to_color(branco);
+                al_draw_bitmap(parte,0,0,0);
+                al_draw_scaled_bitmap(sprite, 0, 0, 22, 22, x, y, 66, 66, 0);
+                al_draw_scaled_bitmap(spriteCov[v], 0, 0, 22, 22, xCov, yCov, 66, 66, 0);
+                al_draw_scaled_bitmap(falasDarwin,0,0,1440,290,10,460,1152,232,0);
+                al_draw_multiline_text(yoster,preto,70,500,650,25,0,falasIrradiacao[n]);
+                al_flip_display();
+                xCov += 5;
+                v++;
+                if(v > 2){
+                    v = 0;
+                }
+                al_rest(0.01);
+                numeroVezes++;
+            }
+            n++;
+        }else{
+            al_clear_to_color(branco);
+            al_draw_bitmap(parte,0,0,0);
+            al_draw_scaled_bitmap(sprite, 0, 0, 22, 22, x, y, 66, 66, 0);
+            al_draw_scaled_bitmap(falasDarwin,0,0,1440,290,10,460,1152,232,0);
+            al_draw_multiline_text(yoster,preto,70,500,650,25,0,falasIrradiacao[n]);
+            al_flip_display();
+        }
+        al_wait_for_event_timed(fila, &evento, 0.05);
+        if(evento.type == ALLEGRO_EVENT_KEY_DOWN){
+            if(evento.keyboard.keycode == ALLEGRO_KEY_E || evento.keyboard.keycode == ALLEGRO_KEY_SPACE){
+                n++;
+            }
+        }
+    }
+    
+}
+
+int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int seletor, int x, int y, int *pontuacao){
+
+    int n = 0, numeroVezes;
+    static int flagInimigos = 1, flagInicio = 1, flagInteracao = 1, flagNinho = 1, flagIrra = 1, flagAqua = 1;
     
     al_init_font_addon();
     al_init_ttf_addon();
 
-    if(s == 8 && flagInicio == 1){
-        d = 12;
-        s = 0;
+    if(seletor == 8 && flagInicio == 1){
+        numeroVezes = 12;
+        seletor = 0;
         flagInicio = 0;
-    }else if(s == 3 && flagInimigos == 1){
+    }else if(seletor == 3 && flagInimigos == 1){
         *pontuacao += 1;
-        d = 4;
-        s = 1;
+        numeroVezes = 4;
+        seletor = 1;
         flagInimigos = 0;
-    }else if(s == 9 && flagInteracao == 1){
+    }else if(seletor == 9 && flagInteracao == 1){
         *pontuacao += 1;
         animacaoC1(x,y);
-        d = 4;
-        s = 2;
+        numeroVezes = 4;
+        seletor = 2;
         flagInteracao = 0;
-    }else if(s == 17 && flagNinho == 1){
+    }else if(seletor == 17 && flagNinho == 1){
         *pontuacao += 1;
-        s = 3;
-        d = 3;
+        seletor = 3;
+        numeroVezes = 3;
         flagNinho = 0;
+    }else if(seletor == 36 && flagIrra == 1){
+        //*pontuacao += 1;
+        seletor = 5;
+        flagIrra = 0;
+    }else if(seletor == 21 && flagAqua == 1){
+        //*pontuacao += 1;
+        seletor = 4;
+        numeroVezes = 3;
+        flagAqua = 0;
     }else{
         return 0;
     }
@@ -112,62 +187,63 @@ int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int s, int x, int y, 
     falasIntroducao2[2] = "Aparentemente a erupção do vulcão gerou uma ponte firme para uma das ilhas vizinhas!";
     falasIntroducao2[3] = "Não há como saber o que esperar, um novo ambiente com formas de vida complexa e diferentes pressões ambientais! Vamos, rápido!";
 
-    char *falasIrradiacao[5];
-    falasIrradiacao[0] = "Olha só, parece que há tempos, de alguma forma, um ancestral seu conseguiu chegar nessa ilha.";
-    falasIrradiacao[1] = "Cada ilha tem um sistema diferente e a sua espécie se desevolveu de forma diferente nessa! Um caso claro de irradiação adaptativa!";
-    falasIrradiacao[2] = "...";
-    falasIrradiacao[3] = "VOCÊ VIU AQUILO?";
-    falasIrradiacao[4] = "Aquela espécie acabou de se camuflar! algumas espécies tem a habilidade de \"desaoarecer\" quando se sentem ameaçadas, fantástico!";
-    
-    char *falasInimigoAqua[5];
-    falasInimigoAqua[0] = "Uma nova descoberta! Uma espécie que vive na água";
-    falasInimigoAqua[1] = "No mar as coisas não são diferentes, existem pressões ambientais, interações e adaptações";
-    falasInimigoAqua[2] = "...";
-    falasInimigoAqua[3] = "WOW!";
-    falasInimigoAqua[4] = "Habilidades de lançamento, por essa eu não esperava! É melhor tomar cuidado, parece que machuca.";
+    char *falasInimigoAqua[3];
+    falasInimigoAqua[0] = "Espere um pouco...";
+    falasInimigoAqua[1] = "Aparentemente essa espécie usou o tempo vago para se adaptar a água salgada";
+    falasInimigoAqua[2] = "Fantastático!";
 
-    ALLEGRO_BITMAP *parte[4];
+    ALLEGRO_BITMAP *parte[5];
     parte[0] = al_load_bitmap("../res/images/tiles/Tile-B4.png");
     parte[1] = al_load_bitmap("../res/images/tiles/Tile-A4.png");
     parte[2] = al_load_bitmap("../res/images/tiles/Tile-C1.png");  
     parte[3] = al_load_bitmap("../res/images/tiles/Tile-D5.png");
+    parte[4] = al_load_bitmap("../res/images/tiles/Tile-D7.png");
 
     ALLEGRO_BITMAP *inimigo = al_load_bitmap("../res/images/inimigos1.png"); 
 
+    if(seletor == 5){
+        animacaoG10(x,y,evento,fila);
+    }else{
 
-    while(n < d){
-        al_clear_to_color(branco);
-        al_draw_bitmap(parte[s], 0,0,0);
-        al_draw_scaled_bitmap(falasDarwin,0,0,1440,290,10,460,1152,232,0);
-        switch(s){
-            case 0:
-                al_draw_scaled_bitmap(sprite, 0, 0, 22, 22, 610, 294, 66, 66, 0);
-                al_draw_multiline_text(yoster,preto,70,500,650,25,0,falasInicio[n]);
-                break;
-            case 1:
-                al_draw_scaled_bitmap(inimigo,0,0,238,294,610,380,48,66,0);
-                al_draw_multiline_text(yoster,preto,70,500,650,25,0,falasInimigos[n]);
-                break;
-            case 2:
-                al_draw_scaled_bitmap(sprite, 0, 0, 22, 22, x, y, 66, 66, 0);
-                al_draw_scaled_bitmap(inimigo,0,0,238,294,640,294,48,66,0);
-                al_draw_multiline_text(yoster,preto,70,500,650,25,0,falasInteracoes[n]);
-                break;
-            case 3:
-                al_draw_scaled_bitmap(sprite, 0, 0, 22, 22, x, y, 66, 66, 0);
-                al_draw_multiline_text(yoster,preto,70,500,650,25,0,falasNinho[n]);
-        }
-        al_flip_display();
-
-        al_wait_for_event_timed(fila, &evento, 0.05);
-        if(evento.type == ALLEGRO_EVENT_DISPLAY_CLOSE){
-            return (1);
-        }else if(evento.type == ALLEGRO_EVENT_KEY_DOWN){
-            if(evento.keyboard.keycode == ALLEGRO_KEY_E || evento.keyboard.keycode == ALLEGRO_KEY_SPACE){
-                n++;
+        while(n < numeroVezes){
+            al_clear_to_color(branco);
+            al_draw_bitmap(parte[seletor], 0,0,0);
+            al_draw_scaled_bitmap(falasDarwin,0,0,1440,290,10,460,1152,232,0);
+            switch(seletor){
+                case 0:
+                    al_draw_scaled_bitmap(sprite, 0, 0, 22, 22, 610, 294, 66, 66, 0);
+                    al_draw_multiline_text(yoster,preto,70,500,650,25,0,falasInicio[n]);
+                    break;
+                case 1:
+                    al_draw_scaled_bitmap(inimigo,0,0,238,294,610,380,48,66,0);
+                    al_draw_multiline_text(yoster,preto,70,500,650,25,0,falasInimigos[n]);
+                    break;
+                case 2:
+                    al_draw_scaled_bitmap(sprite, 0, 0, 22, 22, x, y, 66, 66, 0);
+                    al_draw_scaled_bitmap(inimigo,0,0,238,294,640,294,48,66,0);
+                    al_draw_multiline_text(yoster,preto,70,500,650,25,0,falasInteracoes[n]);
+                    break;
+                case 3:
+                    al_draw_scaled_bitmap(sprite, 0, 0, 22, 22, x, y, 66, 66, 0);
+                    al_draw_multiline_text(yoster,preto,70,500,650,25,0,falasNinho[n]);
+                case 4:  
+                    al_draw_scaled_bitmap(sprite, 0, 0, 22, 22, x, y, 66, 66, 0);
+                    al_draw_scaled_bitmap(inimigo,0,0,238,294,640,10,48,66,0);
+                    al_draw_multiline_text(yoster,preto,70,500,650,25,0,falasInimigoAqua[n]);
+                    break;
             }
+            al_flip_display();
+
+            al_wait_for_event_timed(fila, &evento, 0.05);
+            if(evento.type == ALLEGRO_EVENT_DISPLAY_CLOSE){
+                return (1);
+            }else if(evento.type == ALLEGRO_EVENT_KEY_DOWN){
+                if(evento.keyboard.keycode == ALLEGRO_KEY_E || evento.keyboard.keycode == ALLEGRO_KEY_SPACE){
+                    n++;
+                }
+            }
+            
         }
-        
     }
 
     al_destroy_bitmap(sprite);
