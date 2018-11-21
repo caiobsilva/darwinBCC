@@ -5,7 +5,7 @@
 
 // função para movimentação do inimigo
 void movimentacaoInimigos(int tile, int *xInimigo,int *yInimigo, int *x, int *y, int *flagVida){
-    static int t;
+    static int t, i;
     ALLEGRO_BITMAP *iniTerrestre[8];
 
     iniTerrestre[0] = al_load_bitmap("../res/images/terrestre/baixo.png");
@@ -25,6 +25,8 @@ void movimentacaoInimigos(int tile, int *xInimigo,int *yInimigo, int *x, int *y,
         }else if(t <= 12){
             al_draw_scaled_bitmap(iniTerrestre[5], 0, 0, 22, 9, *xInimigo, *yInimigo, 66, 27, 0);
         }
+
+        i = 4;
     }else if(*xInimigo > *x + 3){
         *xInimigo -= 3;
 
@@ -33,6 +35,8 @@ void movimentacaoInimigos(int tile, int *xInimigo,int *yInimigo, int *x, int *y,
         }else if(t <= 12){
             al_draw_scaled_bitmap(iniTerrestre[7], 0, 0, 22, 9, *xInimigo, *yInimigo, 66, 27, 0);
         }
+
+        i = 6;
     }else if(*yInimigo < *y - 3){
         *yInimigo += 3;
 
@@ -41,6 +45,8 @@ void movimentacaoInimigos(int tile, int *xInimigo,int *yInimigo, int *x, int *y,
         }else if(t <= 12){
             al_draw_scaled_bitmap(iniTerrestre[1], 0, 0, 9, 22, *xInimigo, *yInimigo, 27, 66, 0);
         }
+
+        i = 0;
     }else if (*yInimigo > *y + 3){
         *yInimigo -= 3;
 
@@ -49,6 +55,15 @@ void movimentacaoInimigos(int tile, int *xInimigo,int *yInimigo, int *x, int *y,
         }else if(t <= 12){
             al_draw_scaled_bitmap(iniTerrestre[3], 0, 0, 9, 22, *xInimigo, *yInimigo, 27, 66, 0);
         }
+
+        i = 2;
+    }else{
+        if(i == 4 || i == 6){
+            al_draw_scaled_bitmap(iniTerrestre[i], 0, 0, 22, 9, *x, *y, 66, 27, 0);
+        }else{
+            al_draw_scaled_bitmap(iniTerrestre[i], 0, 0, 9, 22, *x, *y, 27, 66, 0);
+        }
+    }
     t += 1;
 
     if(t > 12){
@@ -57,7 +72,6 @@ void movimentacaoInimigos(int tile, int *xInimigo,int *yInimigo, int *x, int *y,
 
     for(int i = 0; i < 8; i++){
         al_destroy_bitmap(iniTerrestre[i]);
-    }
     }
 }
 
