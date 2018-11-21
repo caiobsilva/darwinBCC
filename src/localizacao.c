@@ -18,41 +18,41 @@ void movimentacaoInimigos(int tile, int *xInimigo,int *yInimigo, int *x, int *y,
     iniTerrestre[7] = al_load_bitmap("../res/images/terrestre/esquerda2.png");
 
     if(*xInimigo < *x - 3){
-        *xInimigo += 3;
+        *xInimigo += 2.7;
 
-        if(t <= 6){
+        if(t <= 10){
             al_draw_scaled_bitmap(iniTerrestre[4], 0, 0, 22, 9, *xInimigo, *yInimigo, 66, 27, 0);
-        }else if(t <= 12){
+        }else if(t <= 20){
             al_draw_scaled_bitmap(iniTerrestre[5], 0, 0, 22, 9, *xInimigo, *yInimigo, 66, 27, 0);
         }
 
         i = 4;
     }else if(*xInimigo > *x + 3){
-        *xInimigo -= 3;
+        *xInimigo -= 2.7;
 
-        if(t <= 6){
+        if(t <= 10){
             al_draw_scaled_bitmap(iniTerrestre[6], 0, 0, 22, 9, *xInimigo, *yInimigo, 66, 27, 0);
-        }else if(t <= 12){
+        }else if(t <= 20){
             al_draw_scaled_bitmap(iniTerrestre[7], 0, 0, 22, 9, *xInimigo, *yInimigo, 66, 27, 0);
         }
 
         i = 6;
     }else if(*yInimigo < *y - 3){
-        *yInimigo += 3;
+        *yInimigo += 2.7;
 
-        if(t <= 6){
+        if(t <= 10){
             al_draw_scaled_bitmap(iniTerrestre[0], 0, 0, 9, 22, *xInimigo, *yInimigo, 27, 66, 0);
-        }else if(t <= 12){
+        }else if(t <= 20){
             al_draw_scaled_bitmap(iniTerrestre[1], 0, 0, 9, 22, *xInimigo, *yInimigo, 27, 66, 0);
         }
 
         i = 0;
     }else if (*yInimigo > *y + 3){
-        *yInimigo -= 3;
+        *yInimigo -= 2.7;
 
-        if(t <= 6){
+        if(t <= 10){
             al_draw_scaled_bitmap(iniTerrestre[2], 0, 0, 9, 22, *xInimigo, *yInimigo, 27, 66, 0);
-        }else if(t <= 12){
+        }else if(t <= 20){
             al_draw_scaled_bitmap(iniTerrestre[3], 0, 0, 9, 22, *xInimigo, *yInimigo, 27, 66, 0);
         }
 
@@ -64,9 +64,10 @@ void movimentacaoInimigos(int tile, int *xInimigo,int *yInimigo, int *x, int *y,
             al_draw_scaled_bitmap(iniTerrestre[i], 0, 0, 9, 22, *x, *y, 27, 66, 0);
         }
     }
+
     t += 1;
 
-    if(t > 12){
+    if(t > 20){
         t = 0;
     }
 
