@@ -48,7 +48,7 @@ int fade(int n){
 
 enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
     int flagOpcoes = 0, flagSom = 1, flagPontos = 0, flagVida = 3;
-    int sair = 0, x = 610, y = 294, xInimigo = 610, yInimigo = 380,xInimigo2 = 610,yInimigo2 = 380, t = 0;
+    int sair = 0, x = 610, y = 294, xInimigo = 610, yInimigo = 380, xInimigo2 = 610, yInimigo2 = 380, t = 0;
     tile tileAtual;
     iniciarTiles(&tileAtual);
 
@@ -75,7 +75,7 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
             }
             else if(evento.type == ALLEGRO_EVENT_KEY_DOWN){
                 if(evento.keyboard.keycode == ALLEGRO_KEY_ESCAPE){
-                    flagOpcoes = pausa(x,y,&flagSom,fila,evento);
+                    flagOpcoes = pausa(x, y, &flagSom, fila, evento);
 
                     if(flagOpcoes){ 
                         return Exit;
@@ -84,18 +84,18 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
             }
         }
     
-        if(falas(fila,evento,tileAtual.ID,x,y,&flagPontos)){
+        if(falas(fila, evento, tileAtual.ID, x, y, &flagPontos)){
             return Exit;
         }
 
         al_clear_to_color(branco);
-        localizacao(&x,&y,&tileAtual);
-        al_draw_bitmap(tileAtual.imagem, 0,0,0);
+        localizacao(&x, &y, &tileAtual);
+        al_draw_bitmap(tileAtual.imagem, 0, 0, 0);
         addPartes(tileAtual.ID, &xInimigo, &yInimigo, &x, &y, &flagVida);
         addPartes(tileAtual.ID, &xInimigo2, &yInimigo2, &x, &y, &flagVida);
-        movimentacao(evento,&tileAtual, &x, &y,&t);
-        al_draw_bitmap(pontos[flagPontos],1100,0,0);
-        al_draw_bitmap(vida[flagVida],50,0,0);
+        movimentacao(evento, &tileAtual, &x, &y, &t);
+        al_draw_bitmap(pontos[flagPontos], 1100, 0, 0);
+        al_draw_bitmap(vida[flagVida], 50, 0, 0);
         al_flip_display();
         
     }

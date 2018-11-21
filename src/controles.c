@@ -31,7 +31,7 @@ void movimentacao(ALLEGRO_EVENT evento,tile *tileAtual, int *x, int *y, int *t){
             al_draw_scaled_bitmap(player[5], 0, 0, 22, 22, *x, *y, 66, 66, 0);
         }
         i = 3;
-        *t+= 1;
+        *t += 1;
     }else if(al_key_down(&tecla, ALLEGRO_KEY_S) || al_key_down(&tecla, ALLEGRO_KEY_DOWN)){
         *y += 5;
         //colisao(tileAtual,x,y,2);
@@ -43,7 +43,7 @@ void movimentacao(ALLEGRO_EVENT evento,tile *tileAtual, int *x, int *y, int *t){
             al_draw_scaled_bitmap(player[2], 0, 0, 22, 22, *x, *y, 66, 66, 0);
         }
         i = 0;
-        *t+= 1;
+        *t += 1;
     }else if(al_key_down(&tecla, ALLEGRO_KEY_D) || al_key_down(&tecla, ALLEGRO_KEY_RIGHT)){
         *x += 5;
         //colisao(tileAtual,x,y,3);
@@ -55,7 +55,7 @@ void movimentacao(ALLEGRO_EVENT evento,tile *tileAtual, int *x, int *y, int *t){
             al_draw_scaled_bitmap(player[11], 0, 0, 22, 22, *x, *y, 66, 66, 0);
         }
         i = 9;
-        *t+= 1;
+        *t += 1;
     }else if(al_key_down(&tecla, ALLEGRO_KEY_A) || al_key_down(&tecla, ALLEGRO_KEY_LEFT)){
         *x -= 5;
         //colisao(tileAtual,x,y,4);
@@ -67,7 +67,7 @@ void movimentacao(ALLEGRO_EVENT evento,tile *tileAtual, int *x, int *y, int *t){
             al_draw_scaled_bitmap(player[8], 0, 0, 22, 22, *x, *y, 66, 66, 0);
         }
         i = 6;
-        *t+= 1;
+        *t += 1;
     }else{
         if(i == 3 || i == 0){
             al_draw_scaled_bitmap(player[i], 0, 0, 22, 22, *x, *y, 66, 66, 0);

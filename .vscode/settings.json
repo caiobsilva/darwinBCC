@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "allegro_font.h": "c"
+        "allegro_font.h": "c",
+        "header.h": "c"
     }
 }

@@ -11,7 +11,7 @@ void animacaoC1(int x, int y){
     int xInimigo = 610, n = 0;
 
     ALLEGRO_BITMAP *sprite2 = al_load_bitmap("../res/images/sprite01/esquerda01.png"); 
-    ALLEGRO_BITMAP *inimigo = al_load_bitmap("../res/images/inimigos1.png"); 
+    ALLEGRO_BITMAP *inimigo = al_load_bitmap("../res/images/terrestre/baixo.png"); 
     ALLEGRO_BITMAP *sprite = al_load_bitmap("../res/images/sprite01/baixo01.png");
     ALLEGRO_BITMAP *tile  = al_load_bitmap("../res/images/tiles/Tile-C1.png");
     

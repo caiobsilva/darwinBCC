@@ -5,28 +5,69 @@
 
 // função para movimentação do inimigo
 void movimentacaoInimigos(int tile, int *xInimigo,int *yInimigo, int *x, int *y, int *flagVida){
+    static int t;
+    ALLEGRO_BITMAP *iniTerrestre[8];
+
+    iniTerrestre[0] = al_load_bitmap("../res/images/terrestre/baixo.png");
+    iniTerrestre[1] = al_load_bitmap("../res/images/terrestre/baixo2.png");
+    iniTerrestre[2] = al_load_bitmap("../res/images/terrestre/cima.png");
+    iniTerrestre[3] = al_load_bitmap("../res/images/terrestre/cima2.png");
+    iniTerrestre[4] = al_load_bitmap("../res/images/terrestre/direita.png");
+    iniTerrestre[5] = al_load_bitmap("../res/images/terrestre/direita2.png");
+    iniTerrestre[6] = al_load_bitmap("../res/images/terrestre/esquerda.png");
+    iniTerrestre[7] = al_load_bitmap("../res/images/terrestre/esquerda2.png");
+
     if(*xInimigo < *x - 3){
         *xInimigo += 3;
+
+        if(t <= 6){
+            al_draw_scaled_bitmap(iniTerrestre[4], 0, 0, 22, 9, *xInimigo, *yInimigo, 66, 27, 0);
+        }else if(t <= 12){
+            al_draw_scaled_bitmap(iniTerrestre[5], 0, 0, 22, 9, *xInimigo, *yInimigo, 66, 27, 0);
+        }
     }else if(*xInimigo > *x + 3){
         *xInimigo -= 3;
+
+        if(t <= 6){
+            al_draw_scaled_bitmap(iniTerrestre[6], 0, 0, 22, 9, *xInimigo, *yInimigo, 66, 27, 0);
+        }else if(t <= 12){
+            al_draw_scaled_bitmap(iniTerrestre[7], 0, 0, 22, 9, *xInimigo, *yInimigo, 66, 27, 0);
+        }
     }else if(*yInimigo < *y - 3){
         *yInimigo += 3;
+
+        if(t <= 6){
+            al_draw_scaled_bitmap(iniTerrestre[0], 0, 0, 9, 22, *xInimigo, *yInimigo, 27, 66, 0);
+        }else if(t <= 12){
+            al_draw_scaled_bitmap(iniTerrestre[1], 0, 0, 9, 22, *xInimigo, *yInimigo, 27, 66, 0);
+        }
     }else if (*yInimigo > *y + 3){
         *yInimigo -= 3;
+
+        if(t <= 6){
+            al_draw_scaled_bitmap(iniTerrestre[2], 0, 0, 9, 22, *xInimigo, *yInimigo, 27, 66, 0);
+        }else if(t <= 12){
+            al_draw_scaled_bitmap(iniTerrestre[3], 0, 0, 9, 22, *xInimigo, *yInimigo, 27, 66, 0);
+        }
+    t += 1;
+
+    if(t > 12){
+        t = 0;
+    }
+
+    for(int i = 0; i < 8; i++){
+        al_destroy_bitmap(iniTerrestre[i]);
+    }
     }
 }
 
 // função para adicionar extras no ambiente (inimigos e algumas imagens)
 void addPartes(int tile, int *xInimigo, int *yInimigo, int *x, int *y, int *flagVida){
-    ALLEGRO_BITMAP *inimigo = al_load_bitmap("../res/images/inimigos1.png"); 
     if(tile == A4){
         movimentacaoInimigos(tile,xInimigo,yInimigo,x,y, flagVida);
-        al_draw_scaled_bitmap(inimigo,0,0,238,294,*xInimigo,*yInimigo,48,66,0);
     }else if(tile == C1){
-        al_draw_scaled_bitmap(inimigo,0,0,238,294,*xInimigo,*yInimigo,48,66,0);
         movimentacaoInimigos(tile,xInimigo,yInimigo,x,y, flagVida);
     }
-    al_destroy_bitmap(inimigo);
 }
 
 
