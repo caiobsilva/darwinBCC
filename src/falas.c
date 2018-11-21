@@ -17,11 +17,11 @@ void animacaoC1(int x, int y){
     
     while( n < 6 ){
 
-        al_clear_to_color(al_map_rgb(255,255,255));
-        al_draw_bitmap(tile,0,0,0);
+        al_clear_to_color(al_map_rgb(255, 255, 55));
+        al_draw_bitmap(tile, 0, 0, 0);
         al_draw_scaled_bitmap(sprite, 0, 0, 22, 22, x, y, 66, 66, 0);
         al_draw_scaled_bitmap(sprite2, 0, 0, 22, 22, 610, 294, 66, 66, 0);
-        al_draw_scaled_bitmap(inimigo,0,0,238,294,xInimigo,294,48,66,0);
+        al_draw_scaled_bitmap(inimigo, 0, 0, 9, 22, xInimigo, 294, 27, 66, 0);
         al_flip_display();
 
         if(xInimigo == 610)
@@ -46,9 +46,9 @@ void animacaoG10(int x,int y, ALLEGRO_EVENT evento, ALLEGRO_EVENT_QUEUE *fila){
     spriteCov[1] = al_load_bitmap("../res/images/cov/direita02.png");
     spriteCov[2] = al_load_bitmap("../res/images/cov/direita03.png");
     ALLEGRO_BITMAP *falasDarwin = al_load_bitmap("../res/images/barraTexto.png");
-    ALLEGRO_FONT *yoster = al_load_ttf_font("../res/font/prstart.ttf",17,0);
-    ALLEGRO_COLOR branco = al_map_rgb(255,255,255);
-    ALLEGRO_COLOR preto = al_map_rgb(0,0,0);
+    ALLEGRO_FONT *yoster = al_load_ttf_font("../res/font/prstart.ttf", 17, 0);
+    ALLEGRO_COLOR branco = al_map_rgb(255, 255, 255);
+    ALLEGRO_COLOR preto = al_map_rgb(0, 0, 0);
 
     char *falasIrradiacao[5];
     falasIrradiacao[0] = "Olha só, parece que há tempos, de alguma forma, um ancestral seu conseguiu chegar nessa ilha.";
@@ -63,18 +63,18 @@ void animacaoG10(int x,int y, ALLEGRO_EVENT evento, ALLEGRO_EVENT_QUEUE *fila){
             al_draw_bitmap(parte,0,0,0);
             al_draw_scaled_bitmap(sprite, 0, 0, 22, 22, x, y, 66, 66, 0);
             al_draw_scaled_bitmap(spriteCov[0], 0, 0, 22, 22, xCov, yCov, 66, 66, 0);
-            al_draw_scaled_bitmap(falasDarwin,0,0,1440,290,10,460,1152,232,0);
-            al_draw_multiline_text(yoster,preto,70,500,650,25,0,falasIrradiacao[n]);
+            al_draw_scaled_bitmap(falasDarwin, 0, 0, 1440, 290, 10, 460, 1152, 232, 0);
+            al_draw_multiline_text(yoster, preto, 70, 500, 650, 25, 0, falasIrradiacao[n]);
             al_flip_display();
         }
         else if(n == 2){
             while(numeroVezes < 20){
                 al_clear_to_color(branco);
-                al_draw_bitmap(parte,0,0,0);
+                al_draw_bitmap(parte, 0, 0, 0);
                 al_draw_scaled_bitmap(sprite, 0, 0, 22, 22, x, y, 66, 66, 0);
                 al_draw_scaled_bitmap(spriteCov[v], 0, 0, 22, 22, xCov, yCov, 66, 66, 0);
-                al_draw_scaled_bitmap(falasDarwin,0,0,1440,290,10,460,1152,232,0);
-                al_draw_multiline_text(yoster,preto,70,500,650,25,0,falasIrradiacao[n]);
+                al_draw_scaled_bitmap(falasDarwin, 0, 0, 1440, 290, 10, 460, 1152, 232, 0);
+                al_draw_multiline_text(yoster, preto, 70, 500, 650, 25, 0, falasIrradiacao[n]);
                 al_flip_display();
                 xCov += 5;
                 v++;
@@ -87,10 +87,10 @@ void animacaoG10(int x,int y, ALLEGRO_EVENT evento, ALLEGRO_EVENT_QUEUE *fila){
             n++;
         }else{
             al_clear_to_color(branco);
-            al_draw_bitmap(parte,0,0,0);
+            al_draw_bitmap(parte, 0, 0, 0);
             al_draw_scaled_bitmap(sprite, 0, 0, 22, 22, x, y, 66, 66, 0);
-            al_draw_scaled_bitmap(falasDarwin,0,0,1440,290,10,460,1152,232,0);
-            al_draw_multiline_text(yoster,preto,70,500,650,25,0,falasIrradiacao[n]);
+            al_draw_scaled_bitmap(falasDarwin, 0, 0, 1440, 290, 10, 460,1152, 232, 0);
+            al_draw_multiline_text(yoster, preto, 70, 500, 650, 25, 0, falasIrradiacao[n]);
             al_flip_display();
         }
         al_wait_for_event_timed(fila, &evento, 0.05);
@@ -202,34 +202,35 @@ int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int seletor, int x, i
     ALLEGRO_BITMAP *inimigo = al_load_bitmap("../res/images/inimigos1.png"); 
 
     if(seletor == 5){
-        animacaoG10(x,y,evento,fila);
+        animacaoG10(x, y, evento, fila);
     }else{
 
         while(n < numeroVezes){
             al_clear_to_color(branco);
-            al_draw_bitmap(parte[seletor], 0,0,0);
-            al_draw_scaled_bitmap(falasDarwin,0,0,1440,290,10,460,1152,232,0);
+            al_draw_bitmap(parte[seletor], 0, 0, 0);
+            al_draw_scaled_bitmap(falasDarwin, 0, 0, 1440, 290, 10, 460, 1152, 232, 0);
             switch(seletor){
                 case 0:
                     al_draw_scaled_bitmap(sprite, 0, 0, 22, 22, 610, 294, 66, 66, 0);
-                    al_draw_multiline_text(yoster,preto,70,500,650,25,0,falasInicio[n]);
+                    al_draw_multiline_text(yoster, preto, 70, 500, 650, 25, 0, falasInicio[n]);
                     break;
                 case 1:
-                    al_draw_scaled_bitmap(inimigo,0,0,238,294,610,380,48,66,0);
-                    al_draw_multiline_text(yoster,preto,70,500,650,25,0,falasInimigos[n]);
+                    al_draw_scaled_bitmap(inimigo, 0, 0, 9, 22, 610, 380, 27, 66, 0);
+                    al_draw_multiline_text(yoster, preto, 70, 500, 650, 25, 0, falasInimigos[n]);
                     break;
                 case 2:
                     al_draw_scaled_bitmap(sprite, 0, 0, 22, 22, x, y, 66, 66, 0);
-                    al_draw_scaled_bitmap(inimigo,0,0,238,294,640,294,48,66,0);
-                    al_draw_multiline_text(yoster,preto,70,500,650,25,0,falasInteracoes[n]);
+                    al_draw_scaled_bitmap(inimigo, 0, 0, 9, 22, 640, 294, 27, 66, 0);
+                    al_draw_multiline_text(yoster, preto, 70, 500, 650, 25, 0, falasInteracoes[n]);
                     break;
                 case 3:
                     al_draw_scaled_bitmap(sprite, 0, 0, 22, 22, x, y, 66, 66, 0);
-                    al_draw_multiline_text(yoster,preto,70,500,650,25,0,falasNinho[n]);
+                    al_draw_multiline_text(yoster, preto, 70, 500, 650, 25, 0, falasNinho[n]);
+                    break;
                 case 4:  
                     al_draw_scaled_bitmap(sprite, 0, 0, 22, 22, x, y, 66, 66, 0);
-                    al_draw_scaled_bitmap(inimigo,0,0,238,294,640,10,48,66,0);
-                    al_draw_multiline_text(yoster,preto,70,500,650,25,0,falasInimigoAqua[n]);
+                    al_draw_scaled_bitmap(inimigo,0, 0, 9, 22, 640, 10, 27, 66, 0);
+                    al_draw_multiline_text(yoster, preto, 70, 500, 650, 25, 0, falasInimigoAqua[n]);
                     break;
             }
             al_flip_display();
