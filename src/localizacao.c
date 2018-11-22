@@ -4,19 +4,90 @@
 #include "header.h"
 
 
-void inimigoAquatico(int tile, int posicao, int *xAquatico, int *yAquatico, int *x, int *y, int *flagVida){
-    ALLEGRO_BITMAP *iniAquatico[6];
+/*void trajProjetil(int *xAquatico, int *yAquatico, int *x, int *y, int *flagVida){
+
+}*/
+
+
+void inimigoAquatico(int tile, int *xAquatico, int *yAquatico, int *x, int *y, int *flagVida){
+    static int t, r;
+    int quocienteX, quocienteY;
+
+    ALLEGRO_BITMAP *iniAquatico[8];
     ALLEGRO_BITMAP *projetil;
 
-    iniAquatico[0] = al_load_bitmap("../res/images/aquatico/direita.png");
-    iniAquatico[1] = al_load_bitmap("../res/images/aquatico/direita2.png");
-    iniAquatico[2] = al_load_bitmap("../res/images/aquatico/esquerda.png");
-    iniAquatico[3] = al_load_bitmap("../res/images/aquatico/esquerda2.png");
-    iniAquatico[4] = al_load_bitmap("../res/images/aquatico/frente.png");
-    iniAquatico[5] = al_load_bitmap("../res/images/aquatico/frente2.png");
+    iniAquatico[0] = al_load_bitmap("../res/images/aquatico/esquerda.png");
+    iniAquatico[1] = al_load_bitmap("../res/images/aquatico/esquerda2.png");
+    iniAquatico[2] = al_load_bitmap("../res/images/aquatico/direita.png");
+    iniAquatico[3] = al_load_bitmap("../res/images/aquatico/direita2.png");
+    iniAquatico[4] = al_load_bitmap("../res/images/aquatico/baixo.png");
+    iniAquatico[5] = al_load_bitmap("../res/images/aquatico/baixo2.png");
+    iniAquatico[6] = al_load_bitmap("../res/images/aquatico/cima.png");
+    iniAquatico[7] = al_load_bitmap("../res/images/aquatico/cima2.png");
 
     projetil = al_load_bitmap("../res/images/aquatico/projetil.png");
 
+    quocienteX = *xAquatico / *x;
+    quocienteY = *yAquatico / *y;
+
+    if(quocienteX > quocienteY){
+        if(*y < *yAquatico){
+            if(t <= 6){
+                al_draw_scaled_bitmap(iniAquatico[6], 0, 0, 33, 24, *xAquatico, *yAquatico, 66, 48, 0);
+            }else if(t <= 12){
+                al_draw_scaled_bitmap(iniAquatico[7], 0, 0, 33, 24, *xAquatico, *yAquatico, 66, 48, 0);
+            }
+            
+            if(r = 48){
+                //trajProjetil(*xAquatico, *yAquatico, *x, *y, *flagVida);
+            }
+        }
+        if(*y > *yAquatico){
+            if(t <= 6){
+                al_draw_scaled_bitmap(iniAquatico[4], 0, 0, 33, 24, *xAquatico, *yAquatico, 66, 48, 0);
+            }else if(t <= 12){
+                al_draw_scaled_bitmap(iniAquatico[5], 0, 0, 33, 24, *xAquatico, *yAquatico, 66, 48, 0);
+            }
+
+            if(r = 48){
+                //trajProjetil(*xAquatico, *yAquatico, *x, *y, *flagVida);
+            }
+        }
+    }else{
+        if(*x < *xAquatico){
+            if(t <= 6){
+                al_draw_scaled_bitmap(iniAquatico[0], 0, 0, 24, 33, *xAquatico, *yAquatico, 48, 66, 0);
+            }else if(t <= 12){
+                al_draw_scaled_bitmap(iniAquatico[1], 0, 0, 24, 33, *xAquatico, *yAquatico, 48, 66, 0);
+            }
+
+            if(r = 48){
+                //trajProjetil(*xAquatico, *yAquatico, *x, *y, *flagVida);
+            }
+        }
+        if(*x > *xAquatico){
+            if(t <= 6){
+                al_draw_scaled_bitmap(iniAquatico[2], 0, 0, 24, 33, *xAquatico, *yAquatico, 48, 66, 0);
+            }else if(t <= 12){
+                al_draw_scaled_bitmap(iniAquatico[3], 0, 0, 24, 33, *xAquatico, *yAquatico, 48, 66, 0);
+            }
+
+            if(r = 48){
+                //trajProjetil(*xAquatico, *yAquatico, *x, *y, *flagVida);
+            }
+        }
+    }
+
+    if(t > 12){
+        t = 0;
+    }
+    if(r > 48){
+        r = 0;
+    }
+
+    for(int i = 0; i < 8; i++){
+        al_destroy_bitmap(iniAquatico[i]);
+    }
 }
 
 
