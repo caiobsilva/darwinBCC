@@ -74,11 +74,12 @@ enum statesGame menuSelect(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
     enum statesGame estado;
     int sair = 0;
 
-    al_reserve_samples(5);
     ALLEGRO_COLOR branco = al_map_rgb(255, 255, 255);
     ALLEGRO_SAMPLE *efeitoSelecionar = al_load_sample("../res/audio/pressEffect.flac");
     ALLEGRO_SAMPLE *efeitoTrocar = al_load_sample("../res/audio/alternEffect.flac");
-    ALLEGRO_SAMPLE *musicaMenu = al_load_sample("../res/audio/menuTheme.flac");
+    ALLEGRO_AUDIO_STREAM *musicaMenu = al_load_audio_stream("../res/audio/menuTheme.flac",4,1024);
+    al_reserve_samples(2);
+    al_attach_audio_stream_to_mixer(musicaMenu,al_get_default_mixer());
 
     ALLEGRO_BITMAP *arraySelecionar[3];
     
@@ -94,9 +95,7 @@ enum statesGame menuSelect(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
 
     while(!sair){
         al_wait_for_event_timed(fila, &evento, 0.05);
-        al_play_sample(musicaMenu, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_LOOP, NULL);
-
-        al_play_sample(musicaMenu, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_LOOP, NULL);
+        al_set_audio_stream_playing(musicaMenu, 1);
 
         if(evento.type == ALLEGRO_EVENT_DISPLAY_CLOSE){
             return Exit;
@@ -128,7 +127,7 @@ enum statesGame menuSelect(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
     }
 
     al_destroy_sample(efeitoSelecionar);
-    al_destroy_sample(musicaMenu);
+    al_destroy_audio_stream(musicaMenu);
 
     for (int i = 0; i < 3; i++){
         al_destroy_bitmap(arraySelecionar[i]);
