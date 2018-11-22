@@ -3,8 +3,25 @@
 #include <allegro5/allegro_image.h>
 #include "header.h"
 
-// função para movimentação do inimigo
-void movimentacaoInimigos(int tile, int *xInimigo,int *yInimigo, int *x, int *y, int *flagVida){
+
+void inimigoAquatico(int tile, int posicao, int *xAquatico, int *yAquatico, int *x, int *y, int *flagVida){
+    ALLEGRO_BITMAP *iniAquatico[6];
+    ALLEGRO_BITMAP *projetil;
+
+    iniAquatico[0] = al_load_bitmap("../res/images/aquatico/direita.png");
+    iniAquatico[1] = al_load_bitmap("../res/images/aquatico/direita2.png");
+    iniAquatico[2] = al_load_bitmap("../res/images/aquatico/esquerda.png");
+    iniAquatico[3] = al_load_bitmap("../res/images/aquatico/esquerda2.png");
+    iniAquatico[4] = al_load_bitmap("../res/images/aquatico/frente.png");
+    iniAquatico[5] = al_load_bitmap("../res/images/aquatico/frente2.png");
+
+    projetil = al_load_bitmap("../res/images/aquatico/projetil.png");
+
+}
+
+
+// função para movimentação do inimigo terrestre
+void movimentacaoInimigos(int tile, int *xInimigo, int *yInimigo, int *x, int *y, int *flagVida){
     static int t, i;
     ALLEGRO_BITMAP *iniTerrestre[8];
 
@@ -76,12 +93,13 @@ void movimentacaoInimigos(int tile, int *xInimigo,int *yInimigo, int *x, int *y,
     }
 }
 
+
 // função para adicionar extras no ambiente (inimigos e algumas imagens)
 void addPartes(int tile, int *xInimigo, int *yInimigo, int *x, int *y, int *flagVida){
     if(tile == A4){
-        movimentacaoInimigos(tile,xInimigo,yInimigo,x,y, flagVida);
+        movimentacaoInimigos(tile, xInimigo, yInimigo, x, y, flagVida);
     }else if(tile == C1){
-        movimentacaoInimigos(tile,xInimigo,yInimigo,x,y, flagVida);
+        movimentacaoInimigos(tile, xInimigo, yInimigo, x, y, flagVida);
     }
 }
 
