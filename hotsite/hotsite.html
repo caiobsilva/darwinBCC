@@ -2,35 +2,108 @@
 <html>
 <head>
     <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
-    <link rel="shortcut icon" href="logo.png" />
+    <link rel="shortcut icon" href="logo.png"/>
+    <meta charset="UTF-8">
     <title>Yoster Island</title>
+    
     <style>
         body{
             padding: 0;
             margin: 0;
-            font-family: Times New Roman;
+            font-family: 'PT Sans',Times New Roman;
         }
-        #sideBar{
-            margin-left: 25px;
-            margin-top: 25px;
-            width: 200px;
-            border-radius: 15px;
-            background-color: #F1F1F1;
-            text-align: center;
+        #topBar{
+            height: 54px;
+            width: 100%;
+            background-color: black;
             position: fixed;
         }
-        #gameText{
-            position: relative;
+        #topBar img{
+            float: left;
+        }
+        #topBar ul{
+            list-style: none;
+            text-decoration: none;
+            float: left;
+        }
+        #topBar a{
+            margin: 0;
+            padding: 15px 15px 15px 15px;
+            text-decoration: none;
+            color: white;
+        }
+        #topBar a:hover {
+            color: green;
+        }
+        #simbImg{
+            background-color: gray;
+        }
+        #simbImg img{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+        }
+        #sobreJogo{
             margin: auto;
             width: 50%;
             padding: 10px;
-            align-content: center;
-            font-family: 'PT Sans', sans-serif;
-            font-size: 16px;
         }
-        .sidebarText{
-            font-family: 'PT Sans', sans-serif;
-            font-size: 20px;
+        #creditos{
+            width: 100%;
+            background-color: orange;
+            margin-bottom: 0;
+            float: bottom;
+            margin-top: 120px;
+            padding-top:15px;
+            padding-bottom:15px;
+            text-align: center;
+        }
+        #creditos p{
+            margin: 0;
+        }
+        .topBarText{
+            text-align: center;
+            float: left;
+        }
+        .thumbnail {
+          max-width: 200px;
+          margin: 1em;
+          float: left;
+        }
+
+        .lightbox {
+            // Hide lightbox image
+            display: none;
+            visibility: hidden;
+            // Position/style of lightbox
+            position: fixed;
+            z-index: 999;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            top: 0;
+            left: 0;
+            background: rgba(0,0,0,.8);
+        }
+
+        .lightbox img {
+            /// Pad the lightbox image
+            max-width: 90%;
+            max-height: 80%;
+            margin-top: 54px;
+        }
+
+        .lightbox:target {
+            // Remove default outline and unhide lightbox
+            outline: none;
+            display: block;
+            visibility: visible;
+        }
+        .thumb-wrapper {
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
 
     </style>
@@ -38,44 +111,45 @@
 </head>
 
 <body>
-    <div>
-        <div id="sideBar">
-            <p class="sidebarText"><b>Indice</b></p>
-            <p class="sidebarText"><a href="#sectionOne">Introdução</a></p>
-            <p class="sidebarText"><a href="#sectionTwo">Tema</a></p>
-            <p class="sidebarText"><a href="#sectionThree">Produção</a></p>
-            <p class="sidebarText"><a href="#sectionFour">Conclusão</a></p>
-            <p class="sidebarText"><a href="#sectionFive">Download</a></p>
-        </div>
-        <div id="gameText">
-            <img src="yoster.png">
+    <div id="topBar">
+        <img src="yoster.png" width="190px" height="55px" class="center">
+        <ul>
+            <li class="topBarText"><a href="#sobreJogo">Sobre o jogo</a></li>
+            <li class="topBarText"><a href="#galeria">Galeria</a></li>
+            <li class="topBarText"><a href="#">Download</a></li>
+        </ul>
+    </div>
+    <div id="simbImg">
+        <img src="imagem.png">
+    </div>
+    <div id="sobreJogo">
+        <h1>Sobre o Jogo</h1>
+        <p>Yoster Island é um jogo educativo de exploração baseado em RPGs antigos. O jogo utiliza a arte clássica 2D. Descubra-se em um ambiente hostil controlando uma espécie nova enquanto conhece os conceitos e histórias por trás da famosa teoria da evolução. Aprenda, entenda e evolua durante o gameplay, desbloqueando novas características e lutando pela sobrevivência da sua espécie </p>
+    </div>
+    <div class="thumb-wrapper">
+        <a href="#img1">
+            <img src="gal1.png" class="thumbnail">
+        </a>
+        <a href="#img2">
+            <img src="gal2.png" class="thumbnail">
+        </a>
+        <a href="#img3">
+            <img src="gal3.png" class="thumbnail">
+        </a>
+    </div>
+    <a href="#sobreJogo" class="lightbox" id="img1">
+          <img src="gal1.png">
+        </a>
+        <a href="#sobreJogo" class="lightbox" id="img2">
+          <img src="gal2.png">
+        </a>
+        <a href="#thumb-wrapper" class="lightbox" id="img3">
+          <img src="gal3.png">
+    </a>
 
-            <div class="section">
-                <h1 id="sectionOne">Introdução</h1>
-                <p><b>Yoster Island</b> foi o projeto integrador II do curso de ciência de computação, do SENAC SANTO AMARO. O objetivo era desenvolver do zero um jogo educativo usando C em conjunto com a biblioteca Allegro 5. Escolhemos como tema a ser lecionado a teoria da evolução.</p>
-                <p>Inspiramo-nos nos jogos antigos para arte pixelada e visão por cima. O player tem liberdade de explorar como quiser uma ilha e descobrir algumas interações antes de ter pontos suficientes para avançar até próxima geração.</p>
-            </div>
-
-            <div class="section">
-                <h1 id="sectionTwo">Tema</h1>
-                <p>A escolha do tema foi a primeiro assunto de grande importância a ser discutido. Nós achamos que o tema de evolução traria uma mecânica interessante para </p>
-            </div>
-
-            <div class="section">
-                <h1 id="sectionThree">Produção</h1>
-                <p>Começamos pesquisando sobre o assunto e produzindo uma coletânea de conceitos </p>
-            </div>
-
-            <div class="section">
-                <h1 id="sectionFour">Conclusões</h1>
-            </div>
-
-            <div class="section">
-                <h1 id="sectionFive">Download</h1>
-                <p><a href="#">Download</a></p>
-            </div>
-
-        </div>
+    <div id="creditos">
+        <p>Creditos: Caio Braga Silva, Juan Victor Soman e Lucas Gomes Santana</p>
+        <p>SENAC - SANTO AMARO</p>
     </div>
 </body>
 
