@@ -3,12 +3,6 @@
 #include <allegro5/allegro_image.h>
 #include "header.h"
 
-
-/*void trajProjetil(int *xAquatico, int *yAquatico, int *x, int *y, int *flagVida){
-
-}*/
-
-
 void inimigoAquatico(int tile, int *xAquatico, int *yAquatico, int *x, int *y, int *flagVida){
     static int t, r;
     int quocienteX, quocienteY;
@@ -39,7 +33,7 @@ void inimigoAquatico(int tile, int *xAquatico, int *yAquatico, int *x, int *y, i
             }
             
             if(r = 48){
-                //trajProjetil(*xAquatico, *yAquatico, *x, *y, *flagVida);
+                
             }
         }
         if(*y > *yAquatico){
@@ -50,7 +44,7 @@ void inimigoAquatico(int tile, int *xAquatico, int *yAquatico, int *x, int *y, i
             }
 
             if(r = 48){
-                //trajProjetil(*xAquatico, *yAquatico, *x, *y, *flagVida);
+                
             }
         }
     }else{
@@ -62,7 +56,7 @@ void inimigoAquatico(int tile, int *xAquatico, int *yAquatico, int *x, int *y, i
             }
 
             if(r = 48){
-                //trajProjetil(*xAquatico, *yAquatico, *x, *y, *flagVida);
+                
             }
         }
         if(*x > *xAquatico){
@@ -73,7 +67,7 @@ void inimigoAquatico(int tile, int *xAquatico, int *yAquatico, int *x, int *y, i
             }
 
             if(r = 48){
-                //trajProjetil(*xAquatico, *yAquatico, *x, *y, *flagVida);
+                
             }
         }
     }

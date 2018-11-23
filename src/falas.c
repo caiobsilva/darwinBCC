@@ -146,9 +146,9 @@ int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int seletor, int x, i
 
     ALLEGRO_BITMAP *sprite = al_load_bitmap("../res/images/sprite01/baixo01.png");
     ALLEGRO_BITMAP *falasDarwin = al_load_bitmap("../res/images/barraTexto.png");
-    ALLEGRO_FONT *yoster = al_load_ttf_font("../res/font/prstart.ttf",17,0);
-    ALLEGRO_COLOR branco = al_map_rgb(255,255,255);
-    ALLEGRO_COLOR preto = al_map_rgb(0,0,0);
+    ALLEGRO_FONT *yoster = al_load_ttf_font("../res/font/prstart.ttf", 17, 0);
+    ALLEGRO_COLOR branco = al_map_rgb(255, 255, 255);
+    ALLEGRO_COLOR preto = al_map_rgb(0, 0, 0);
     
     char *falasInicio[12];
     falasInicio[0] = "Bem vindo! Meu nome é Charles Darwin.";
@@ -200,6 +200,7 @@ int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int seletor, int x, i
     parte[4] = al_load_bitmap("../res/images/tiles/Tile-D7.png");
 
     ALLEGRO_BITMAP *inimigo = al_load_bitmap("../res/images/terrestre/baixo.png"); 
+    ALLEGRO_BITMAP *inimigoAgua = al_load_bitmap("../res/images/aquatico/baixo.png");
 
     if(seletor == 5){
         animacaoG10(x, y, evento, fila);
@@ -229,7 +230,7 @@ int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int seletor, int x, i
                     break;
                 case 4:  
                     al_draw_scaled_bitmap(sprite, 0, 0, 22, 22, x, y, 66, 66, 0);
-                    al_draw_scaled_bitmap(inimigo,0, 0, 9, 22, 640, 10, 27, 66, 0);
+                    al_draw_scaled_bitmap(inimigoAgua, 0, 0, 33, 24, 640, 10, 99, 72, 0);
                     al_draw_multiline_text(yoster, preto, 70, 500, 650, 25, 0, falasInimigoAqua[n]);
                     break;
             }
