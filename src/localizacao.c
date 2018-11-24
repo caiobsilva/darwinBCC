@@ -6,6 +6,7 @@
 void inimigoAquatico(int tile, int *xAquatico, int *yAquatico, int *x, int *y, int *flagVida){
     static int t, r;
     int quocienteX, quocienteY;
+    int lockX, lockY;
 
     ALLEGRO_BITMAP *iniAquatico[8];
     ALLEGRO_BITMAP *projetil;
@@ -33,6 +34,8 @@ void inimigoAquatico(int tile, int *xAquatico, int *yAquatico, int *x, int *y, i
             }
             
             if(r = 48){
+                lockX = *x;
+                lockY = *y;
                 
             }
         }
