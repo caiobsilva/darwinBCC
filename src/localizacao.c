@@ -47,7 +47,9 @@ void inimigoAquatico(int tile, int *xAquatico, int *yAquatico, int *x, int *y, i
             }
 
             if(r = 48){
-                
+                lockX = *x;
+                lockY = *y;
+
             }
         }
     }else{
@@ -59,7 +61,9 @@ void inimigoAquatico(int tile, int *xAquatico, int *yAquatico, int *x, int *y, i
             }
 
             if(r = 48){
-                
+                lockX = *x;
+                lockY = *y;
+
             }
         }
         if(*x > *xAquatico){
@@ -70,6 +74,8 @@ void inimigoAquatico(int tile, int *xAquatico, int *yAquatico, int *x, int *y, i
             }
 
             if(r = 48){
+                lockX = *x;
+                lockY = *y;
                 
             }
         }

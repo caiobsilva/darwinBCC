@@ -26,6 +26,7 @@ typedef struct T{
     struct T *cima;
     listaCol *lista;
     ALLEGRO_BITMAP *imagem;
+    ALLEGRO_BITMAP *arvores;
 }tile;
 
 #define A1 0
