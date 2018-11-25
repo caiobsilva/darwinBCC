@@ -94,6 +94,7 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
         addPartes(tileAtual.ID, &xInimigo, &yInimigo, &x, &y, &flagVida);
         addPartes(tileAtual.ID, &xInimigo2, &yInimigo2, &x, &y, &flagVida);
         movimentacao(evento, &tileAtual, &x, &y, &t);
+        al_draw_bitmap(tileAtual.arvores, 0, 0, 0);
         al_draw_bitmap(pontos[flagPontos], 1100, 0, 0);
         al_draw_bitmap(vida[flagVida], 50, 0, 0);
         al_flip_display();
