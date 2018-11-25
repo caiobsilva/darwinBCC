@@ -431,7 +431,7 @@ void iniciarTiles(tile *tileAtual){
     tileD1->cima = tileC1;
     tileD1->baixo = NULL;
     tileD1->imagem = al_load_bitmap("../res/images/tiles/Tile-D1.png");
-    tileD1->arvores = NULL;
+    tileD1->arvores = al_load_bitmap("../res/images/tiles/pngcuck.png");
     // tileD1->lista = colD1;
     // iniciarLista(colD1);
     //inserirMar_V(colD1,0,0);
@@ -536,7 +536,7 @@ void iniciarTiles(tile *tileAtual){
     tileD10->cima = NULL;
     tileD10->baixo = tileE10;
     tileD10->imagem = al_load_bitmap("../res/images/tiles/Tile-D10.png");
-    tileD1->arvores = NULL;
+    tileD1->arvores = al_load_bitmap("../res/images/tiles/pngcuck.png");
 
     // === E7 ===
 
@@ -606,8 +606,7 @@ void iniciarTiles(tile *tileAtual){
     tileF8->cima = tileE8;
     tileF8->baixo = NULL;
     tileF8->imagem = al_load_bitmap("../res/images/tiles/Tile-F8.png");
-    tileF8->arvores = NULL;
-
+    tileF8->arvores = al_load_bitmap("../res/images/tiles/pngcuck.png");
     // === F9 ===
 
     tileF9->ID = F9;
