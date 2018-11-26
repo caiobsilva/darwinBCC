@@ -36,9 +36,9 @@ void animacaoC1(int x, int y){
     }
 }
 
-void animacaoG10(int x,int y, ALLEGRO_EVENT evento, ALLEGRO_EVENT_QUEUE *fila){
+void animacaoG10(int x, int y, ALLEGRO_EVENT evento, ALLEGRO_EVENT_QUEUE *fila){
     
-    int n = 0, xCov = 750, yCov = 315, numeroVezes = 0, v = 0;  
+    int n = 0, xCov = 750, yCov = 315, numeroVezes = 0, v = 0, darwinF = 0;  
     ALLEGRO_BITMAP *parte = al_load_bitmap("../res/images/tiles/Tile-G10.png");
     ALLEGRO_BITMAP *sprite = al_load_bitmap("../res/images/sprite01/direita01.png");
     ALLEGRO_BITMAP *spriteCov[3];
@@ -49,6 +49,10 @@ void animacaoG10(int x,int y, ALLEGRO_EVENT evento, ALLEGRO_EVENT_QUEUE *fila){
     ALLEGRO_FONT *yoster = al_load_ttf_font("../res/font/prstart.ttf", 17, 0);
     ALLEGRO_COLOR branco = al_map_rgb(255, 255, 255);
     ALLEGRO_COLOR preto = al_map_rgb(0, 0, 0);
+
+    ALLEGRO_BITMAP *darwin[2];
+    darwin[0] = al_load_bitmap("../res/images/darwin1.png");
+    darwin[1] = al_load_bitmap("../res/images/darwin2.png");
 
     char *falasIrradiacao[5];
     falasIrradiacao[0] = "Olha só, parece que há tempos, de alguma forma, um ancestral seu conseguiu chegar nessa ilha.";
@@ -65,7 +69,6 @@ void animacaoG10(int x,int y, ALLEGRO_EVENT evento, ALLEGRO_EVENT_QUEUE *fila){
             al_draw_scaled_bitmap(spriteCov[0], 0, 0, 22, 22, xCov, yCov, 66, 66, 0);
             al_draw_scaled_bitmap(falasDarwin, 0, 0, 1440, 290, 10, 460, 1152, 232, 0);
             al_draw_multiline_text(yoster, preto, 70, 500, 650, 25, 0, falasIrradiacao[n]);
-            al_flip_display();
         }
         else if(n == 2){
             while(numeroVezes < 20){
@@ -91,8 +94,22 @@ void animacaoG10(int x,int y, ALLEGRO_EVENT evento, ALLEGRO_EVENT_QUEUE *fila){
             al_draw_scaled_bitmap(sprite, 0, 0, 22, 22, x, y, 66, 66, 0);
             al_draw_scaled_bitmap(falasDarwin, 0, 0, 1440, 290, 10, 460,1152, 232, 0);
             al_draw_multiline_text(yoster, preto, 70, 500, 650, 25, 0, falasIrradiacao[n]);
-            al_flip_display();
         }
+
+        if(darwinF <= 10){
+            al_draw_scaled_bitmap(darwin[0], 0, 0, 53, 69, 990, 415, 212, 276, 0);   
+        }else if(darwinF <= 20){
+            al_draw_scaled_bitmap(darwin[1], 0, 0, 53, 69, 990, 415, 212, 276, 0);   
+        }
+        
+        al_flip_display();
+
+        if(darwinF == 20){
+            darwinF = 0;
+        }
+        darwinF++;
+
+
         al_wait_for_event_timed(fila, &evento, 0.05);
         if(evento.type == ALLEGRO_EVENT_KEY_DOWN){
             if(evento.keyboard.keycode == ALLEGRO_KEY_E || evento.keyboard.keycode == ALLEGRO_KEY_SPACE){
@@ -105,7 +122,7 @@ void animacaoG10(int x,int y, ALLEGRO_EVENT evento, ALLEGRO_EVENT_QUEUE *fila){
 
 int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int seletor, int x, int y, int *pontuacao){
 
-    int n = 0, numeroVezes;
+    int n = 0, numeroVezes, darwinF = 0;
     static int flagInimigos = 1, flagInicio = 1, flagInteracao = 1, flagNinho = 1, flagIrra = 1, flagAqua = 1;
     
     al_init_font_addon();
@@ -199,6 +216,10 @@ int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int seletor, int x, i
     parte[3] = al_load_bitmap("../res/images/tiles/Tile-D5.png");
     parte[4] = al_load_bitmap("../res/images/tiles/Tile-D7.png");
 
+    ALLEGRO_BITMAP *darwin[2];
+    darwin[0] = al_load_bitmap("../res/images/darwin1.png");
+    darwin[1] = al_load_bitmap("../res/images/darwin2.png");
+
     ALLEGRO_BITMAP *inimigo = al_load_bitmap("../res/images/terrestre/baixo.png"); 
     ALLEGRO_BITMAP *inimigoAgua = al_load_bitmap("../res/images/aquatico/baixo.png");
 
@@ -234,8 +255,20 @@ int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int seletor, int x, i
                     al_draw_multiline_text(yoster, preto, 70, 500, 650, 25, 0, falasInimigoAqua[n]);
                     break;
             }
-            al_flip_display();
 
+            if(darwinF <= 10){
+                al_draw_scaled_bitmap(darwin[0], 0, 0, 53, 69, 990, 415, 212, 276, 0);   
+            }else if(darwinF <= 20){
+                al_draw_scaled_bitmap(darwin[1], 0, 0, 53, 69, 990, 415, 212, 276, 0);   
+            }
+
+            if(darwinF == 20){
+                darwinF = 0;
+            }
+            darwinF++;
+
+            al_flip_display();  
+            
             al_wait_for_event_timed(fila, &evento, 0.05);
             if(evento.type == ALLEGRO_EVENT_DISPLAY_CLOSE){
                 return (1);
