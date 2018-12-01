@@ -12,7 +12,7 @@ int vazia(listaCol *lista){
 }
 
 void inserirPedra(listaCol *lista, int x, int y){
-    
+
     col *no;
     no = malloc(sizeof(col));
 
@@ -21,7 +21,7 @@ void inserirPedra(listaCol *lista, int x, int y){
     no->y0 = y;
     no->y = y + 45;
     no->proximo = NULL;
-    
+
     if(vazia(lista)){
         lista->primeiro = no;
         lista->ultimo = no;
@@ -33,7 +33,7 @@ void inserirPedra(listaCol *lista, int x, int y){
 }
 
 void inserirArvore(listaCol *lista, int x, int y){
-    
+
     col *no;
     no = malloc(sizeof(col));
 
@@ -42,10 +42,10 @@ void inserirArvore(listaCol *lista, int x, int y){
     no->y0 = y;
     no->y = y + 240;
     no->proximo = NULL;
-    
+
     if(vazia(lista)){
         lista->primeiro = no;
-        lista->ultimo = no;   
+        lista->ultimo = no;
     }else{
         lista->ultimo->proximo = no;
         lista->ultimo = no;
@@ -55,7 +55,7 @@ void inserirArvore(listaCol *lista, int x, int y){
 }
 
 void inserirMar_V(listaCol *lista, int x, int y){
-    
+
     col *no;
     no = malloc(sizeof(col));
 
@@ -64,10 +64,10 @@ void inserirMar_V(listaCol *lista, int x, int y){
     no->y0 = y;
     no->y = y + 720;
     no->proximo = NULL;
-    
+
     if(vazia(lista)){
         lista->primeiro = no;
-        lista->ultimo = no;   
+        lista->ultimo = no;
     }else{
         lista->ultimo->proximo = no;
         lista->ultimo = no;
@@ -77,7 +77,7 @@ void inserirMar_V(listaCol *lista, int x, int y){
 }
 
 void inserirMar_H(listaCol *lista, int x, int y){
-    
+
     col *no;
     no = malloc(sizeof(col));
 
@@ -86,10 +86,10 @@ void inserirMar_H(listaCol *lista, int x, int y){
     no->y0 = y;
     no->y = y + 124;
     no->proximo = NULL;
-    
+
     if(vazia(lista)){
         lista->primeiro = no;
-        lista->ultimo = no;   
+        lista->ultimo = no;
     }else{
         lista->ultimo->proximo = no;
         lista->ultimo = no;
@@ -99,7 +99,7 @@ void inserirMar_H(listaCol *lista, int x, int y){
 }
 
 void inserirRio(listaCol *lista, int x, int y){
-    
+
     col *no;
     no = malloc(sizeof(col));
 
@@ -108,10 +108,10 @@ void inserirRio(listaCol *lista, int x, int y){
     no->y0 = y;
     no->y = y + 160;
     no->proximo = NULL;
-    
+
     if(vazia(lista)){
         lista->primeiro = no;
-        lista->ultimo = no;   
+        lista->ultimo = no;
     }else{
         lista->ultimo->proximo = no;
         lista->ultimo = no;
@@ -121,7 +121,7 @@ void inserirRio(listaCol *lista, int x, int y){
 }
 
 void inserirNinho(listaCol *lista, int x, int y){
-    
+
     col *no;
     no = malloc(sizeof(col));
 
@@ -130,10 +130,10 @@ void inserirNinho(listaCol *lista, int x, int y){
     no->y0 = y;
     no->y = y + 35;
     no->proximo = NULL;
-    
+
     if(vazia(lista)){
         lista->primeiro = no;
-        lista->ultimo = no;   
+        lista->ultimo = no;
     }else{
         lista->ultimo->proximo = no;
         lista->ultimo = no;
@@ -148,7 +148,7 @@ void iniciarLista(listaCol *lista){
     lista->tamanho = 0;
 }
 
-void iniciarTiles(tile *tileAtual){ 
+void iniciarTiles(tile *tileAtual){
     tile *tileA1,*tileA2,*tileA3,*tileA4,*tileA5;
     tile *tileB1,*tileB2,*tileB3,*tileB4;
     tile *tileC1,*tileC2,*tileC3,*tileC4,*tileC8,*tileC9;
@@ -193,7 +193,7 @@ void iniciarTiles(tile *tileAtual){
     tileG9 = malloc(sizeof(tile));
     tileG10 = malloc(sizeof(tile));
 
-    // === A1 === 
+    // === A1 ===
 
     tileA1->ID = A1;
     tileA1->esquerda = NULL;
@@ -204,8 +204,8 @@ void iniciarTiles(tile *tileAtual){
     tileA1->imagem = al_load_bitmap("../res/images/tiles/Tile-A1.png");
     tileA1->arvores = al_load_bitmap("../res/images/tiles/Tile-A1-Arvore.png");
 
-    // === A2 === 
- 
+    // === A2 ===
+
     tileA2->ID = A2;
     tileA2->esquerda = tileA1;
     tileA2->direita = tileA3;
@@ -215,8 +215,8 @@ void iniciarTiles(tile *tileAtual){
     tileA2->imagem = al_load_bitmap("../res/images/tiles/Tile-A2.png");
     tileA2->arvores = al_load_bitmap("../res/images/tiles/Tile-A2-Arvore.png");
 
-    // === A3 === 
- 
+    // === A3 ===
+
     tileA3->ID = A3;
     tileA3->esquerda = tileA2;
     tileA3->direita = tileA4;
@@ -225,8 +225,8 @@ void iniciarTiles(tile *tileAtual){
     tileA3->colisao = al_load_bitmap("../res/tiles/colisao/Tile-A3.png");
     tileA3->imagem = al_load_bitmap("../res/images/tiles/Tile-A3.png");
     tileA3->arvores = al_load_bitmap("../res/images/tiles/Tile-A3-Arvore.png");
-    
-    // === A4 === 
+
+    // === A4 ===
 
     tileA4->ID = A4;
     tileA4->esquerda = tileA3;
@@ -237,7 +237,7 @@ void iniciarTiles(tile *tileAtual){
     tileA4->imagem = al_load_bitmap("../res/images/tiles/Tile-A4.png");
     tileA4->arvores = al_load_bitmap("../res/images/tiles/Tile-A4-Arvore.png");
 
-    // === A5 === 
+    // === A5 ===
 
     tileA5->ID = A5;
     tileA5->esquerda = tileA4;
@@ -249,7 +249,7 @@ void iniciarTiles(tile *tileAtual){
     tileA5->arvores = al_load_bitmap("../res/images/tiles/Tile-A5-Arvore.png");
 
 
-    // === B1 === 
+    // === B1 ===
 
     tileB1->ID = B1;
     tileB1->esquerda = NULL;
@@ -259,9 +259,9 @@ void iniciarTiles(tile *tileAtual){
     tileB1->colisao = al_load_bitmap("../res/tiles/colisao/Tile-B1.png");
     tileB1->imagem = al_load_bitmap("../res/images/tiles/Tile-B1.png");
     tileB1->arvores = al_load_bitmap("../res/images/tiles/Tile-B1-Arvore.png");
-    
-    // === B2 === 
- 
+
+    // === B2 ===
+
     tileB2->ID = B2;
     tileB2->esquerda = tileB1;
     tileB2->direita = tileB3;
@@ -271,8 +271,8 @@ void iniciarTiles(tile *tileAtual){
     tileB2->imagem = al_load_bitmap("../res/images/tiles/Tile-B2.png");
     tileB2->arvores = al_load_bitmap("../res/images/tiles/Tile-B2-Arvore.png");
 
-    // === B3 === 
- 
+    // === B3 ===
+
     tileB3->ID = B3;
     tileB3->esquerda = tileB2;
     tileB3->direita = tileB4;
@@ -281,7 +281,7 @@ void iniciarTiles(tile *tileAtual){
     tileB3->colisao = al_load_bitmap("../res/tiles/colisao/Tile-B3.png");
     tileB3->imagem = al_load_bitmap("../res/images/tiles/Tile-B3.png");
     tileB3->arvores = al_load_bitmap("../res/images/tiles/Tile-B3-Arvore.png");
-    // === B4 === 
+    // === B4 ===
 
     tileB4->ID = B4;
     tileB4->esquerda = tileB3;
@@ -289,10 +289,10 @@ void iniciarTiles(tile *tileAtual){
     tileB4->cima = tileA4;
     tileB4->baixo = tileC4;
     tileB4->colisao = al_load_bitmap("../res/tiles/colisao/Tile-B4.png");
-    tileB4->imagem = al_load_bitmap("../res/images/tiles/Tile-B4.png");
+    tileB4->imagem = al_load_bitmap("../res/tiles/colisao/Tile-B4.png");
     tileB4->arvores = al_load_bitmap("../res/images/tiles/Tile-B4-Arvore.png");
 
-    // === C1 === 
+    // === C1 ===
 
     tileC1->ID = C1;
     tileC1->esquerda = tileC1;
@@ -303,8 +303,8 @@ void iniciarTiles(tile *tileAtual){
     tileC1->imagem = al_load_bitmap("../res/images/tiles/Tile-C1.png");
     tileC1->arvores = al_load_bitmap("../res/images/tiles/Tile-C1-Arvore.png");
 
-    // === C2 === 
- 
+    // === C2 ===
+
     tileC2->ID = C2;
     tileC2->esquerda = tileC1;
     tileC2->direita = tileC3;
@@ -314,8 +314,8 @@ void iniciarTiles(tile *tileAtual){
     tileC2->imagem = al_load_bitmap("../res/images/tiles/Tile-C2.png");
     tileC2->arvores = al_load_bitmap("../res/images/tiles/Tile-C2-Arvore.png");
 
-    // === C3 === 
- 
+    // === C3 ===
+
     tileC3->ID = C3;
     tileC3->esquerda = tileC2;
     tileC3->direita = tileC4;
@@ -325,7 +325,7 @@ void iniciarTiles(tile *tileAtual){
     tileC3->imagem = al_load_bitmap("../res/images/tiles/Tile-C3.png");
     tileC3->arvores = al_load_bitmap("../res/images/tiles/Tile-C3-Arvore.png");
 
-    // === C4 === 
+    // === C4 ===
 
     tileC4->ID = C4;
     tileC4->esquerda = tileC3;
@@ -358,7 +358,7 @@ void iniciarTiles(tile *tileAtual){
     tileC9->imagem = al_load_bitmap("../res/images/tiles/Tile-C9.png");
     tileC9->arvores = al_load_bitmap("../res/images/tiles/Tile-C9-Arvore.png");
 
-    // === D1 === 
+    // === D1 ===
 
     tileD1->ID = D1;
     tileD1->esquerda = NULL;
@@ -369,8 +369,8 @@ void iniciarTiles(tile *tileAtual){
     tileD1->imagem = al_load_bitmap("../res/images/tiles/Tile-D1.png");
     tileD1->arvores = al_load_bitmap("../res/images/tiles/pngcuck.png");
 
-    // === D2 === 
- 
+    // === D2 ===
+
     tileD2->ID = D2;
     tileD2->esquerda = tileD1;
     tileD2->direita = tileD3;
@@ -380,8 +380,8 @@ void iniciarTiles(tile *tileAtual){
     tileD2->imagem = al_load_bitmap("../res/images/tiles/Tile-D2.png");
     tileD2->arvores = al_load_bitmap("../res/images/tiles/Tile-D2-Arvore.png");
 
-    // === D3 === 
- 
+    // === D3 ===
+
     tileD3->ID = D3;
     tileD3->esquerda = tileD2;
     tileD3->direita = tileD4;
@@ -391,7 +391,7 @@ void iniciarTiles(tile *tileAtual){
     tileD3->imagem = al_load_bitmap("../res/images/tiles/Tile-D3.png");
     tileD3->arvores = al_load_bitmap("../res/images/tiles/Tile-D3-Arvore.png");
 
-    // === D4 === 
+    // === D4 ===
 
     tileD4->ID = D4;
     tileD4->esquerda = tileD3;
@@ -402,7 +402,7 @@ void iniciarTiles(tile *tileAtual){
     tileD4->imagem = al_load_bitmap("../res/images/tiles/Tile-D4.png");
     tileD4->arvores = al_load_bitmap("../res/images/tiles/Tile-D4-Arvore.png");
 
-    // === D5 === 
+    // === D5 ===
 
     tileD5->ID = D5;
     tileD5->esquerda = tileD4;
@@ -502,7 +502,7 @@ void iniciarTiles(tile *tileAtual){
     tileE9->arvores = al_load_bitmap("../res/images/tiles/Tile-E9-Arvore.png");
 
     // === E10 ===
-    
+
     tileE10->ID = E10;
     tileE10->esquerda = tileE9;
     tileE10->direita = tileE11;

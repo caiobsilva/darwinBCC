@@ -78,6 +78,6 @@ void localizacao(int *x, int *y, tile *temp);
 void iniciarTiles(tile *tileAtual);
 void movimentacaoInimigos(int i, int *xInimigo, int *yInimigo, int *x, int *y, int *flagVida);
 void addPartes(int i, int *xInimigo, int *yInimigo, int *x, int *y, int *flagVida);
-void colisao(tile *tileAtual, int *x, int *y, int ID);
+void colisao(tile *tileAtual, int *x, int *y, int id);
 
 #endif
