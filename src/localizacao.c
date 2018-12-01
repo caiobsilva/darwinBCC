@@ -248,7 +248,7 @@ void localizacao(int *x, int *y, tile *tileAtual){
     }
 }
 
-void colisao(tile *tileAtual, int *x, int *y, int id){
+void colisao(tile *tileAtual, int *x, int *y, int id, int *flagVida){
     ALLEGRO_DISPLAY *janela = NULL;
     ALLEGRO_BITMAP *imagem = NULL;
     ALLEGRO_COLOR corJogador, preto, vermelho, amarelo, azul, rosa, cores[5];
@@ -301,6 +301,8 @@ void colisao(tile *tileAtual, int *x, int *y, int id){
             printf("O jogador não anda.\n");
             break;
           case 2:            
+            //Se interagir, árvore vai ser derrubada.
+            
             tileAtual->cima->imagem = al_load_bitmap("../res/images/tiles/Tile-E9A.png");
             tileAtual->cima->colisao = al_load_bitmap("../res/tiles/colisao/Tile-E9A.png");
 
@@ -315,10 +317,11 @@ void colisao(tile *tileAtual, int *x, int *y, int id){
             }
             if(id == 4){
               *x += 5;
-            //Se interagir, árvore vai ser derrubada.
             printf("O jogador derrubou a árvore.\n");
             break;
           case 3:
+            *flagVida--;
+            
             printf("O jogador recebe dano.\n");
             break;
         }

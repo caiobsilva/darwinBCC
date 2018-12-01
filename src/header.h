@@ -71,14 +71,14 @@ typedef struct T{
 enum statesGame menu(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento);
 enum statesGame menuSelect(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento);
 enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento);
-void movimentacao(ALLEGRO_EVENT evento,tile *tileAtual, int *x, int *y, int *t, int flagEvolucao);
+void movimentacao(ALLEGRO_EVENT evento,tile *tileAtual, int *x, int *y, int *t, int flagEvolucao, int *flagVida);
 int pausa(int x, int y, int *flagSom, ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento);
 int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int s, int x, int y, int *pontuacao);
 void localizacao(int *x, int *y, tile *temp);
 void iniciarTiles(tile *tileAtual);
 void movimentacaoInimigos(int i, int *xInimigo, int *yInimigo, int *x, int *y, int *flagVida);
 void addPartes(int i, int *xInimigo, int *yInimigo, int *x, int *y, int *flagVida);
-void colisao(tile *tileAtual, int *x, int *y, int id);
+void colisao(tile *tileAtual, int *x, int *y, int id, int *flagvida);
 void ninho(tile *tileAtual, int *x, int *y,int *flagPontos,int *flagEvolucao);
 void fade();
 
