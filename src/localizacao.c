@@ -232,34 +232,3 @@ void localizacao(int *x, int *y, tile *tileAtual){
         *tileAtual = *tileAtual->baixo;
     }
 }
-
-void colisao(int *x, int *y, tile *tileAtual){
-    ALLEGRO_DISPLAY *janela = NULL;
-    ALLEGRO_BITMAP *imagem = NULL;
-
-    ALLEGRO_COLOR corJogador, cor, preto, vermelho, amarelo, azul, rosa;
-
-    janela = al_create_display(640, 480);
-    imagem = al_load_bitmap("image.jpg");
-
-    al_draw_bitmap(imagem, 0, 0, 0);
-
-    al_flip_display();
-
-    preto = al_map_rgb(0, 0, 0); //colisão
-    vermelho = al_map_rgb(255, 0, 0);//ninho
-    amarelo = al_map_rgb(255, 234, 0);//árvore
-    azul = al_map_rgb(0, 0, 255);//projétil e da cobra, dano.
-    rosa = al_map_rgb(255, 0, 255);//personagem principal
-
-    corJogador = al_get_pixel(imagem, x, y);
-
-
-
-    if(memcmp(&preto, &corJogador, sizeof(ALLEGRO_COLOR)) == 0){
-      printf("O jogador não pode andar.\n");
-    }
-    else{
-      printf("O jogador pode andar.\n");
-    }
-}
