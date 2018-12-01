@@ -149,11 +149,11 @@ int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int seletor, int x, i
         numeroVezes = 3;
         flagNinho = 0;
     }else if(seletor == 36 && flagIrra == 1){
-        //*pontuacao += 1;
+        *pontuacao += 1;
         seletor = 5;
         flagIrra = 0;
     }else if(seletor == 21 && flagAqua == 1){
-        //*pontuacao += 1;
+        *pontuacao += 1;
         seletor = 4;
         numeroVezes = 3;
         flagAqua = 0;

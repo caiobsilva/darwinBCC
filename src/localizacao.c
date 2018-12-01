@@ -231,44 +231,6 @@ void addPartes(int tile, int *xInimigo, int *yInimigo, int *x, int *y, int *flag
     }
 }
 
-// função que detecta qualquer tipo de colisão
-/*
-void colisao(tile *tileAtual, int *x, int *y, int ID){
-
-    col *temp;
-    temp = tileAtual->lista->primeiro;
-
-    while(temp != NULL){
-
-        switch(ID){
-            case 1:
-                if((*x+33 < temp->x && *x+33 > temp->x0) && (*y < temp->y && *y > temp->y0)){
-                    *y += 6;
-                }
-            break;
-            case 2:
-                if((*x+33 < temp->x && *x+33 > temp->x0) && (*y+65 < temp->y && *y+65 > temp->y0)){
-                    *y -= 6;
-                }
-            break;
-            case 3:
-                if((*x+65 < temp->x && *x+65 > temp->x0) && (*y+33 < temp->y && *y+33 > temp->y0)){
-                    *x -= 6;
-                }
-            break;
-            case 4:
-                if((*x < temp->x && *x > temp->x0) && (*y+33 < temp->y && *y+33 > temp->y0)){
-                    *x += 6;
-                }
-            break;
-        }
-
-        temp = temp->proximo;
-    }
-
-}
-*/
-
 // função que detecta mudança de tile.
 void localizacao(int *x, int *y, tile *tileAtual){
     if(tileAtual->esquerda != NULL && *x < 0){
