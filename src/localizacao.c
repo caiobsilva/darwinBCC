@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_image.h>
 #include "header.h"
@@ -244,7 +245,7 @@ void colisao(tile *tileAtual, int *x, int *y, int id){
 
     //printf("%d", tileAtual->ID);
 
-    corJogador = al_get_pixel(tileAtual->colisao, *x, *y);
+    corJogador = al_get_pixel(tileAtual->colisao, *x + 66, *y + 66);
 
     cores[0] = preto;
     cores[1] = vermelho;
