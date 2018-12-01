@@ -71,7 +71,7 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
         while(!(al_is_event_queue_empty(fila))){
 
             al_wait_for_event(fila, &evento);
-            
+
             if(evento.type == ALLEGRO_EVENT_DISPLAY_CLOSE){
                 return Exit;
             }
@@ -79,13 +79,13 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
                 if(evento.keyboard.keycode == ALLEGRO_KEY_ESCAPE){
                     flagOpcoes = pausa(x, y, &flagSom, fila, evento);
 
-                    if(flagOpcoes){ 
+                    if(flagOpcoes){
                         return Exit;
                     }
                 }
             }
         }
-    
+
         if(falas(fila, evento, tileAtual.ID, x, y, &flagPontos)){
             return Exit;
         }
@@ -100,9 +100,7 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
         al_draw_bitmap(pontos[flagPontos], 1100, 0, 0);
         al_draw_bitmap(vida[flagVida], 50, 0, 0);
         al_flip_display();
-        
     }
-
 
     return Exit;
 }

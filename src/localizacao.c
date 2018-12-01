@@ -32,11 +32,11 @@ void inimigoAquatico(int tile, int *xAquatico, int *yAquatico, int *x, int *y, i
             }else if(t <= 12){
                 al_draw_scaled_bitmap(iniAquatico[7], 0, 0, 33, 24, *xAquatico, *yAquatico, 66, 48, 0);
             }
-            
+
             if(r = 48){
                 lockX = *x;
                 lockY = *y;
-                
+
             }
         }
         if(*y > *yAquatico){
@@ -76,7 +76,7 @@ void inimigoAquatico(int tile, int *xAquatico, int *yAquatico, int *x, int *y, i
             if(r = 48){
                 lockX = *x;
                 lockY = *y;
-                
+
             }
         }
     }
@@ -178,15 +178,15 @@ void addPartes(int tile, int *xInimigo, int *yInimigo, int *x, int *y, int *flag
 }
 
 
-// função que detecta qualquer tipo de colisão 
+// função que detecta qualquer tipo de colisão
 /*
 void colisao(tile *tileAtual, int *x, int *y, int ID){
-    
+
     col *temp;
     temp = tileAtual->lista->primeiro;
 
-    while(temp != NULL){    
-        
+    while(temp != NULL){
+
         switch(ID){
             case 1:
                 if((*x+33 < temp->x && *x+33 > temp->x0) && (*y < temp->y && *y > temp->y0)){
@@ -200,7 +200,7 @@ void colisao(tile *tileAtual, int *x, int *y, int ID){
             break;
             case 3:
                 if((*x+65 < temp->x && *x+65 > temp->x0) && (*y+33 < temp->y && *y+33 > temp->y0)){
-                    *x -= 6;    
+                    *x -= 6;
                 }
             break;
             case 4:
@@ -209,20 +209,18 @@ void colisao(tile *tileAtual, int *x, int *y, int ID){
                 }
             break;
         }
-    
+
         temp = temp->proximo;
-    }   
+    }
 
 }
 */
 
 // função que detecta mudança de tile.
 void localizacao(int *x, int *y, tile *tileAtual){
-
     if(tileAtual->esquerda != NULL && *x < 0){
         *x = 1230;
         *tileAtual = *tileAtual->esquerda;
-
     }else if(tileAtual->direita != NULL && *x > 1230){
         *x = 0;
         *tileAtual = *tileAtual->direita;
@@ -233,5 +231,35 @@ void localizacao(int *x, int *y, tile *tileAtual){
         *y = 0;
         *tileAtual = *tileAtual->baixo;
     }
+}
 
+void colisao(int *x, int *y, tile *tileAtual){
+    ALLEGRO_DISPLAY *janela = NULL;
+    ALLEGRO_BITMAP *imagem = NULL;
+
+    ALLEGRO_COLOR corJogador, cor, preto, vermelho, amarelo, azul, rosa;
+
+    janela = al_create_display(640, 480);
+    imagem = al_load_bitmap("image.jpg");
+
+    al_draw_bitmap(imagem, 0, 0, 0);
+
+    al_flip_display();
+
+    preto = al_map_rgb(0, 0, 0); //colisão
+    vermelho = al_map_rgb(255, 0, 0);//ninho
+    amarelo = al_map_rgb(255, 234, 0);//árvore
+    azul = al_map_rgb(0, 0, 255);//projétil e da cobra, dano.
+    rosa = al_map_rgb(255, 0, 255);//personagem principal
+
+    corJogador = al_get_pixel(imagem, x, y);
+
+
+
+    if(memcmp(&preto, &corJogador, sizeof(ALLEGRO_COLOR)) == 0){
+      printf("O jogador não pode andar.\n");
+    }
+    else{
+      printf("O jogador pode andar.\n");
+    }
 }
