@@ -1,24 +1,39 @@
 #include <allegro5/allegro.h>
 #include "header.h"
 
-void movimentacao(ALLEGRO_EVENT evento,tile *tileAtual, int *x, int *y, int *t){
+void movimentacao(ALLEGRO_EVENT evento,tile *tileAtual, int *x, int *y, int *t, int flagEvolucao){
     ALLEGRO_KEYBOARD_STATE tecla;
     al_get_keyboard_state(&tecla);
     static int i;
     ALLEGRO_BITMAP *player[12];
-    player[0] = al_load_bitmap("../res/images/sprite01/baixo01.png");
-    player[1] = al_load_bitmap("../res/images/sprite01/baixo02.png");
-    player[2] = al_load_bitmap("../res/images/sprite01/baixo03.png");
-    player[3] = al_load_bitmap("../res/images/sprite01/cima01.png");
-    player[4] = al_load_bitmap("../res/images/sprite01/cima02.png");
-    player[5] = al_load_bitmap("../res/images/sprite01/cima03.png");
-    player[6] = al_load_bitmap("../res/images/sprite01/esquerda01.png");
-    player[7] = al_load_bitmap("../res/images/sprite01/esquerda02.png");
-    player[8] = al_load_bitmap("../res/images/sprite01/esquerda03.png");
-    player[9] = al_load_bitmap("../res/images/sprite01/direita01.png");
-    player[10] = al_load_bitmap("../res/images/sprite01/direita02.png");
-    player[11] = al_load_bitmap("../res/images/sprite01/direita03.png");
 
+    if(flagEvolucao == 0){
+        player[0] = al_load_bitmap("../res/images/sprite01/baixo01.png");
+        player[1] = al_load_bitmap("../res/images/sprite01/baixo02.png");
+        player[2] = al_load_bitmap("../res/images/sprite01/baixo03.png");
+        player[3] = al_load_bitmap("../res/images/sprite01/cima01.png");
+        player[4] = al_load_bitmap("../res/images/sprite01/cima02.png");
+        player[5] = al_load_bitmap("../res/images/sprite01/cima03.png");
+        player[6] = al_load_bitmap("../res/images/sprite01/esquerda01.png");
+        player[7] = al_load_bitmap("../res/images/sprite01/esquerda02.png");
+        player[8] = al_load_bitmap("../res/images/sprite01/esquerda03.png");
+        player[9] = al_load_bitmap("../res/images/sprite01/direita01.png");
+        player[10] = al_load_bitmap("../res/images/sprite01/direita02.png");
+        player[11] = al_load_bitmap("../res/images/sprite01/direita03.png");
+    }else if(flagEvolucao == 1){
+        player[0] = al_load_bitmap("../res/images/sprite01/baixo01.png");
+        player[1] = al_load_bitmap("../res/images/sprite01/baixo02.png");
+        player[2] = al_load_bitmap("../res/images/sprite01/baixo03.png");
+        player[3] = al_load_bitmap("../res/images/sprite01/cima01.png");
+        player[4] = al_load_bitmap("../res/images/sprite01/cima02.png");
+        player[5] = al_load_bitmap("../res/images/sprite01/cima03.png");
+        player[6] = al_load_bitmap("../res/images/sprite01/esquerda01.png");
+        player[7] = al_load_bitmap("../res/images/sprite01/esquerda02.png");
+        player[8] = al_load_bitmap("../res/images/sprite01/esquerda03.png");
+        player[9] = al_load_bitmap("../res/images/sprite01/direita01.png");
+        player[10] = al_load_bitmap("../res/images/sprite01/direita02.png");
+        player[11] = al_load_bitmap("../res/images/sprite01/direita03.png");
+    }
 
     if(al_key_down(&tecla, ALLEGRO_KEY_W) || al_key_down(&tecla, ALLEGRO_KEY_UP)){
         *y -= 5;
