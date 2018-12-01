@@ -1,7 +1,6 @@
 #ifndef HEADER_H
 #define HEADER_H
 
-
 enum statesGame {Menu, Select, Options, AmbienteUm, Exit};
 
 typedef struct L{
@@ -82,4 +81,3 @@ void addPartes(int i, int *xInimigo, int *yInimigo, int *x, int *y, int *flagVid
 void colisao(tile *tileAtual, int *x, int *y, int ID);
 
 #endif
-

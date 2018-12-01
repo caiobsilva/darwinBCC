@@ -233,17 +233,10 @@ void localizacao(int *x, int *y, tile *tileAtual){
     }
 }
 
-void colisao(int *x, int *y, tile *tileAtual){
+void colisao(int *x, int *y, tile *tileAtual, int id){
     ALLEGRO_DISPLAY *janela = NULL;
     ALLEGRO_BITMAP *imagem = NULL;
-
-    ALLEGRO_COLOR corJogador, preto, vermelho, amarelo, azul, rosa, cores[5]
-
-    imagem = al_load_bitmap("image.jpg");
-
-    al_draw_bitmap(imagem, 0, 0, 0);
-
-    al_flip_display();
+    ALLEGRO_COLOR corJogador, preto, vermelho, amarelo, azul, rosa, cores[5];
 
     preto = al_map_rgb(0, 0, 0); //colisão
     vermelho = al_map_rgb(255, 0, 0);//ninho
@@ -251,7 +244,7 @@ void colisao(int *x, int *y, tile *tileAtual){
     azul = al_map_rgb(0, 0, 255);//projétil e da cobra, dano.
     rosa = al_map_rgb(255, 0, 255);//personagem principal
 
-    corJogador = al_get_pixel(imagem, x, y);
+    corJogador = al_get_pixel(tileAtual->colisao, x, y);
 
     cores[0] = preto;
     cores[1] = vermelho;
@@ -262,25 +255,34 @@ void colisao(int *x, int *y, tile *tileAtual){
     if(memcmp(&cores[i], &corJogador, sizeof(ALLEGRO_COLOR)) == 0){
       switch i{
         case 0:
-          //Ele não pode andar.
+          if(id == 1){
+            *y += 5;
+          }
+          if(id == 2){
+            *y -= 5;
+          }
+          if(id == 3){
+            *x -= 5;
+          }
+          if(id == 4){
+            *x += 5;
+          }
+          printf("O jogador não anda.\n");
           break;
         case 1:
-          //Animação do Ninho.
+          //Se interagir, animação do Ninho.
           //Fade, muda de era.
+          printf("O jogador mudou de era.\n");
           break;
         case 2:
-          //árvore derrubável.
+          //Se interagir, árvore vai ser derrubada.
+          printf("O jogador derrubou a árvore.\n");
           break;
         case 3:
-          //dano.
-          break;
-        case 4:
-          //jogador.
+          printf("O jogador recebe dano.\n");
           break;
       }
-      printf("O jogador não pode andar.\n");
     }
     else{
       printf("O jogador pode andar.\n");
     }
-}
