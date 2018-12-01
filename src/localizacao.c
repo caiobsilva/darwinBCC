@@ -6,6 +6,49 @@
 
 #define TEMPO_PROJETIL 96
 
+void fade(){
+    ALLEGRO_BITMAP *fade[10];
+    int n = 0;
+    fade[0] = al_load_bitmap("../res/efeitos/fade/fade1.png");
+    fade[1] = al_load_bitmap("../res/efeitos/fade/fade2.png");
+    fade[2] = al_load_bitmap("../res/efeitos/fade/fade3.png");
+    fade[3] = al_load_bitmap("../res/efeitos/fade/fade4.png");
+    fade[4] = al_load_bitmap("../res/efeitos/fade/fade5.png");
+    fade[5] = al_load_bitmap("../res/efeitos/fade/fade6.png");
+    fade[6] = al_load_bitmap("../res/efeitos/fade/fade7.png");
+    fade[7] = al_load_bitmap("../res/efeitos/fade/fade8.png");
+    fade[8] = al_load_bitmap("../res/efeitos/fade/fade9.png");
+    fade[9] = al_load_bitmap("../res/efeitos/fade/fade10.png");
+
+    while(n != 20){
+        al_clear_to_color(al_map_rgb(255,255,255));
+        if(n < 2){
+            al_draw_scaled_bitmap(fade[0], 0, 0, 1280, 720, 0, 0, 1280, 720, 0);
+        }else if(n < 4){
+            al_draw_scaled_bitmap(fade[1], 0, 0, 1280, 720, 0, 0, 1280, 720, 0);
+        }else if(n < 6){
+            al_draw_scaled_bitmap(fade[2], 0, 0, 1280, 720, 0, 0, 1280, 720, 0);
+        }else if(n < 8){
+            al_draw_scaled_bitmap(fade[3], 0, 0, 1280, 720, 0, 0, 1280, 720, 0);
+        }else if(n < 10){
+            al_draw_scaled_bitmap(fade[4], 0, 0, 1280, 720, 0, 0, 1280, 720, 0);
+        }else if(n < 12){
+            al_draw_scaled_bitmap(fade[5], 0, 0, 1280, 720, 0, 0, 1280, 720, 0);
+        }else if(n < 14){
+            al_draw_scaled_bitmap(fade[6], 0, 0, 1280, 720, 0, 0, 1280, 720, 0);
+        }else if(n < 16){
+            al_draw_scaled_bitmap(fade[7], 0, 0, 1280, 720, 0, 0, 1280, 720, 0);
+        }else if(n < 18){
+            al_draw_scaled_bitmap(fade[8], 0, 0, 1280, 720, 0, 0, 1280, 720, 0);
+        }else if(n < 20){
+            al_draw_scaled_bitmap(fade[9], 0, 0, 1280, 720, 0, 0, 1280, 720, 0);
+        }
+        al_flip_display();
+
+        n++;
+    }
+}
+
 void inimigoAquatico(int tile, int *xAquatico, int *yAquatico, int *x, int *y, int *flagVida){
     static int t, r;
     int quocienteX, quocienteY;
@@ -86,6 +129,23 @@ void inimigoAquatico(int tile, int *xAquatico, int *yAquatico, int *x, int *y, i
     for(int i = 0; i < 8; i++){
         al_destroy_bitmap(iniAquatico[i]);
     }
+}
+
+void ninho(tile *tileAtual, int *x, int *y,int *flagPontos,int *flagEvolucao){
+
+    if(tileAtual->ID == 17 && *flagPontos == 3){
+        ALLEGRO_COLOR vermelho = al_map_rgb(255, 0, 0);
+        ALLEGRO_COLOR corJogador = al_get_pixel(tileAtual->colisao, *x + 33, *y + 33);
+        if(memcmp(&vermelho, &corJogador, sizeof(ALLEGRO_COLOR)) == 0){
+            fade();
+            *flagPontos = 0;
+            *flagEvolucao = 1;
+            tileAtual->imagem = al_load_bitmap("../res/images/tiles/Tile-D5A.png");
+            tileAtual->colisao = al_load_bitmap("../res/tiles/colisao/Tile-D5A.png");
+        }
+
+    }
+
 }
 
 
@@ -277,11 +337,6 @@ void colisao(tile *tileAtual, int *x, int *y, int id){
               *x += 5;
             }
             printf("O jogador não anda.\n");
-            break;
-          case 1:
-            //Se interagir, animação do Ninho.
-            //Fade, muda de era.
-            printf("O jogador mudou de era.\n");
             break;
           case 2:
             //Se interagir, árvore vai ser derrubada.
