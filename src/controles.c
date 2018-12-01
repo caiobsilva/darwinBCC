@@ -21,18 +21,18 @@ void movimentacao(ALLEGRO_EVENT evento,tile *tileAtual, int *x, int *y, int *t, 
         player[10] = al_load_bitmap("../res/images/sprite01/direita02.png");
         player[11] = al_load_bitmap("../res/images/sprite01/direita03.png");
     }else if(flagEvolucao == 1){
-        player[0] = al_load_bitmap("../res/images/sprite01/baixo01.png");
-        player[1] = al_load_bitmap("../res/images/sprite01/baixo02.png");
-        player[2] = al_load_bitmap("../res/images/sprite01/baixo03.png");
-        player[3] = al_load_bitmap("../res/images/sprite01/cima01.png");
-        player[4] = al_load_bitmap("../res/images/sprite01/cima02.png");
-        player[5] = al_load_bitmap("../res/images/sprite01/cima03.png");
-        player[6] = al_load_bitmap("../res/images/sprite01/esquerda01.png");
-        player[7] = al_load_bitmap("../res/images/sprite01/esquerda02.png");
-        player[8] = al_load_bitmap("../res/images/sprite01/esquerda03.png");
-        player[9] = al_load_bitmap("../res/images/sprite01/direita01.png");
-        player[10] = al_load_bitmap("../res/images/sprite01/direita02.png");
-        player[11] = al_load_bitmap("../res/images/sprite01/direita03.png");
+        player[0] = al_load_bitmap("../res/images/sprite02/baixo01.png");
+        player[1] = al_load_bitmap("../res/images/sprite02/baixo02.png");
+        player[2] = al_load_bitmap("../res/images/sprite02/baixo03.png");
+        player[3] = al_load_bitmap("../res/images/sprite02/cima01.png");
+        player[4] = al_load_bitmap("../res/images/sprite02/cima02.png");
+        player[5] = al_load_bitmap("../res/images/sprite02/cima03.png");
+        player[6] = al_load_bitmap("../res/images/sprite02/esquerda01.png");
+        player[7] = al_load_bitmap("../res/images/sprite02/esquerda02.png");
+        player[8] = al_load_bitmap("../res/images/sprite02/esquerda03.png");
+        player[9] = al_load_bitmap("../res/images/sprite02/direita01.png");
+        player[10] = al_load_bitmap("../res/images/sprite02/direita02.png");
+        player[11] = al_load_bitmap("../res/images/sprite02/direita03.png");
     }
 
     if(al_key_down(&tecla, ALLEGRO_KEY_W) || al_key_down(&tecla, ALLEGRO_KEY_UP)){
