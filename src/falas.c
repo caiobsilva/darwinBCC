@@ -196,7 +196,7 @@ int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int seletor, int x, i
     char *falasNinho[3];
     falasNinho[0] = "Um ninho! Era disso que precisávamos, e este vulcão parece dar a proteção ideal contra ataques de outras espécies."; 
     falasNinho[1] = "É importante para o desenvolvimento de uma espécie que ela tenha um lugar seguro para se reproduzir";
-    falasNinho[2] = "É durante a troca de geração que as novas característica podem ser  desenvolvidas, com sorte ganharemos uma que se encaixa bem no nosso ambiente";
+    falasNinho[2] = "É durante a troca de geração que as novas característica podem ser desenvolvidas, com sorte ganharemos uma que se encaixa bem no nosso ambiente";
     
     char  *falasIntroducao2[4];
     falasIntroducao2[0] = "Uma nova geração, bem-vinda!";
