@@ -5,7 +5,7 @@
 
 int main (void){
   ALLEGRO_DISPLAY *janela = NULL;
-  ALLEGRO_BITMAP *imagem = NULL;  
+  ALLEGRO_BITMAP *imagem = NULL;
 
   ALLEGRO_COLOR cor, preto;
 
