@@ -289,7 +289,7 @@ void iniciarTiles(tile *tileAtual){
     tileB4->cima = tileA4;
     tileB4->baixo = tileC4;
     tileB4->colisao = al_load_bitmap("../res/tiles/colisao/Tile-B4.png");
-    tileB4->imagem = al_load_bitmap("../res/tiles/colisao/Tile-B4.png");
+    tileB4->imagem = al_load_bitmap("../res/images/tiles/Tile-B4.png");
     tileB4->arvores = al_load_bitmap("../res/images/tiles/Tile-B4-Arvore.png");
 
     // === C1 ===

@@ -245,7 +245,20 @@ void colisao(tile *tileAtual, int *x, int *y, int id){
 
     //printf("%d", tileAtual->ID);
 
-    corJogador = al_get_pixel(tileAtual->colisao, *x + 66, *y + 66);
+    switch(id){
+      case 1:
+        corJogador = al_get_pixel(tileAtual->colisao, *x + 33, *y);
+        break;
+      case 2:
+        corJogador = al_get_pixel(tileAtual->colisao, *x + 33, *y + 66);
+        break;
+      case 3:
+        corJogador = al_get_pixel(tileAtual->colisao, *x + 66, *y + 33);
+        break;
+      case 4:
+        corJogador = al_get_pixel(tileAtual->colisao, *x, *y + 33);
+        break;
+    }
 
     cores[0] = preto;
     cores[1] = vermelho;
@@ -255,7 +268,7 @@ void colisao(tile *tileAtual, int *x, int *y, int id){
 
     for(int i = 0; i < 5; i++){
       if(memcmp(&cores[i], &corJogador, sizeof(ALLEGRO_COLOR)) == 0){
-        switch (i){
+        switch(i){
           case 0:
             if(id == 1){
               *y += 5;
