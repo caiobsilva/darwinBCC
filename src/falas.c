@@ -40,7 +40,7 @@ void animacaoG10(int x, int y, ALLEGRO_EVENT evento, ALLEGRO_EVENT_QUEUE *fila){
     
     int n = 0, xCov = 750, yCov = 315, numeroVezes = 0, v = 0, darwinF = 0;  
     ALLEGRO_BITMAP *parte = al_load_bitmap("../res/images/tiles/Tile-G10.png");
-    ALLEGRO_BITMAP *sprite = al_load_bitmap("../res/images/sprite01/direita01.png");
+    ALLEGRO_BITMAP *sprite = al_load_bitmap("../res/images/sprite02/direita01.png");
     ALLEGRO_BITMAP *spriteCov[3];
     spriteCov[0] = al_load_bitmap("../res/images/cov/direita01.png");
     spriteCov[1] = al_load_bitmap("../res/images/cov/direita02.png");
@@ -162,6 +162,7 @@ int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int seletor, int x, i
     }
 
     ALLEGRO_BITMAP *sprite = al_load_bitmap("../res/images/sprite01/baixo01.png");
+    ALLEGRO_BITMAP *sprite2 = al_load_bitmap("../res/images/sprite02/baixo01.png");
     ALLEGRO_BITMAP *falasDarwin = al_load_bitmap("../res/images/barraTexto.png");
     ALLEGRO_FONT *yoster = al_load_ttf_font("../res/font/prstart.ttf", 17, 0);
     ALLEGRO_COLOR branco = al_map_rgb(255, 255, 255);
@@ -250,7 +251,7 @@ int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int seletor, int x, i
                     al_draw_multiline_text(yoster, preto, 70, 500, 650, 25, 0, falasNinho[n]);
                     break;
                 case 4:  
-                    al_draw_scaled_bitmap(sprite, 0, 0, 22, 22, x, y, 66, 66, 0);
+                    al_draw_scaled_bitmap(sprite2, 0, 0, 22, 22, x, y, 66, 66, 0);
                     al_draw_scaled_bitmap(inimigoAgua, 0, 0, 33, 24, 640, 10, 99, 72, 0);
                     al_draw_multiline_text(yoster, preto, 70, 500, 650, 25, 0, falasInimigoAqua[n]);
                     break;
