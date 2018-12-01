@@ -27,6 +27,7 @@ typedef struct T{
     listaCol *lista;
     ALLEGRO_BITMAP *imagem;
     ALLEGRO_BITMAP *arvores;
+    
 }tile;
 
 #define A1 0
