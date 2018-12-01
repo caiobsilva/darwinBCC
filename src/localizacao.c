@@ -237,9 +237,8 @@ void colisao(int *x, int *y, tile *tileAtual){
     ALLEGRO_DISPLAY *janela = NULL;
     ALLEGRO_BITMAP *imagem = NULL;
 
-    ALLEGRO_COLOR corJogador, cor, preto, vermelho, amarelo, azul, rosa;
+    ALLEGRO_COLOR corJogador, preto, vermelho, amarelo, azul, rosa, cores[5]
 
-    janela = al_create_display(640, 480);
     imagem = al_load_bitmap("image.jpg");
 
     al_draw_bitmap(imagem, 0, 0, 0);
@@ -254,9 +253,31 @@ void colisao(int *x, int *y, tile *tileAtual){
 
     corJogador = al_get_pixel(imagem, x, y);
 
+    cores[0] = preto;
+    cores[1] = vermelho;
+    cores[2] = amarelo;
+    cores[3] = azul;
+    cores[4] = rosa;
 
-
-    if(memcmp(&preto, &corJogador, sizeof(ALLEGRO_COLOR)) == 0){
+    if(memcmp(&cores[i], &corJogador, sizeof(ALLEGRO_COLOR)) == 0){
+      switch i{
+        case 0:
+          //Ele não pode andar.
+          break;
+        case 1:
+          //Animação do Ninho.
+          //Fade, muda de era.
+          break;
+        case 2:
+          //árvore derrubável.
+          break;
+        case 3:
+          //dano.
+          break;
+        case 4:
+          //jogador.
+          break;
+      }
       printf("O jogador não pode andar.\n");
     }
     else{
