@@ -179,7 +179,7 @@ int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int seletor, int x, i
     falasInicio[8] = "Para ser publicado, faltava somente encaixar a ideia no ambiente selvagem";
     falasInicio[9] = "Depois de algum tempo, um livro me deu a resposta: a competição imposta por um ambiente e recursos limitados selecionava os que melhor se adaptavam!";
     falasInicio[10] = "Agora é a sua vez de experimentar as mudanças e melhor se adaptar ao ambiente. Seu habitat atual já não é mais seguro com a chegada de novas espécies. É hora de migrar!";
-    falasInicio[11] = "Boa sorte na sua aventura, nova espécie!";
+    falasInicio[11] = "Colete pontos de DNA ao encontrar evidências da evolução, e use-os em seu novo ninho. Boa sorte na sua aventura, nova espécie!";
 
     char *falasInimigos[4];
     falasInimigos[0] = "Cuidado!";
@@ -196,7 +196,7 @@ int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int seletor, int x, i
     char *falasNinho[3];
     falasNinho[0] = "Um ninho! Era disso que precisávamos, e este vulcão parece dar a proteção ideal contra ataques de outras espécies."; 
     falasNinho[1] = "É importante para o desenvolvimento de uma espécie que ela tenha um lugar seguro para se reproduzir";
-    falasNinho[2] = "É durante a troca de geração que as novas característica podem ser  desenvolvidas, com sorte ganharemos uma que se encaixa bem no nosso ambiente";
+    falasNinho[2] = "É durante a troca de geração que as novas característica podem ser desenvolvidas, com sorte ganharemos uma que se encaixa bem no nosso ambiente";
     
     char  *falasIntroducao2[4];
     falasIntroducao2[0] = "Uma nova geração, bem-vinda!";
