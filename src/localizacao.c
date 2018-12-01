@@ -338,7 +338,21 @@ void colisao(tile *tileAtual, int *x, int *y, int id){
             }
             printf("O jogador não anda.\n");
             break;
-          case 2:
+          case 2:            
+            tileAtual->cima->imagem = al_load_bitmap("../res/images/tiles/Tile-E9A.png");
+            tileAtual->cima->colisao = al_load_bitmap("../res/tiles/colisao/Tile-E9A.png");
+
+            if(id == 1){
+              *y += 5;
+            }
+            if(id == 2){
+              *y -= 5;
+            }
+            if(id == 3){
+              *x -= 5;
+            }
+            if(id == 4){
+              *x += 5;
             //Se interagir, árvore vai ser derrubada.
             printf("O jogador derrubou a árvore.\n");
             break;
@@ -349,3 +363,4 @@ void colisao(tile *tileAtual, int *x, int *y, int id){
       }
     }
   }
+}
