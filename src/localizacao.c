@@ -6,7 +6,8 @@
 void inimigoAquatico(int tile, int *xAquatico, int *yAquatico, int *x, int *y, int *flagVida){
     static int t, r;
     int quocienteX, quocienteY;
-    int lockX, lockY;
+    int lockX, lockY, qLock;
+    int xProjetil, yProjetil, quocienteProjetil;
 
     ALLEGRO_BITMAP *iniAquatico[8];
     ALLEGRO_BITMAP *projetil;
@@ -22,6 +23,10 @@ void inimigoAquatico(int tile, int *xAquatico, int *yAquatico, int *x, int *y, i
 
     projetil = al_load_bitmap("../res/images/aquatico/projetil.png");
 
+    xProjetil = *xAquatico;
+    yProjetil = *yAquatico;
+    quocienteProjetil = xProjetil / yProjetil;
+
     quocienteX = *xAquatico / *x;
     quocienteY = *yAquatico / *y;
 
@@ -36,7 +41,11 @@ void inimigoAquatico(int tile, int *xAquatico, int *yAquatico, int *x, int *y, i
             if(r = 48){
                 lockX = *x;
                 lockY = *y;
+                qLock = lockX, lockY;
                 
+                while(quocienteProjetil != qLock){
+                    
+                }
             }
         }
         if(*y > *yAquatico){
