@@ -10,6 +10,7 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
     tile tileAtual;
     iniciarTiles(&tileAtual);
 
+    ALLEGRO_BITMAP *fimJogo = al_load_bitmap("../res/images/telaMorte.png");
     ALLEGRO_BITMAP *pontos[4];
     pontos[0] = al_load_bitmap("../res/images/pontos0.png");
     pontos[1] = al_load_bitmap("../res/images/pontos1.png");
@@ -46,6 +47,14 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
         if(falas(fila, evento, tileAtual.ID, x, y, &flagPontos)){
             return Exit;
         }
+
+        if(flagVida == 0){
+            al_draw_scaled_bitmap(fimJogo,0,0,896,504,0,0,1280,720,0);
+            al_flip_display();
+            al_rest(5.0);
+            return Exit;
+        }
+        
 
         ninho(&tileAtual, &x, &y, &flagPontos, &flagEvolucao);
 

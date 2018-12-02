@@ -155,7 +155,8 @@ void ninho(tile *tileAtual, int *x, int *y,int *flagPontos,int *flagEvolucao){
 void movimentacaoInimigos(int tile, int *xInimigo, int *yInimigo, int *x, int *y, int *flagVida){
     static int t, i;
     ALLEGRO_BITMAP *iniTerrestre[8];
-
+    
+    
     iniTerrestre[0] = al_load_bitmap("../res/images/terrestre/baixo.png");
     iniTerrestre[1] = al_load_bitmap("../res/images/terrestre/baixo2.png");
     iniTerrestre[2] = al_load_bitmap("../res/images/terrestre/cima.png");
@@ -164,6 +165,7 @@ void movimentacaoInimigos(int tile, int *xInimigo, int *yInimigo, int *x, int *y
     iniTerrestre[5] = al_load_bitmap("../res/images/terrestre/direita2.png");
     iniTerrestre[6] = al_load_bitmap("../res/images/terrestre/esquerda.png");
     iniTerrestre[7] = al_load_bitmap("../res/images/terrestre/esquerda2.png");
+
 
     if(*xInimigo < *x - 3){
         *xInimigo += 3;
@@ -211,6 +213,8 @@ void movimentacaoInimigos(int tile, int *xInimigo, int *yInimigo, int *x, int *y
         }else{
             al_draw_scaled_bitmap(iniTerrestre[i], 0, 0, 9, 22, *x, *y, 27, 66, 0);
         }
+        *flagVida -= 1;
+        *y += 50;
     }
 
     t += 1;
