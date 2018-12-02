@@ -140,6 +140,8 @@ void ninho(tile *tileAtual, int *x, int *y,int *flagPontos,int *flagEvolucao){
             fade();
             *flagPontos = 0;
             *flagEvolucao = 1;
+            tileAtual->esquerda->direita->imagem = al_load_bitmap("../res/images/tiles/Tile-D5A.png");
+            tileAtual->esquerda->direita->colisao = al_load_bitmap("../res/tiles/colisao/Tile-D5A.png");
             tileAtual->imagem = al_load_bitmap("../res/images/tiles/Tile-D5A.png");
             tileAtual->colisao = al_load_bitmap("../res/tiles/colisao/Tile-D5A.png");
         }
@@ -302,7 +304,7 @@ void colisao(tile *tileAtual, int *x, int *y, int id, int *flagVida){
             break;
           case 2:            
             //Se interagir, árvore vai ser derrubada.
-            
+            fade();
             tileAtual->cima->imagem = al_load_bitmap("../res/images/tiles/Tile-E9A.png");
             tileAtual->cima->colisao = al_load_bitmap("../res/tiles/colisao/Tile-E9A.png");
 
