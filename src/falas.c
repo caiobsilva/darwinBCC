@@ -246,7 +246,7 @@ int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int seletor, int x, i
                     break;
                 case 4:  
                     al_draw_scaled_bitmap(sprite2, 0, 0, 22, 22, x, y, 66, 66, 0);
-                    al_draw_scaled_bitmap(inimigoAgua, 0, 0, 33, 24, 640, 10, 99, 72, 0);
+                    al_draw_scaled_bitmap(inimigoAgua, 0, 0, 33, 24, 640, 10, 66, 48, 0);
                     al_draw_multiline_text(yoster, preto, 70, 500, 650, 25, 0, falasInimigoAqua[n]);
                     break;
             }
@@ -298,8 +298,8 @@ void falaNinho(){
     ALLEGRO_BITMAP *falasDarwin = al_load_bitmap("../res/images/barraTexto.png");
     char *falas[3];
     falas[0] = "Muito bem!";
-    falas[1] = "Agora a futura geração da sua espécie está garantida...";
-    falas[2] = "Eu mal consigo esperar para saber quais mudanças geneticas e ambientais estão nos esperando";
+    falas[1] = "Agora a futura geração da sua espécie está garantida, mas a erupção do vulcão ameaça sua continuidade. Hora de migrar!";
+    falas[2] = "A lava criou uma ponte para a próxima ilha. Eu mal consigo esperar para saber quais mudanças geneticas e ambientais estão nos esperando!";
     ALLEGRO_EVENT_QUEUE *fila;
     ALLEGRO_EVENT evento;
     fila = al_create_event_queue();
