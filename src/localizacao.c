@@ -188,7 +188,6 @@ void movimentacaoInimigos(int tile, int *xInimigo, int *yInimigo, int *x, int *y
     double mod, A, B;
     ALLEGRO_BITMAP *iniTerrestre[8];
 
-
     iniTerrestre[0] = al_load_bitmap("../res/images/terrestre/baixo.png");
     iniTerrestre[1] = al_load_bitmap("../res/images/terrestre/baixo2.png");
     iniTerrestre[2] = al_load_bitmap("../res/images/terrestre/cima.png");
@@ -197,7 +196,6 @@ void movimentacaoInimigos(int tile, int *xInimigo, int *yInimigo, int *x, int *y
     iniTerrestre[5] = al_load_bitmap("../res/images/terrestre/direita2.png");
     iniTerrestre[6] = al_load_bitmap("../res/images/terrestre/esquerda.png");
     iniTerrestre[7] = al_load_bitmap("../res/images/terrestre/esquerda2.png");
-
 
     if(*xInimigo < *x - 3){
         *xInimigo += 3;
@@ -293,10 +291,8 @@ void colisao(tile *tileAtual, int *x, int *y, int id, int *flagVida){
     ALLEGRO_COLOR corJogador, preto, vermelho, amarelo, azul, rosa, cores[5];
 
     preto = al_map_rgb(0, 0, 0); //colisão
-    vermelho = al_map_rgb(255, 0, 0);//ninho
     amarelo = al_map_rgb(255, 234, 0);//árvore
     azul = al_map_rgb(0, 0, 255);//projétil e da cobra. Dano.
-    rosa = al_map_rgb(255, 0, 255);//personagem principal
 
     //printf("%d", tileAtual->ID);
 
@@ -319,7 +315,7 @@ void colisao(tile *tileAtual, int *x, int *y, int id, int *flagVida){
     cores[1] = amarelo;
     cores[2] = azul;
 
-    for(int i = 0; i < 5; i++){
+    for(int i = 0; i < 3; i++){
       if(memcmp(&cores[i], &corJogador, sizeof(ALLEGRO_COLOR)) == 0){
         switch(i){
           case 0:
@@ -359,7 +355,7 @@ void colisao(tile *tileAtual, int *x, int *y, int id, int *flagVida){
             printf("O jogador derrubou a árvore.\n");
             break;
           case 2:
-            *flagVida--;
+            *flagVida-=1;
             printf("O jogador recebe dano.\n");
             break;
         }
