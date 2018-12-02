@@ -183,6 +183,9 @@ void iniciarTiles(tile *tileAtual){
     tileC3->direita = tileC4;
     tileC3->cima = tileB3;
     tileC3->baixo = tileD3;
+    tileC3->bInimigo = 2;
+    tileC3->xInimigo = 610;
+    tileC3->yInimigo = 565;
     tileC3->colisao = al_load_bitmap("../res/tiles/colisao/Tile-C3.png");
     tileC3->imagem = al_load_bitmap("../res/images/tiles/Tile-C3.png");
     tileC3->arvores = al_load_bitmap("../res/images/tiles/Tile-C3-Arvore.png");

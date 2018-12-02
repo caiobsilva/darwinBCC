@@ -98,9 +98,9 @@ void inimigoAquatico(int tile, int *xAquatico, int *yAquatico, int *x, int *y, i
     }else{
         if(*x < *xAquatico){
             if(t <= 6){
-                al_draw_scaled_bitmap(iniAquatico[0], 0, 0, 24, 33, *xAquatico, *yAquatico, 48, 66, 0);
+                al_draw_scaled_bitmap(iniAquatico[0], 0, 0, 33, 24, *xAquatico, *yAquatico, 66, 48, 0);
             }else if(t <= 12){
-                al_draw_scaled_bitmap(iniAquatico[1], 0, 0, 24, 33, *xAquatico, *yAquatico, 48, 66, 0);
+                al_draw_scaled_bitmap(iniAquatico[1], 0, 0, 33, 24, *xAquatico, *yAquatico, 66, 48, 0);
             }
 
             if(r = TEMPO_PROJETIL){
@@ -109,9 +109,9 @@ void inimigoAquatico(int tile, int *xAquatico, int *yAquatico, int *x, int *y, i
         }
         if(*x > *xAquatico){
             if(t <= 6){
-                al_draw_scaled_bitmap(iniAquatico[2], 0, 0, 24, 33, *xAquatico, *yAquatico, 48, 66, 0);
+                al_draw_scaled_bitmap(iniAquatico[2], 0, 0, 33, 24, *xAquatico, *yAquatico, 66, 48, 0);
             }else if(t <= 12){
-                al_draw_scaled_bitmap(iniAquatico[3], 0, 0, 24, 33, *xAquatico, *yAquatico, 48, 66, 0);
+                al_draw_scaled_bitmap(iniAquatico[3], 0, 0, 33, 24, *xAquatico, *yAquatico, 66, 48, 0);
             }
 
             if(r = TEMPO_PROJETIL){

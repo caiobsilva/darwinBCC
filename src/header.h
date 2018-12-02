@@ -68,5 +68,6 @@ void ninho(tile *tileAtual, int *x, int *y,int *flagPontos,int *flagEvolucao);
 void fade();
 void falaNinho();
 void falaNinho2();
+void inimigoAquatico(int tile, int *xAquatico, int *yAquatico, int *x, int *y, int *flagVida);
 
 #endif
