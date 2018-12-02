@@ -343,7 +343,7 @@ void iniciarTiles(tile *tileAtual){
     tileD9->cima = tileC9;
     tileD9->baixo = tileE9;
     tileD9->bInimigo = 2;
-    tileD9->xInimigo = 640;
+    tileD9->xInimigo = 740;
     tileD9->yInimigo = 40;
     tileD9->colisao = al_load_bitmap("../res/tiles/colisao/Tile-D9.png");
     tileD9->imagem = al_load_bitmap("../res/images/tiles/Tile-D9.png");
@@ -395,7 +395,7 @@ void iniciarTiles(tile *tileAtual){
     tileE9->cima = tileD9;
     tileE9->baixo = tileF9;
     tileE9->bInimigo = 2;
-    tileE9->xInimigo = 670;
+    tileE9->xInimigo = 740;
     tileE9->yInimigo = 180;
     tileE9->colisao = al_load_bitmap("../res/tiles/colisao/Tile-E9.png");
     tileE9->imagem = al_load_bitmap("../res/images/tiles/Tile-E9.png");
