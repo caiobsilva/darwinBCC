@@ -3,27 +3,12 @@
 
 enum statesGame {Menu, Select, Options, AmbienteUm, Exit};
 
-typedef struct L{
-    int x0;
-    int y0;
-    int x;
-    int y;
-    struct L *proximo;
-}col;
-
-typedef struct{
-    col *primeiro;
-    col *ultimo;
-    int tamanho;
-}listaCol;
-
 typedef struct T{
     int ID;
     struct T *esquerda;
     struct T *direita;
     struct T *baixo;
     struct T *cima;
-    listaCol *lista;
     ALLEGRO_BITMAP *imagem;
     ALLEGRO_BITMAP *arvores;
     ALLEGRO_BITMAP *colisao;
@@ -77,9 +62,10 @@ int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int s, int x, int y, 
 void localizacao(int *x, int *y, tile *temp);
 void iniciarTiles(tile *tileAtual);
 void movimentacaoInimigos(int i, int *xInimigo, int *yInimigo, int *x, int *y, int *flagVida);
-void addPartes(int i, int *xInimigo, int *yInimigo, int *x, int *y, int *flagVida);
+void addPartes(int i, int *x, int *y, int *flagVida);
 void colisao(tile *tileAtual, int *x, int *y, int id, int *flagvida);
 void ninho(tile *tileAtual, int *x, int *y,int *flagPontos,int *flagEvolucao);
 void fade();
+void falaNinho();
 
 #endif

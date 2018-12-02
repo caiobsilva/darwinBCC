@@ -11,7 +11,7 @@ void animacaoC1(int x, int y){
     int xInimigo = 610, n = 0;
 
     ALLEGRO_BITMAP *sprite2 = al_load_bitmap("../res/images/sprite01/esquerda01.png"); 
-    ALLEGRO_BITMAP *inimigo = al_load_bitmap("../res/images/terrestre/baixo.png"); 
+    ALLEGRO_BITMAP *inimigo = al_load_bitmap("../res/images/terrestre/direita.png"); 
     ALLEGRO_BITMAP *sprite = al_load_bitmap("../res/images/sprite01/baixo01.png");
     ALLEGRO_BITMAP *tile = al_load_bitmap("../res/images/tiles/Tile-C1.png");
     
@@ -21,7 +21,7 @@ void animacaoC1(int x, int y){
         al_draw_bitmap(tile, 0, 0, 0);
         al_draw_scaled_bitmap(sprite, 0, 0, 22, 22, x, y, 66, 66, 0);
         al_draw_scaled_bitmap(sprite2, 0, 0, 22, 22, 610, 294, 66, 66, 0);
-        al_draw_scaled_bitmap(inimigo, 0, 0, 9, 22, xInimigo, 294, 27, 66, 0);
+        al_draw_scaled_bitmap(inimigo, 0, 0, 22, 9, xInimigo, 300, 66, 27, 0);
         al_flip_display();
 
         if(xInimigo == 610)
@@ -38,7 +38,7 @@ void animacaoC1(int x, int y){
 
 void animacaoG10(int x, int y, ALLEGRO_EVENT evento, ALLEGRO_EVENT_QUEUE *fila){
     
-    int n = 0, xCov = 750, yCov = 315, numeroVezes = 0, v = 0, darwinF = 0;  
+    int n = 0, xCov = 450, yCov = 315, numeroVezes = 0, v = 0, darwinF = 0;  
     ALLEGRO_BITMAP *parte = al_load_bitmap("../res/images/tiles/Tile-G10.png");
     ALLEGRO_BITMAP *sprite = al_load_bitmap("../res/images/sprite02/direita01.png");
     ALLEGRO_BITMAP *spriteCov[3];
@@ -287,4 +287,59 @@ int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int seletor, int x, i
     al_destroy_font(yoster);
 
     return (0);
+}
+
+
+void falaNinho(){
+    int n = 0, darwinF = 0;
+    ALLEGRO_BITMAP *sprite = al_load_bitmap("../res/images/sprite01/esquerda01.png");
+    ALLEGRO_BITMAP *parte = al_load_bitmap("../res/images/tiles/Tile-D5.png");
+    ALLEGRO_BITMAP *ovo = al_load_bitmap("../res/images/ninhoOvo.png");
+    ALLEGRO_BITMAP *darwin[2];
+    darwin[0] = al_load_bitmap("../res/images/darwin1.png");
+    darwin[1] = al_load_bitmap("../res/images/darwin2.png");
+    ALLEGRO_FONT *yoster = al_load_ttf_font("../res/font/prstart.ttf", 17, 0);
+    ALLEGRO_COLOR branco = al_map_rgb(255, 255, 255);
+    ALLEGRO_COLOR preto = al_map_rgb(0, 0, 0);
+    ALLEGRO_BITMAP *falasDarwin = al_load_bitmap("../res/images/barraTexto.png");
+    char *falas[3];
+    falas[0] = "Muito bem!";
+    falas[1] = "Agora a futura geração da sua espécie está garantida...";
+    falas[2] = "Eu mal consigo esperar para saber quais mudanças geneticas e ambientais estão nos esperando";
+    ALLEGRO_EVENT_QUEUE *fila;
+    ALLEGRO_EVENT evento;
+    fila = al_create_event_queue();
+    al_register_event_source(fila, al_get_keyboard_event_source());
+     
+    al_init_font_addon();
+    al_init_ttf_addon();
+
+    while(n < 3){
+        al_clear_to_color(branco);
+        al_draw_bitmap(parte, 0, 0, 0);
+        al_draw_scaled_bitmap(sprite, 0, 0, 22, 22, 830, 420, 66, 66, 0);
+        al_draw_scaled_bitmap(ovo,0,0,18,12, 892, 420,54,36, 0);
+        al_draw_scaled_bitmap(falasDarwin, 0, 0, 1440, 290, 10, 460, 1152, 232, 0);
+        al_draw_multiline_text(yoster, preto, 70, 500, 650, 25, 0, falas[n]);
+
+        if(darwinF <= 10){
+            al_draw_scaled_bitmap(darwin[0], 0, 0, 53, 69, 990, 415, 212, 276, 0);   
+        }else if(darwinF <= 20){
+            al_draw_scaled_bitmap(darwin[1], 0, 0, 53, 69, 990, 415, 212, 276, 0);   
+        }
+
+        if(darwinF == 20){
+            darwinF = 0;
+        }
+        darwinF++;
+
+        al_flip_display();
+
+        al_wait_for_event_timed(fila, &evento, 0.05);
+        if(evento.type == ALLEGRO_EVENT_KEY_DOWN){
+            if(evento.keyboard.keycode == ALLEGRO_KEY_E || evento.keyboard.keycode == ALLEGRO_KEY_SPACE){
+                n++;
+            }
+        }
+    }
 }

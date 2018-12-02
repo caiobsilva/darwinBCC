@@ -132,11 +132,17 @@ void inimigoAquatico(int tile, int *xAquatico, int *yAquatico, int *x, int *y, i
 }
 
 void ninho(tile *tileAtual, int *x, int *y,int *flagPontos,int *flagEvolucao){
-
     if(tileAtual->ID == 17 && *flagPontos == 3){
         ALLEGRO_COLOR vermelho = al_map_rgb(255, 0, 0);
         ALLEGRO_COLOR corJogador = al_get_pixel(tileAtual->colisao, *x + 33, *y + 33);
         if(memcmp(&vermelho, &corJogador, sizeof(ALLEGRO_COLOR)) == 0){
+            ALLEGRO_BITMAP *tranEra = al_load_bitmap("../res/images/transEra.png");
+            fade();
+            falaNinho();
+            fade();
+            al_draw_bitmap(tranEra,0,0,0);
+            al_flip_display();
+            al_rest(5.0);
             fade();
             *flagPontos = 0;
             *flagEvolucao = 1;
@@ -144,10 +150,10 @@ void ninho(tile *tileAtual, int *x, int *y,int *flagPontos,int *flagEvolucao){
             tileAtual->esquerda->direita->colisao = al_load_bitmap("../res/tiles/colisao/Tile-D5A.png");
             tileAtual->imagem = al_load_bitmap("../res/images/tiles/Tile-D5A.png");
             tileAtual->colisao = al_load_bitmap("../res/tiles/colisao/Tile-D5A.png");
+            al_destroy_bitmap(tranEra);
         }
 
     }
-
 }
 
 
@@ -214,7 +220,7 @@ void movimentacaoInimigos(int tile, int *xInimigo, int *yInimigo, int *x, int *y
             al_draw_scaled_bitmap(iniTerrestre[i], 0, 0, 9, 22, *x, *y, 27, 66, 0);
         }
         *flagVida -= 1;
-        *y += 50;
+        *y += 100;
     }
 
     t += 1;
@@ -229,11 +235,12 @@ void movimentacaoInimigos(int tile, int *xInimigo, int *yInimigo, int *x, int *y
 }
 
 // função para adicionar extras no ambiente (inimigos e algumas imagens)
-void addPartes(int tile, int *xInimigo, int *yInimigo, int *x, int *y, int *flagVida){
+void addPartes(int tile, int *x, int *y, int *flagVida){
+    static int xInimigo = 610, yInimigo = 380, xInimigo2 = 610, yInimigo2 = 380;
     if(tile == A4){
-        movimentacaoInimigos(tile, xInimigo, yInimigo, x, y, flagVida);
+        movimentacaoInimigos(tile, &xInimigo, &yInimigo, x, y, flagVida);
     }else if(tile == C1){
-        movimentacaoInimigos(tile, xInimigo, yInimigo, x, y, flagVida);
+        movimentacaoInimigos(tile, &xInimigo2, &yInimigo2, x, y, flagVida);
     }
 }
 
@@ -311,6 +318,8 @@ void colisao(tile *tileAtual, int *x, int *y, int id, int *flagVida){
             fade();
             tileAtual->cima->imagem = al_load_bitmap("../res/images/tiles/Tile-E9A.png");
             tileAtual->cima->colisao = al_load_bitmap("../res/tiles/colisao/Tile-E9A.png");
+            tileAtual->arvores = al_load_bitmap("../res/images/tiles/Tile-F9-ArvoreA.png");
+            tileAtual->esquerda->direita->arvores = al_load_bitmap("../res/images/tiles/Tile-F9-ArvoreA.png");
 
             if(id == 1){
               *y += 5;
@@ -327,7 +336,6 @@ void colisao(tile *tileAtual, int *x, int *y, int id, int *flagVida){
             break;
           case 3:
             *flagVida--;
-            
             printf("O jogador recebe dano.\n");
             break;
         }

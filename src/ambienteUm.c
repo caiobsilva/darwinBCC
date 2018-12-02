@@ -6,7 +6,7 @@
 
 enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
     int flagOpcoes = 0, flagSom = 1, flagPontos = 0, flagVida = 3, flagEvolucao = 0;
-    int sair = 0, x = 610, y = 294, xInimigo = 610, yInimigo = 380, xInimigo2 = 610, yInimigo2 = 380, t = 0;
+    int sair = 0, x = 610, y = 294, t = 0;
     tile tileAtual;
     iniciarTiles(&tileAtual);
 
@@ -61,8 +61,7 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
         al_clear_to_color(branco);
         localizacao(&x, &y, &tileAtual);
         al_draw_bitmap(tileAtual.imagem, 0, 0, 0);
-        addPartes(tileAtual.ID, &xInimigo, &yInimigo, &x, &y, &flagVida);
-        addPartes(tileAtual.ID, &xInimigo2, &yInimigo2, &x, &y, &flagVida);
+        addPartes(tileAtual.ID, &x, &y, &flagVida);
         movimentacao(evento, &tileAtual, &x, &y, &t, flagEvolucao, &flagVida);
         al_draw_bitmap(tileAtual.arvores, 0, 0, 0);
         al_draw_bitmap(pontos[flagPontos], 1100, 0, 0);
