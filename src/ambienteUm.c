@@ -49,7 +49,7 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
         }
 
         if(flagVida == 0){
-            al_draw_scaled_bitmap(fimJogo,0,0,896,504,0,0,1280,720,0);
+            al_draw_scaled_bitmap(fimJogo, 0, 0, 896, 504, 0, 0, 1280, 720, 0);
             al_flip_display();
             al_rest(5.0);
             return Exit;

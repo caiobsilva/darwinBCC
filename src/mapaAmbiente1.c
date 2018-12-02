@@ -5,13 +5,13 @@
 #include "header.h"
 
 void iniciarTiles(tile *tileAtual){
-    tile *tileA1,*tileA2,*tileA3,*tileA4,*tileA5;
-    tile *tileB1,*tileB2,*tileB3,*tileB4;
-    tile *tileC1,*tileC2,*tileC3,*tileC4,*tileC8,*tileC9;
-    tile *tileD1,*tileD2,*tileD3,*tileD4,*tileD5,*tileD6,*tileD7,*tileD8,*tileD9,*tileD10;
-    tile *tileE7,*tileE8,*tileE9,*tileE10,*tileE11;
-    tile *tileF7,*tileF8,*tileF9,*tileF10;
-    tile *tileG9,*tileG10;
+    tile *tileA1, *tileA2, *tileA3, *tileA4, *tileA5;
+    tile *tileB1, *tileB2, *tileB3, *tileB4;
+    tile *tileC1, *tileC2, *tileC3, *tileC4, *tileC8, *tileC9;
+    tile *tileD1, *tileD2, *tileD3, *tileD4, *tileD5, *tileD6, *tileD7, *tileD8, *tileD9, *tileD10;
+    tile *tileE7, *tileE8, *tileE9, *tileE10, *tileE11;
+    tile *tileF7, *tileF8, *tileF9, *tileF10;
+    tile *tileG9, *tileG10;
     tileA1 = malloc(sizeof(tile));
     tileA2 = malloc(sizeof(tile));
     tileA3 = malloc(sizeof(tile));
@@ -108,7 +108,6 @@ void iniciarTiles(tile *tileAtual){
     tileA5->imagem = al_load_bitmap("../res/images/tiles/Tile-A5.png");
     tileA5->arvores = al_load_bitmap("../res/images/tiles/Tile-A5-Arvore.png");
     tileA5->bInimigo = 0;
-
 
     // === B1 ===
 

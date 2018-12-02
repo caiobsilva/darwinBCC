@@ -59,7 +59,20 @@ void inimigoAquatico(int tile, int *xAquatico, int *yAquatico, int *x, int *y, i
         yProjetil = 565;
     }else if(tile == D7 && (yProjetil > 720 || yProjetil < 0)){
         yProjetil = 10;
+    }else if(tile == D9 && (yProjetil > 720 || yProjetil < 0)){
+        yProjetil = 40;
+    }else if(tile == F7 && (yProjetil > 720 || yProjetil < 0)){
+        yProjetil = 310;
+    }else if(tile == D8 && (yProjetil > 720 || yProjetil < 0)){
+        yProjetil = 580;
+    }else if(tile == E8 && (yProjetil > 720 || yProjetil < 0)){
+        yProjetil = 40;
+    }else if(tile == E9 && (yProjetil > 720 || yProjetil < 0)){
+        yProjetil = 180;
+    }else if(tile == F10 && (yProjetil > 720 || yProjetil < 0)){
+        yProjetil = 580;
     }
+
 
 
     ALLEGRO_BITMAP *iniAquatico[8];
