@@ -22,7 +22,7 @@ void fade(){
     fade[9] = al_load_bitmap("../res/efeitos/fade/fade10.png");
 
     while(n != 20){
-        al_clear_to_color(al_map_rgb(255,255,255));
+        al_clear_to_color(al_map_rgb(255, 255, 255));
         if(n < 2){
             al_draw_scaled_bitmap(fade[0], 0, 0, 1280, 720, 0, 0, 1280, 720, 0);
         }else if(n < 4){
@@ -173,6 +173,7 @@ int ninho(tile *tileAtual, int *x, int *y,int *flagPontos,int *flagEvolucao){
     }else if(tileAtual->ID == 30 && *flagPontos == 2){
         ALLEGRO_COLOR vermelho = al_map_rgb(255, 0, 0);
         ALLEGRO_COLOR corJogador = al_get_pixel(tileAtual->colisao, *x + 33, *y + 33);
+
         if(memcmp(&vermelho, &corJogador, sizeof(ALLEGRO_COLOR)) == 0){
             ALLEGRO_BITMAP *fimJogo = al_load_bitmap("../res/images/fimJogo.png");
             ALLEGRO_BITMAP *credito = al_load_bitmap("../res/images/creditos.png");
