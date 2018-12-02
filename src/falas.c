@@ -246,7 +246,7 @@ int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int seletor, int x, i
                     break;
                 case 4:  
                     al_draw_scaled_bitmap(sprite2, 0, 0, 22, 22, x, y, 66, 66, 0);
-                    al_draw_scaled_bitmap(inimigoAgua, 0, 0, 33, 24, 640, 10, 99, 72, 0);
+                    al_draw_scaled_bitmap(inimigoAgua, 0, 0, 33, 24, 640, 10, 66, 48, 0);
                     al_draw_multiline_text(yoster, preto, 70, 500, 650, 25, 0, falasInimigoAqua[n]);
                     break;
             }

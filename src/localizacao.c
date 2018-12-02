@@ -57,7 +57,7 @@ void inimigoAquatico(int tile, int *xAquatico, int *yAquatico, int *x, int *y, i
 
     if(tile == C3 && (yProjetil > 720 || yProjetil < 0)){
         yProjetil = 565;
-    }else if(tile == D6 && (yProjetil > 720 || yProjetil < 0)){
+    }else if(tile == D7 && (yProjetil > 720 || yProjetil < 0)){
         yProjetil = 10;
     }
 
