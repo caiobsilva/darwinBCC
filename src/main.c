@@ -37,7 +37,7 @@ int main(){
 
     fila = al_create_event_queue();
     al_register_event_source(fila, al_get_keyboard_event_source());
-    al_register_event_source(fila,al_get_display_event_source(janela));
+    al_register_event_source(fila, al_get_display_event_source(janela));
 
     ALLEGRO_MOUSE_CURSOR *cursor = al_create_mouse_cursor(cursorSprite, 20, 20);
     al_set_mouse_cursor(janela, cursor);
