@@ -64,9 +64,9 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
         localizacao(&x, &y, &tileAtual);
         al_draw_bitmap(tileAtual.imagem, 0, 0, 0);
         if(tileAtual.bInimigo == 1)
-            movimentacaoInimigos(tileAtual.ID,&tileAtual.xInimigo,&tileAtual.yInimigo, &x, &y, &flagVida);
+            movimentacaoInimigos(tileAtual.ID, &tileAtual.xInimigo, &tileAtual.yInimigo, &x, &y, &flagVida);
         if(tileAtual.bInimigo == 2)
-            inimigoAquatico(tileAtual.ID,&tileAtual.xInimigo,&tileAtual.yInimigo, &x, &y, &flagVida);
+            inimigoAquatico(tileAtual.ID, &tileAtual.xInimigo, &tileAtual.yInimigo, &x, &y, &flagVida);
         movimentacao(evento, &tileAtual, &x, &y, &t, flagEvolucao, &flagVida);
         al_draw_bitmap(tileAtual.arvores, 0, 0, 0);
         al_draw_bitmap(pontos[flagPontos], 1100, 0, 0);
