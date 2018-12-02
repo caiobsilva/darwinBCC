@@ -62,7 +62,8 @@ int pausa(int x, int y, int *flagSom, ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT e
 int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int s, int x, int y, int *pontuacao);
 void localizacao(int *x, int *y, tile *temp);
 void iniciarTiles(tile *tileAtual);
-void movimentacaoInimigos(int i, int *xInimigo, int *yInimigo, int *x, int *y, int *flagVida);
+void movimentacaoInimigos(tile *tileAtual, int *xInimigo, int *yInimigo, int *x, int *y, int *flagVida);
+void colisaoInimigo(tile *tileAtual, int *x, int *y, int id);
 void colisao(tile *tileAtual, int *x, int *y, int id, int *flagvida);
 int ninho(tile *tileAtual, int *x, int *y,int *flagPontos,int *flagEvolucao);
 void fade();

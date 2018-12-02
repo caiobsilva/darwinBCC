@@ -197,7 +197,7 @@ int ninho(tile *tileAtual, int *x, int *y,int *flagPontos,int *flagEvolucao){
 
 
 // função para movimentação do inimigo terrestre
-void movimentacaoInimigos(int tile, int *xInimigo, int *yInimigo, int *x, int *y, int *flagVida){
+void movimentacaoInimigos(tile *tileAtual, int *xInimigo, int *yInimigo, int *x, int *y, int *flagVida){
     static int t, i;
     double mod, A, B;
     ALLEGRO_BITMAP *iniTerrestre[8];
@@ -213,6 +213,7 @@ void movimentacaoInimigos(int tile, int *xInimigo, int *yInimigo, int *x, int *y
 
     if(*xInimigo < *x - 3){
         *xInimigo += 3;
+        colisaoInimigo(tileAtual, xInimigo, yInimigo, 4);
 
         if(t <= 12){
             al_draw_scaled_bitmap(iniTerrestre[4], 0, 0, 22, 9, *xInimigo, *yInimigo, 66, 27, 0);
@@ -223,6 +224,7 @@ void movimentacaoInimigos(int tile, int *xInimigo, int *yInimigo, int *x, int *y
         i = 4;
     }else if(*xInimigo > *x + 3){
         *xInimigo -= 3;
+        colisaoInimigo(tileAtual, xInimigo, yInimigo, 3);
 
         if(t <= 12){
             al_draw_scaled_bitmap(iniTerrestre[6], 0, 0, 22, 9, *xInimigo, *yInimigo, 66, 27, 0);
@@ -233,6 +235,7 @@ void movimentacaoInimigos(int tile, int *xInimigo, int *yInimigo, int *x, int *y
         i = 6;
     }else if(*yInimigo < *y - 3){
         *yInimigo += 3;
+        colisaoInimigo(tileAtual, xInimigo, yInimigo, 1);
 
         if(t <= 12){
             al_draw_scaled_bitmap(iniTerrestre[0], 0, 0, 9, 22, *xInimigo, *yInimigo, 27, 66, 0);
@@ -243,6 +246,7 @@ void movimentacaoInimigos(int tile, int *xInimigo, int *yInimigo, int *x, int *y
         i = 0;
     }else if (*yInimigo > *y + 3){
         *yInimigo -= 3;
+        colisaoInimigo(tileAtual, xInimigo, yInimigo, 2);
 
         if(t <= 12){
             al_draw_scaled_bitmap(iniTerrestre[2], 0, 0, 9, 22, *xInimigo, *yInimigo, 27, 66, 0);
@@ -375,5 +379,36 @@ void colisao(tile *tileAtual, int *x, int *y, int id, int *flagVida){
         }
       }
     }
+  }
+}
+
+void colisaoInimigo(tile *tileAtual, int *x, int *y, int id){
+  ALLEGRO_COLOR corInimigo, preto, branco;
+
+  branco = al_map_rgb(255, 255, 255);
+  preto = al_map_rgb(0, 0, 0);
+
+  switch(id){
+    case 1:
+      //variável de tamanho do inimigo.
+      corInimigo = al_get_pixel(tileAtual->colisao, *x + 33, *y);
+      if(memcmp(&preto, &corInimigo, sizeof(ALLEGRO_COLOR)) == 0)
+        *y += 5;
+      break;
+    case 2:
+      corInimigo = al_get_pixel(tileAtual->colisao, *x + 33, *y + 66);
+      if(memcmp(&preto, &corInimigo, sizeof(ALLEGRO_COLOR)) == 0)
+        *y -= 5;
+      break;
+    case 3:
+      corInimigo = al_get_pixel(tileAtual->colisao, *x + 66, *y + 33);
+      if(memcmp(&preto, &corInimigo, sizeof(ALLEGRO_COLOR)) == 0)
+        *x -= 5;
+      break;
+    case 4:
+      corInimigo = al_get_pixel(tileAtual->colisao, *x, *y + 33);
+      if(memcmp(&preto, &corInimigo, sizeof(ALLEGRO_COLOR)) == 0)
+        *x += 5;
+      break;
   }
 }
