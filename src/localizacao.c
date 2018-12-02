@@ -78,9 +78,9 @@ void inimigoAquatico(int tile, int *xAquatico, int *yAquatico, int *x, int *y, i
 
     if(*yAquatico > *y){
         
-        if(t <= 6){
+        if(t <= 24){
             al_draw_scaled_bitmap(iniAquatico[6], 0, 0, 33, 24, *xAquatico, *yAquatico, 66, 48, 0);
-        }else if(t <= 12){
+        }else if(t <= 48){
             al_draw_scaled_bitmap(iniAquatico[7], 0, 0, 33, 24, *xAquatico, *yAquatico, 66, 48, 0);
         }   
 
@@ -90,10 +90,10 @@ void inimigoAquatico(int tile, int *xAquatico, int *yAquatico, int *x, int *y, i
 
     }else{
         
-        if(t <= 6){
+        if(t <= 24){
             al_draw_scaled_bitmap(iniAquatico[4], 0, 0, 33, 24, *xAquatico, *yAquatico, 66, 48, 0);
-        }else if(t <= 12){
-            al_draw_scaled_bitmap(iniAquatico[5], 0, 0, 33, 24, *xAquatico, *yAquatico, 66, 48, 0);
+        }else if(t <= 48){
+            al_draw_scaled_bitmap(iniAquatico[5], 0, 0, 33, 24, *xAquatico, *yAquatico + 20, 66, 48, 0);
         }
 
         if(r = TEMPO_PROJETIL){
@@ -119,7 +119,7 @@ void inimigoAquatico(int tile, int *xAquatico, int *yAquatico, int *x, int *y, i
 
     t += 1;
     
-    if(t > 12){
+    if(t > 48){
         t = 0;
     }
     if(r > TEMPO_PROJETIL){
