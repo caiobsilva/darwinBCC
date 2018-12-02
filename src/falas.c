@@ -13,7 +13,7 @@ void animacaoA4(int x, int y){
     ALLEGRO_BITMAP *sprite2 = al_load_bitmap("../res/images/sprite01/esquerda01.png"); 
     ALLEGRO_BITMAP *inimigo = al_load_bitmap("../res/images/terrestre/direita.png"); 
     ALLEGRO_BITMAP *sprite = al_load_bitmap("../res/images/sprite01/baixo01.png");
-    ALLEGRO_BITMAP *tile = al_load_bitmap("../res/images/tiles/Tile-A4.png");
+    ALLEGRO_BITMAP *tile = al_load_bitmap("../res/images/tiles/Tile-D3.png");
     
     while( n < 6 ){
 
@@ -137,7 +137,7 @@ int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int seletor, int x, i
         numeroVezes = 4;
         seletor = 1;
         flagInimigos = 0;
-    }else if(seletor == 3 && flagInteracao == 1){
+    }else if(seletor == D3 && flagInteracao == 1){
         *pontuacao += 1;
         animacaoA4(x,y);
         numeroVezes = 4;
@@ -207,7 +207,7 @@ int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int seletor, int x, i
     ALLEGRO_BITMAP *parte[5];
     parte[0] = al_load_bitmap("../res/images/tiles/Tile-B4.png");
     parte[1] = al_load_bitmap("../res/images/tiles/Tile-C1.png");
-    parte[2] = al_load_bitmap("../res/images/tiles/Tile-A4.png");  
+    parte[2] = al_load_bitmap("../res/images/tiles/Tile-D3.png");  
     parte[3] = al_load_bitmap("../res/images/tiles/Tile-D5.png");
     parte[4] = al_load_bitmap("../res/images/tiles/Tile-D7.png");
 
