@@ -391,24 +391,24 @@ void colisaoInimigo(tile *tileAtual, int *x, int *y, int id){
   switch(id){
     case 1:
       //variável de tamanho do inimigo.
-      corInimigo = al_get_pixel(tileAtual->colisao, *x + 33, *y);
-      if(memcmp(&preto, &corInimigo, sizeof(ALLEGRO_COLOR)) == 0)
-        *y += 5;
-      break;
-    case 2:
-      corInimigo = al_get_pixel(tileAtual->colisao, *x + 33, *y + 66);
+      corInimigo = al_get_pixel(tileAtual->colisao, *x + 27, *y + 66);
       if(memcmp(&preto, &corInimigo, sizeof(ALLEGRO_COLOR)) == 0)
         *y -= 5;
       break;
-    case 3:
-      corInimigo = al_get_pixel(tileAtual->colisao, *x + 66, *y + 33);
+    case 2:
+      corInimigo = al_get_pixel(tileAtual->colisao, *x + 27, *y + 66);
       if(memcmp(&preto, &corInimigo, sizeof(ALLEGRO_COLOR)) == 0)
-        *x -= 5;
+        *y += 5;
       break;
-    case 4:
-      corInimigo = al_get_pixel(tileAtual->colisao, *x, *y + 33);
+    case 3:
+      corInimigo = al_get_pixel(tileAtual->colisao, *x + 66, *y + 27);
       if(memcmp(&preto, &corInimigo, sizeof(ALLEGRO_COLOR)) == 0)
         *x += 5;
+      break;
+    case 4:
+      corInimigo = al_get_pixel(tileAtual->colisao, *x + 66, *y + 27);
+      if(memcmp(&preto, &corInimigo, sizeof(ALLEGRO_COLOR)) == 0)
+        *x -= 5;
       break;
   }
 }
