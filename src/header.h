@@ -12,6 +12,7 @@ typedef struct T{
     ALLEGRO_BITMAP *imagem;
     ALLEGRO_BITMAP *arvores;
     ALLEGRO_BITMAP *colisao;
+    int bInimigo, xInimigo, yInimigo;
 }tile;
 
 #define A1 0
@@ -62,10 +63,10 @@ int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int s, int x, int y, 
 void localizacao(int *x, int *y, tile *temp);
 void iniciarTiles(tile *tileAtual);
 void movimentacaoInimigos(int i, int *xInimigo, int *yInimigo, int *x, int *y, int *flagVida);
-void addPartes(int i, int *x, int *y, int *flagVida);
 void colisao(tile *tileAtual, int *x, int *y, int id, int *flagvida);
 void ninho(tile *tileAtual, int *x, int *y,int *flagPontos,int *flagEvolucao);
 void fade();
 void falaNinho();
+void falaNinho2();
 
 #endif

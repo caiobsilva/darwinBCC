@@ -2,6 +2,7 @@
 #include <string.h>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_image.h>
+#include <math.h>
 #include "header.h"
 
 #define TEMPO_PROJETIL 96
@@ -144,6 +145,7 @@ void ninho(tile *tileAtual, int *x, int *y,int *flagPontos,int *flagEvolucao){
             al_flip_display();
             al_rest(5.0);
             fade();
+            falaNinho2();
             *flagPontos = 0;
             *flagEvolucao = 1;
             tileAtual->esquerda->direita->imagem = al_load_bitmap("../res/images/tiles/Tile-D5A.png");
@@ -153,6 +155,11 @@ void ninho(tile *tileAtual, int *x, int *y,int *flagPontos,int *flagEvolucao){
             al_destroy_bitmap(tranEra);
         }
 
+    }else if(tileAtual->ID == 30 && *flagPontos == 2){
+        ALLEGRO_COLOR vermelho = al_map_rgb(255, 0, 0);
+        ALLEGRO_COLOR corJogador = al_get_pixel(tileAtual->colisao, *x + 33, *y + 33);
+        if(memcmp(&vermelho, &corJogador, sizeof(ALLEGRO_COLOR)) == 0){
+        }
     }
 }
 
@@ -160,6 +167,7 @@ void ninho(tile *tileAtual, int *x, int *y,int *flagPontos,int *flagEvolucao){
 // função para movimentação do inimigo terrestre
 void movimentacaoInimigos(int tile, int *xInimigo, int *yInimigo, int *x, int *y, int *flagVida){
     static int t, i;
+    double mod, A, B;
     ALLEGRO_BITMAP *iniTerrestre[8];
     
     
@@ -219,8 +227,18 @@ void movimentacaoInimigos(int tile, int *xInimigo, int *yInimigo, int *x, int *y
         }else{
             al_draw_scaled_bitmap(iniTerrestre[i], 0, 0, 9, 22, *x, *y, 27, 66, 0);
         }
+    }
+
+    A = (*x - *xInimigo) * (*x - *xInimigo);
+    B = (*y - *yInimigo) * (*y - *yInimigo);
+    mod = A + B;
+    if(mod < 20){
         *flagVida -= 1;
-        *y += 100;
+        if(B > A){
+            *y += 100;
+        }else{
+            *x += 100;
+        }
     }
 
     t += 1;
@@ -231,16 +249,6 @@ void movimentacaoInimigos(int tile, int *xInimigo, int *yInimigo, int *x, int *y
 
     for(int i = 0; i < 8; i++){
         al_destroy_bitmap(iniTerrestre[i]);
-    }
-}
-
-// função para adicionar extras no ambiente (inimigos e algumas imagens)
-void addPartes(int tile, int *x, int *y, int *flagVida){
-    static int xInimigo = 610, yInimigo = 380, xInimigo2 = 610, yInimigo2 = 380;
-    if(tile == A4){
-        movimentacaoInimigos(tile, &xInimigo, &yInimigo, x, y, flagVida);
-    }else if(tile == C1){
-        movimentacaoInimigos(tile, &xInimigo2, &yInimigo2, x, y, flagVida);
     }
 }
 

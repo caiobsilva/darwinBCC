@@ -199,12 +199,6 @@ int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int seletor, int x, i
     falasNinho[1] = "É importante para o desenvolvimento de uma espécie que ela tenha um lugar seguro para se reproduzir";
     falasNinho[2] = "É durante a troca de geração que as novas característica podem ser desenvolvidas, com sorte ganharemos uma que se encaixa bem no nosso ambiente";
     
-    char  *falasIntroducao2[4];
-    falasIntroducao2[0] = "Uma nova geração, bem-vinda!";
-    falasIntroducao2[1] = "Parece que nos últimos anos algumas coisas aconteceram";
-    falasIntroducao2[2] = "Aparentemente a erupção do vulcão gerou uma ponte firme para uma das ilhas vizinhas!";
-    falasIntroducao2[3] = "Não há como saber o que esperar, um novo ambiente com formas de vida complexa e diferentes pressões ambientais! Vamos, rápido!";
-
     char *falasInimigoAqua[3];
     falasInimigoAqua[0] = "Espere um pouco...";
     falasInimigoAqua[1] = "Aparentemente essa espécie usou o tempo vago para se adaptar a água salgada";
@@ -319,6 +313,60 @@ void falaNinho(){
         al_draw_bitmap(parte, 0, 0, 0);
         al_draw_scaled_bitmap(sprite, 0, 0, 22, 22, 830, 420, 66, 66, 0);
         al_draw_scaled_bitmap(ovo,0,0,18,12, 892, 420,54,36, 0);
+        al_draw_scaled_bitmap(falasDarwin, 0, 0, 1440, 290, 10, 460, 1152, 232, 0);
+        al_draw_multiline_text(yoster, preto, 70, 500, 650, 25, 0, falas[n]);
+
+        if(darwinF <= 10){
+            al_draw_scaled_bitmap(darwin[0], 0, 0, 53, 69, 990, 415, 212, 276, 0);   
+        }else if(darwinF <= 20){
+            al_draw_scaled_bitmap(darwin[1], 0, 0, 53, 69, 990, 415, 212, 276, 0);   
+        }
+
+        if(darwinF == 20){
+            darwinF = 0;
+        }
+        darwinF++;
+
+        al_flip_display();
+
+        al_wait_for_event_timed(fila, &evento, 0.05);
+        if(evento.type == ALLEGRO_EVENT_KEY_DOWN){
+            if(evento.keyboard.keycode == ALLEGRO_KEY_E || evento.keyboard.keycode == ALLEGRO_KEY_SPACE){
+                n++;
+            }
+        }
+    }
+}
+
+void falaNinho2(){
+    int n = 0, darwinF = 0;
+    ALLEGRO_BITMAP *sprite = al_load_bitmap("../res/images/sprite02/esquerda01.png");
+    ALLEGRO_BITMAP *parte = al_load_bitmap("../res/images/tiles/Tile-D5A.png");
+    ALLEGRO_BITMAP *darwin[2];
+    darwin[0] = al_load_bitmap("../res/images/darwin1.png");
+    darwin[1] = al_load_bitmap("../res/images/darwin2.png");
+    ALLEGRO_FONT *yoster = al_load_ttf_font("../res/font/prstart.ttf", 17, 0);
+    ALLEGRO_COLOR branco = al_map_rgb(255, 255, 255);
+    ALLEGRO_COLOR preto = al_map_rgb(0, 0, 0);
+    ALLEGRO_BITMAP *falasDarwin = al_load_bitmap("../res/images/barraTexto.png");
+    char  *falas[4];
+    falas[0] = "Uma nova geração, bem-vinda!";
+    falas[1] = "Parece que nos últimos anos algumas coisas aconteceram";
+    falas[2] = "Aparentemente a erupção do vulcão gerou uma ponte firme para uma das ilhas vizinhas!";
+    falas[3] = "Não há como saber o que esperar, um novo ambiente com formas de vida complexa e diferentes pressões ambientais! Vamos, rápido!";
+
+    ALLEGRO_EVENT_QUEUE *fila;
+    ALLEGRO_EVENT evento;
+    fila = al_create_event_queue();
+    al_register_event_source(fila, al_get_keyboard_event_source());
+     
+    al_init_font_addon();
+    al_init_ttf_addon();
+
+    while(n < 4){
+        al_clear_to_color(branco);
+        al_draw_bitmap(parte, 0, 0, 0);
+        al_draw_scaled_bitmap(sprite, 0, 0, 22, 22, 890, 420, 66, 66, 0);
         al_draw_scaled_bitmap(falasDarwin, 0, 0, 1440, 290, 10, 460, 1152, 232, 0);
         al_draw_multiline_text(yoster, preto, 70, 500, 650, 25, 0, falas[n]);
 
