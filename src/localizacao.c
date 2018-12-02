@@ -304,13 +304,11 @@ void localizacao(int *x, int *y, tile *tileAtual){
 }
 
 void colisao(tile *tileAtual, int *x, int *y, int id, int *flagVida){
-    ALLEGRO_DISPLAY *janela = NULL;
-    ALLEGRO_BITMAP *imagem = NULL;
-    ALLEGRO_COLOR corJogador, preto, vermelho, amarelo, azul, rosa, cores[5];
+    ALLEGRO_COLOR corJogador, preto, amarelo, azul,cores[3];
 
     preto = al_map_rgb(0, 0, 0); //colisão
     amarelo = al_map_rgb(255, 234, 0);//árvore
-    azul = al_map_rgb(0, 0, 255);//projétil e da cobra. Dano.
+    azul = al_map_rgb(0, 0, 255);//dano.
 
     //printf("%d", tileAtual->ID);
 
@@ -349,7 +347,7 @@ void colisao(tile *tileAtual, int *x, int *y, int id, int *flagVida){
             if(id == 4){
               *x += 5;
             }
-            printf("O jogador não anda.\n");
+            //printf("O jogador não anda.\n");
             break;
           case 1:
             //Se interagir, árvore vai ser derrubada.
@@ -374,7 +372,7 @@ void colisao(tile *tileAtual, int *x, int *y, int id, int *flagVida){
             break;
           case 2:
             *flagVida-=1;
-            printf("O jogador recebe dano.\n");
+            printf("O jogador recebe dano do mapa.\n");
             break;
         }
       }
@@ -393,22 +391,26 @@ void colisaoInimigo(tile *tileAtual, int *x, int *y, int id){
       //variável de tamanho do inimigo.
       corInimigo = al_get_pixel(tileAtual->colisao, *x + 27, *y + 66);
       if(memcmp(&preto, &corInimigo, sizeof(ALLEGRO_COLOR)) == 0)
-        *y -= 5;
+        *y -= 3;//cima para baixo.
+        printf("Colisão.\n");
       break;
     case 2:
-      corInimigo = al_get_pixel(tileAtual->colisao, *x + 27, *y + 66);
+      corInimigo = al_get_pixel(tileAtual->colisao, *x + 27, *y);
       if(memcmp(&preto, &corInimigo, sizeof(ALLEGRO_COLOR)) == 0)
-        *y += 5;
+        *y += 3;//baixo para cima.
+        printf("Colisão.\n");
       break;
     case 3:
-      corInimigo = al_get_pixel(tileAtual->colisao, *x + 66, *y + 27);
+      corInimigo = al_get_pixel(tileAtual->colisao, *x, *y + 27);
       if(memcmp(&preto, &corInimigo, sizeof(ALLEGRO_COLOR)) == 0)
-        *x += 5;
+        *x += 3;//direita para esquerda. 
+        printf("Colisão.\n");
       break;
     case 4:
       corInimigo = al_get_pixel(tileAtual->colisao, *x + 66, *y + 27);
       if(memcmp(&preto, &corInimigo, sizeof(ALLEGRO_COLOR)) == 0)
-        *x -= 5;
+        *x -= 3; //esquerda para direita.
+        printf("Colisão.\n");
       break;
   }
 }
