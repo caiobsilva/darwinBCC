@@ -6,14 +6,14 @@
 #include "header.h"
 
 
-void animacaoC1(int x, int y){
+void animacaoA4(int x, int y){
     
     int xInimigo = 610, n = 0;
 
     ALLEGRO_BITMAP *sprite2 = al_load_bitmap("../res/images/sprite01/esquerda01.png"); 
     ALLEGRO_BITMAP *inimigo = al_load_bitmap("../res/images/terrestre/direita.png"); 
     ALLEGRO_BITMAP *sprite = al_load_bitmap("../res/images/sprite01/baixo01.png");
-    ALLEGRO_BITMAP *tile = al_load_bitmap("../res/images/tiles/Tile-C1.png");
+    ALLEGRO_BITMAP *tile = al_load_bitmap("../res/images/tiles/Tile-A4.png");
     
     while( n < 6 ){
 
@@ -132,14 +132,14 @@ int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int seletor, int x, i
         numeroVezes = 12;
         seletor = 0;
         flagInicio = 0;
-    }else if(seletor == 3 && flagInimigos == 1){
+    }else if(seletor == 9 && flagInimigos == 1){
         *pontuacao += 1;
         numeroVezes = 4;
         seletor = 1;
         flagInimigos = 0;
-    }else if(seletor == 9 && flagInteracao == 1){
+    }else if(seletor == 3 && flagInteracao == 1){
         *pontuacao += 1;
-        animacaoC1(x,y);
+        animacaoA4(x,y);
         numeroVezes = 4;
         seletor = 2;
         flagInteracao = 0;
@@ -184,14 +184,14 @@ int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int seletor, int x, i
 
     char *falasInimigos[4];
     falasInimigos[0] = "Cuidado!";
-    falasInimigos[1] = "Essa espécie me parece estranha";
+    falasInimigos[1] = "É aquela espécie...";
     falasInimigos[2] = "Olha a cor dela, tenho certeza de que isso é um caso de coloração de advertência.";
     falasInimigos[3] = "A cor característica do animal serve como um alerta, eu recomendaria ficar longe.";
     
     char *falasInteracoes[4];
     falasInteracoes[0] = "!!!!!";
     falasInteracoes[1] = "...";
-    falasInteracoes[2] = "Pobre criatura. Nossas duvidas foram confirmadas, aquela espécie está mesmo interagindo com a sua";
+    falasInteracoes[2] = "Pobre criatura. Minhas duvidas foram confirmadas, aquela espécie está mesmo interagindo com a sua";
     falasInteracoes[3] = "O desenvolvimento pode ser atrasado ou adiantado com a intervenção de outro ser. Chamamos isso de 'Interações Ambientais'";
 
     char *falasNinho[3];
@@ -206,8 +206,8 @@ int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int seletor, int x, i
 
     ALLEGRO_BITMAP *parte[5];
     parte[0] = al_load_bitmap("../res/images/tiles/Tile-B4.png");
-    parte[1] = al_load_bitmap("../res/images/tiles/Tile-A4.png");
-    parte[2] = al_load_bitmap("../res/images/tiles/Tile-C1.png");  
+    parte[1] = al_load_bitmap("../res/images/tiles/Tile-C1.png");
+    parte[2] = al_load_bitmap("../res/images/tiles/Tile-A4.png");  
     parte[3] = al_load_bitmap("../res/images/tiles/Tile-D5.png");
     parte[4] = al_load_bitmap("../res/images/tiles/Tile-D7.png");
 
