@@ -59,6 +59,7 @@ void iniciarTiles(tile *tileAtual){
     tileA1->colisao = al_load_bitmap("../res/tiles/colisao/Tile-A1.png");
     tileA1->imagem = al_load_bitmap("../res/images/tiles/Tile-A1.png");
     tileA1->arvores = al_load_bitmap("../res/images/tiles/Tile-A1-Arvore.png");
+    tileA1->bInimigo = 0;
 
     // === A2 ===
 
@@ -70,6 +71,7 @@ void iniciarTiles(tile *tileAtual){
     tileA2->colisao = al_load_bitmap("../res/tiles/colisao/Tile-A2.png");
     tileA2->imagem = al_load_bitmap("../res/images/tiles/Tile-A2.png");
     tileA2->arvores = al_load_bitmap("../res/images/tiles/Tile-A2-Arvore.png");
+    tileA2->bInimigo = 0;
 
     // === A3 ===
 
@@ -81,6 +83,7 @@ void iniciarTiles(tile *tileAtual){
     tileA3->colisao = al_load_bitmap("../res/tiles/colisao/Tile-A3.png");
     tileA3->imagem = al_load_bitmap("../res/images/tiles/Tile-A3.png");
     tileA3->arvores = al_load_bitmap("../res/images/tiles/Tile-A3-Arvore.png");
+    tileA3->bInimigo = 0;
 
     // === A4 ===
 
@@ -92,6 +95,7 @@ void iniciarTiles(tile *tileAtual){
     tileA4->colisao = al_load_bitmap("../res/tiles/colisao/Tile-A4.png");
     tileA4->imagem = al_load_bitmap("../res/images/tiles/Tile-A4.png");
     tileA4->arvores = al_load_bitmap("../res/images/tiles/Tile-A4-Arvore.png");
+    tileA4->bInimigo = 0;
 
     // === A5 ===
 
@@ -103,6 +107,7 @@ void iniciarTiles(tile *tileAtual){
     tileA5->colisao = al_load_bitmap("../res/tiles/colisao/Tile-A5.png");
     tileA5->imagem = al_load_bitmap("../res/images/tiles/Tile-A5.png");
     tileA5->arvores = al_load_bitmap("../res/images/tiles/Tile-A5-Arvore.png");
+    tileA5->bInimigo = 0;
 
 
     // === B1 ===
@@ -115,6 +120,7 @@ void iniciarTiles(tile *tileAtual){
     tileB1->colisao = al_load_bitmap("../res/tiles/colisao/Tile-B1.png");
     tileB1->imagem = al_load_bitmap("../res/images/tiles/Tile-B1.png");
     tileB1->arvores = al_load_bitmap("../res/images/tiles/Tile-B1-Arvore.png");
+    tileB1->bInimigo = 0;
 
     // === B2 ===
 
@@ -126,6 +132,7 @@ void iniciarTiles(tile *tileAtual){
     tileB2->colisao = al_load_bitmap("../res/tiles/colisao/Tile-B2.png");
     tileB2->imagem = al_load_bitmap("../res/images/tiles/Tile-B2.png");
     tileB2->arvores = al_load_bitmap("../res/images/tiles/Tile-B2-Arvore.png");
+    tileB2->bInimigo = 0;
 
     // === B3 ===
 
@@ -137,6 +144,7 @@ void iniciarTiles(tile *tileAtual){
     tileB3->colisao = al_load_bitmap("../res/tiles/colisao/Tile-B3.png");
     tileB3->imagem = al_load_bitmap("../res/images/tiles/Tile-B3.png");
     tileB3->arvores = al_load_bitmap("../res/images/tiles/Tile-B3-Arvore.png");
+    tileB3->bInimigo = 0;
     // === B4 ===
 
     tileB4->ID = B4;
@@ -147,6 +155,7 @@ void iniciarTiles(tile *tileAtual){
     tileB4->colisao = al_load_bitmap("../res/tiles/colisao/Tile-B4.png");
     tileB4->imagem = al_load_bitmap("../res/images/tiles/Tile-B4.png");
     tileB4->arvores = al_load_bitmap("../res/images/tiles/Tile-B4-Arvore.png");
+    tileB4->bInimigo = 0;
 
     // === C1 ===
 
