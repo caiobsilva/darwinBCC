@@ -312,7 +312,7 @@ void falaNinho(){
         al_clear_to_color(branco);
         al_draw_bitmap(parte, 0, 0, 0);
         al_draw_scaled_bitmap(sprite, 0, 0, 22, 22, 830, 420, 66, 66, 0);
-        al_draw_scaled_bitmap(ovo,0,0,18,12, 892, 420,54,36, 0);
+        al_draw_scaled_bitmap(ovo,0,0,18,12, 892, 425,54,36, 0);
         al_draw_scaled_bitmap(falasDarwin, 0, 0, 1440, 290, 10, 460, 1152, 232, 0);
         al_draw_multiline_text(yoster, preto, 70, 500, 650, 25, 0, falas[n]);
 

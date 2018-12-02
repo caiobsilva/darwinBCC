@@ -174,7 +174,20 @@ int ninho(tile *tileAtual, int *x, int *y,int *flagPontos,int *flagEvolucao){
         ALLEGRO_COLOR vermelho = al_map_rgb(255, 0, 0);
         ALLEGRO_COLOR corJogador = al_get_pixel(tileAtual->colisao, *x + 33, *y + 33);
         if(memcmp(&vermelho, &corJogador, sizeof(ALLEGRO_COLOR)) == 0){
+            ALLEGRO_BITMAP *fimJogo = al_load_bitmap("../res/images/fimJogo.png");
+            ALLEGRO_BITMAP *credito = al_load_bitmap("../res/images/creditos.png");
             fade();
+            al_clear_to_color(vermelho);
+            al_draw_bitmap(fimJogo,0,0,0);
+            al_flip_display();
+            al_rest(3.0);
+            fade();
+            al_clear_to_color(vermelho);
+            al_draw_bitmap(credito,0,0,0);
+            al_flip_display();
+            al_rest(3.0);
+            al_destroy_bitmap(fimJogo);
+            al_destroy_bitmap(credito);
             return(1);
         }
     }
