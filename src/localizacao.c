@@ -79,19 +79,19 @@ void inimigoAquatico(int tile, int *xAquatico, int *yAquatico, int *x, int *y, i
     xProjetil = *xAquatico+33;
 
     if(*yAquatico > *y){
-        
+
         if(t <= 24){
             al_draw_scaled_bitmap(iniAquatico[6], 0, 0, 33, 24, *xAquatico, *yAquatico, 66, 48, 0);
         }else if(t <= 48){
             al_draw_scaled_bitmap(iniAquatico[7], 0, 0, 33, 24, *xAquatico, *yAquatico, 66, 48, 0);
-        }   
+        }
 
         if(r = TEMPO_PROJETIL){
             yProjetil -= 8;
-        }            
+        }
 
     }else{
-        
+
         if(t <= 24){
             al_draw_scaled_bitmap(iniAquatico[4], 0, 0, 33, 24, *xAquatico, *yAquatico, 66, 48, 0);
         }else if(t <= 48){
@@ -120,7 +120,7 @@ void inimigoAquatico(int tile, int *xAquatico, int *yAquatico, int *x, int *y, i
     printf("%lf\n", mod);
 
     t += 1;
-    
+
     if(t > 48){
         t = 0;
     }
@@ -137,6 +137,7 @@ int ninho(tile *tileAtual, int *x, int *y,int *flagPontos,int *flagEvolucao){
     if(tileAtual->ID == 17 && *flagPontos == 3){
         ALLEGRO_COLOR vermelho = al_map_rgb(255, 0, 0);
         ALLEGRO_COLOR corJogador = al_get_pixel(tileAtual->colisao, *x + 33, *y + 33);
+
         if(memcmp(&vermelho, &corJogador, sizeof(ALLEGRO_COLOR)) == 0){
             ALLEGRO_BITMAP *tranEra = al_load_bitmap("../res/images/transEra.png");
             fade();
@@ -173,8 +174,8 @@ void movimentacaoInimigos(int tile, int *xInimigo, int *yInimigo, int *x, int *y
     static int t, i;
     double mod, A, B;
     ALLEGRO_BITMAP *iniTerrestre[8];
-    
-    
+
+
     iniTerrestre[0] = al_load_bitmap("../res/images/terrestre/baixo.png");
     iniTerrestre[1] = al_load_bitmap("../res/images/terrestre/baixo2.png");
     iniTerrestre[2] = al_load_bitmap("../res/images/terrestre/cima.png");
@@ -302,10 +303,8 @@ void colisao(tile *tileAtual, int *x, int *y, int id, int *flagVida){
     }
 
     cores[0] = preto;
-    cores[1] = vermelho;
-    cores[2] = amarelo;
-    cores[3] = azul;
-    cores[4] = rosa;
+    cores[1] = amarelo;
+    cores[2] = azul;
 
     for(int i = 0; i < 5; i++){
       if(memcmp(&cores[i], &corJogador, sizeof(ALLEGRO_COLOR)) == 0){
@@ -325,7 +324,7 @@ void colisao(tile *tileAtual, int *x, int *y, int id, int *flagVida){
             }
             printf("O jogador não anda.\n");
             break;
-          case 2:            
+          case 1:
             //Se interagir, árvore vai ser derrubada.
             fade();
             tileAtual->cima->imagem = al_load_bitmap("../res/images/tiles/Tile-E9A.png");
@@ -346,7 +345,7 @@ void colisao(tile *tileAtual, int *x, int *y, int id, int *flagVida){
               *x += 5;
             printf("O jogador derrubou a árvore.\n");
             break;
-          case 3:
+          case 2:
             *flagVida--;
             printf("O jogador recebe dano.\n");
             break;
