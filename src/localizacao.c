@@ -52,8 +52,13 @@ void fade(){
 
 void inimigoAquatico(int tile, int *xAquatico, int *yAquatico, int *x, int *y, int *flagVida){
     static int t, r;
-    int quocienteX, quocienteY;
-    int xProjetil, yProjetil;
+    static int xProjetil, yProjetil = 1000;
+    double mod, A, B;
+
+    if(tile < C4 && (yProjetil > 720 || yProjetil < 0)){
+        yProjetil = 565;
+    }
+
 
     ALLEGRO_BITMAP *iniAquatico[8];
     ALLEGRO_BITMAP *projetil;
@@ -69,57 +74,51 @@ void inimigoAquatico(int tile, int *xAquatico, int *yAquatico, int *x, int *y, i
 
     projetil = al_load_bitmap("../res/images/aquatico/projetil.png");
 
-    xProjetil = *xAquatico;
-    yProjetil = *yAquatico;
+    xProjetil = *xAquatico+33;
 
-    if(quocienteX > quocienteY){
-        if(*y < *yAquatico){
-            if(t <= 6){
-                al_draw_scaled_bitmap(iniAquatico[6], 0, 0, 33, 24, *xAquatico, *yAquatico, 66, 48, 0);
-            }else if(t <= 12){
-                al_draw_scaled_bitmap(iniAquatico[7], 0, 0, 33, 24, *xAquatico, *yAquatico, 66, 48, 0);
-            }
-            
-            if(r = TEMPO_PROJETIL){
-                yProjetil += 8;
-            }
-        }
-        if(*y > *yAquatico){
-            if(t <= 6){
-                al_draw_scaled_bitmap(iniAquatico[4], 0, 0, 33, 24, *xAquatico, *yAquatico, 66, 48, 0);
-            }else if(t <= 12){
-                al_draw_scaled_bitmap(iniAquatico[5], 0, 0, 33, 24, *xAquatico, *yAquatico, 66, 48, 0);
-            }
+    if(*yAquatico > *y){
+        
+        if(t <= 6){
+            al_draw_scaled_bitmap(iniAquatico[6], 0, 0, 33, 24, *xAquatico, *yAquatico, 66, 48, 0);
+        }else if(t <= 12){
+            al_draw_scaled_bitmap(iniAquatico[7], 0, 0, 33, 24, *xAquatico, *yAquatico, 66, 48, 0);
+        }   
 
-            if(r = TEMPO_PROJETIL){
-                yProjetil -= 8;
-            }
-        }
+        if(r = TEMPO_PROJETIL){
+            yProjetil -= 8;
+        }            
+
     }else{
-        if(*x < *xAquatico){
-            if(t <= 6){
-                al_draw_scaled_bitmap(iniAquatico[0], 0, 0, 33, 24, *xAquatico, *yAquatico, 66, 48, 0);
-            }else if(t <= 12){
-                al_draw_scaled_bitmap(iniAquatico[1], 0, 0, 33, 24, *xAquatico, *yAquatico, 66, 48, 0);
-            }
-
-            if(r = TEMPO_PROJETIL){
-                xProjetil -= 8;
-            }
+        
+        if(t <= 6){
+            al_draw_scaled_bitmap(iniAquatico[4], 0, 0, 33, 24, *xAquatico, *yAquatico, 66, 48, 0);
+        }else if(t <= 12){
+            al_draw_scaled_bitmap(iniAquatico[5], 0, 0, 33, 24, *xAquatico, *yAquatico, 66, 48, 0);
         }
-        if(*x > *xAquatico){
-            if(t <= 6){
-                al_draw_scaled_bitmap(iniAquatico[2], 0, 0, 33, 24, *xAquatico, *yAquatico, 66, 48, 0);
-            }else if(t <= 12){
-                al_draw_scaled_bitmap(iniAquatico[3], 0, 0, 33, 24, *xAquatico, *yAquatico, 66, 48, 0);
-            }
 
-            if(r = TEMPO_PROJETIL){
-                xProjetil += 8;
-            }
+        if(r = TEMPO_PROJETIL){
+            yProjetil += 8;
         }
+
     }
 
+    al_draw_bitmap(projetil,xProjetil,yProjetil,0);
+
+    A = (*x - xProjetil) * (*x - xProjetil);
+    B = (*y - yProjetil) * (*y - yProjetil);
+    mod = A + B;
+    if(mod < 4000){
+        *flagVida -= 1;
+        if(*x < *xAquatico){
+            *x -= 100;
+        }else{
+            *x += 100;
+        }
+    }
+    printf("%lf\n", mod);
+
+    t += 1;
+    
     if(t > 12){
         t = 0;
     }
@@ -132,7 +131,7 @@ void inimigoAquatico(int tile, int *xAquatico, int *yAquatico, int *x, int *y, i
     }
 }
 
-void ninho(tile *tileAtual, int *x, int *y,int *flagPontos,int *flagEvolucao){
+int ninho(tile *tileAtual, int *x, int *y,int *flagPontos,int *flagEvolucao){
     if(tileAtual->ID == 17 && *flagPontos == 3){
         ALLEGRO_COLOR vermelho = al_map_rgb(255, 0, 0);
         ALLEGRO_COLOR corJogador = al_get_pixel(tileAtual->colisao, *x + 33, *y + 33);
@@ -159,8 +158,11 @@ void ninho(tile *tileAtual, int *x, int *y,int *flagPontos,int *flagEvolucao){
         ALLEGRO_COLOR vermelho = al_map_rgb(255, 0, 0);
         ALLEGRO_COLOR corJogador = al_get_pixel(tileAtual->colisao, *x + 33, *y + 33);
         if(memcmp(&vermelho, &corJogador, sizeof(ALLEGRO_COLOR)) == 0){
+            fade();
+            return(1);
         }
     }
+    return(0);
 }
 
 

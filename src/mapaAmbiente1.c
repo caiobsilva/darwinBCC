@@ -296,6 +296,9 @@ void iniciarTiles(tile *tileAtual){
     tileD7->direita = tileD8;
     tileD7->cima = NULL;
     tileD7->baixo = tileE7;
+    tileD7->bInimigo = 2;
+    tileD7->xInimigo = 640;
+    tileD7->yInimigo = 10;
     tileD7->colisao = al_load_bitmap("../res/tiles/colisao/Tile-D7.png");
     tileD7->imagem = al_load_bitmap("../res/images/tiles/Tile-D7.png");
     tileD7->arvores = al_load_bitmap("../res/images/tiles/Tile-D7-Arvore.png");

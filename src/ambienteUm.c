@@ -56,7 +56,9 @@ enum statesGame ambienteUm(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento){
         }
         
 
-        ninho(&tileAtual, &x, &y, &flagPontos, &flagEvolucao);
+        if(ninho(&tileAtual, &x, &y, &flagPontos, &flagEvolucao)){
+            return Exit;
+        }
 
         al_clear_to_color(branco);
         localizacao(&x, &y, &tileAtual);
