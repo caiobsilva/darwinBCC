@@ -298,8 +298,8 @@ void falaNinho(){
     ALLEGRO_BITMAP *falasDarwin = al_load_bitmap("../res/images/barraTexto.png");
     char *falas[3];
     falas[0] = "Muito bem!";
-    falas[1] = "Agora a futura geração da sua espécie está garantida, mas a erupção do vulcão ameaça sua continuidade. Hora de migrar!";
-    falas[2] = "A lava criou uma ponte para a próxima ilha. Eu mal consigo esperar para saber quais mudanças geneticas e ambientais estão nos esperando!";
+    falas[1] = "Agora a futura geração da sua espécie está garantida...";
+    falas[2] = "Eu mal consigo esperar para saber quais mudanças geneticas e ambientais estão nos esperando";
     ALLEGRO_EVENT_QUEUE *fila;
     ALLEGRO_EVENT evento;
     fila = al_create_event_queue();
