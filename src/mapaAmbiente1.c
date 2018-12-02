@@ -450,7 +450,7 @@ void iniciarTiles(tile *tileAtual){
     tileF8->baixo = NULL;
     tileF8->bInimigo = 1;
     tileF8->xInimigo = 840;
-    tileF8->yInimigo = 580;
+    tileF8->yInimigo = 380;
     tileF8->colisao = al_load_bitmap("../res/tiles/colisao/Tile-F8.png");
     tileF8->imagem = al_load_bitmap("../res/images/tiles/Tile-F8.png");
     tileF8->arvores = al_load_bitmap("../res/images/tiles/pngcuck.png");

@@ -287,8 +287,7 @@ int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int seletor, int x, i
 void falaNinho(){
     int n = 0, darwinF = 0;
     ALLEGRO_BITMAP *sprite = al_load_bitmap("../res/images/sprite01/esquerda01.png");
-    ALLEGRO_BITMAP *parte = al_load_bitmap("../res/images/tiles/Tile-D5.png");
-    ALLEGRO_BITMAP *ovo = al_load_bitmap("../res/images/ninhoOvo.png");
+    ALLEGRO_BITMAP *parte = al_load_bitmap("../res/images/tiles/Tile-D5B.png");
     ALLEGRO_BITMAP *darwin[2];
     darwin[0] = al_load_bitmap("../res/images/darwin1.png");
     darwin[1] = al_load_bitmap("../res/images/darwin2.png");
@@ -312,7 +311,6 @@ void falaNinho(){
         al_clear_to_color(branco);
         al_draw_bitmap(parte, 0, 0, 0);
         al_draw_scaled_bitmap(sprite, 0, 0, 22, 22, 830, 420, 66, 66, 0);
-        al_draw_scaled_bitmap(ovo,0,0,18,12, 892, 425,54,36, 0);
         al_draw_scaled_bitmap(falasDarwin, 0, 0, 1440, 290, 10, 460, 1152, 232, 0);
         al_draw_multiline_text(yoster, preto, 70, 500, 650, 25, 0, falas[n]);
 
