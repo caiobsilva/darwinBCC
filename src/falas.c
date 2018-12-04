@@ -276,7 +276,14 @@ int falas(ALLEGRO_EVENT_QUEUE *fila, ALLEGRO_EVENT evento, int seletor, int x, i
         }
     }
 
+    for(int i =5 ; i < 5; i++){
+        al_destroy_bitmap(parte[i]);
+    }
+    for(int i =0 ; i < 2; i++){
+        al_destroy_bitmap(darwin[i]);
+    }
     al_destroy_bitmap(sprite);
+    al_destroy_bitmap(sprite2);
     al_destroy_bitmap(falasDarwin);
     al_destroy_font(yoster);
 

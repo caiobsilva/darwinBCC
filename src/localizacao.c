@@ -130,7 +130,6 @@ void inimigoAquatico(int tile, int *xAquatico, int *yAquatico, int *x, int *y, i
             *x += 100;
         }
     }
-    printf("%lf\n", mod);
 
     t += 1;
 
@@ -309,7 +308,7 @@ void colisao(tile *tileAtual, int *x, int *y, int id, int *flagVida){
     preto = al_map_rgb(0, 0, 0); //colisão
     amarelo = al_map_rgb(255, 234, 0);//árvore
     azul = al_map_rgb(0, 0, 255);//dano.
-
+    static int flag = 1;
     //printf("%d", tileAtual->ID);
 
     switch(id){
@@ -351,11 +350,14 @@ void colisao(tile *tileAtual, int *x, int *y, int id, int *flagVida){
             break;
           case 1:
             //Se interagir, árvore vai ser derrubada.
-            fade();
-            tileAtual->cima->imagem = al_load_bitmap("../res/images/tiles/Tile-E9A.png");
-            tileAtual->cima->colisao = al_load_bitmap("../res/tiles/colisao/Tile-E9A.png");
-            tileAtual->arvores = al_load_bitmap("../res/images/tiles/Tile-F9-ArvoreA.png");
-            tileAtual->esquerda->direita->arvores = al_load_bitmap("../res/images/tiles/Tile-F9-ArvoreA.png");
+            if(flag == 1){
+                fade();
+                tileAtual->cima->imagem = al_load_bitmap("../res/images/tiles/Tile-E9A.png");
+                tileAtual->cima->colisao = al_load_bitmap("../res/tiles/colisao/Tile-E9A.png");
+                tileAtual->arvores = al_load_bitmap("../res/images/tiles/Tile-F9-ArvoreA.png");
+                tileAtual->esquerda->direita->arvores = al_load_bitmap("../res/images/tiles/Tile-F9-ArvoreA.png");
+                flag = 0;   
+            }
 
             if(id == 1){
               *y += 5;
@@ -368,11 +370,9 @@ void colisao(tile *tileAtual, int *x, int *y, int id, int *flagVida){
             }
             if(id == 4){
               *x += 5;
-            printf("O jogador derrubou a árvore.\n");
             break;
           case 2:
             *flagVida-=1;
-            printf("O jogador recebe dano do mapa.\n");
             break;
         }
       }
@@ -392,25 +392,21 @@ void colisaoInimigo(tile *tileAtual, int *x, int *y, int id){
       corInimigo = al_get_pixel(tileAtual->colisao, *x + 27, *y + 66);
       if(memcmp(&preto, &corInimigo, sizeof(ALLEGRO_COLOR)) == 0)
         *y -= 3;//cima para baixo.
-        printf("Colisão.\n");
       break;
     case 2:
       corInimigo = al_get_pixel(tileAtual->colisao, *x + 27, *y);
       if(memcmp(&preto, &corInimigo, sizeof(ALLEGRO_COLOR)) == 0)
         *y += 3;//baixo para cima.
-        printf("Colisão.\n");
       break;
     case 3:
       corInimigo = al_get_pixel(tileAtual->colisao, *x, *y + 27);
       if(memcmp(&preto, &corInimigo, sizeof(ALLEGRO_COLOR)) == 0)
         *x += 3;//direita para esquerda. 
-        printf("Colisão.\n");
       break;
     case 4:
       corInimigo = al_get_pixel(tileAtual->colisao, *x + 66, *y + 27);
       if(memcmp(&preto, &corInimigo, sizeof(ALLEGRO_COLOR)) == 0)
         *x -= 3; //esquerda para direita.
-        printf("Colisão.\n");
       break;
   }
 }
