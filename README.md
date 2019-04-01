@@ -8,4 +8,4 @@ Main Menu:
 In-game screenshot:
 ![In-game - Yoster Island](https://raw.githubusercontent.com/juhansmn/darwinBCC/master/hotsite/gal3.png)
 
-The name of the game is based on the [font](https://www.1001fonts.com/yoster-island-font.html) with the same name.
+The name of the game is based on the [font](https://www.1001fonts.com/yoster-island-font.html) of the same name.
